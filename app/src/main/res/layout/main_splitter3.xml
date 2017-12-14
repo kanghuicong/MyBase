@@ -1,0 +1,5 @@
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x2"
+    android:layout_height="@dimen/y40"
+    android:layout_gravity="center"
+    android:background="#abacad"></View>

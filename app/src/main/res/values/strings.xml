@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyBase</string>
+
+    <string name="rb1">首页</string>
+    <string name="rb2">商城</string>
+    <string name="rb3">维修服务</string>
+    <string name="rb4">我的</string>
+
+    <string name="disActivity">disActivity</string>
+
+</resources>
