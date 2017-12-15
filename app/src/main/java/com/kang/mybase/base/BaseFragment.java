@@ -21,7 +21,7 @@ import rx.Subscription;
  * E-Mail is 515849594@qq.com
  */
 
-public abstract class BaseFragment extends Fragment implements ISubDelete{
+public abstract class BaseFragment extends Fragment implements ISubDelete , IHttp{
 
     protected Activity activity;
     private View view;

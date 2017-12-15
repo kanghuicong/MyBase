@@ -77,12 +77,12 @@ public final class PermissionUtils {
                     mOnPermissionListener.onPermissionGranted();
             }
         } else {
-            throw new RuntimeException("Context must be an DisActivity");
+            throw new RuntimeException("Context must be an PhotoChooseActivity");
         }
     }
 
     /**
-     * 请求权限结果，对应 DisActivity 中 onRequestPermissionsResult()方法。
+     * 请求权限结果，对应 PhotoChooseActivity 中 onRequestPermissionsResult()方法。
      */
     public static void onRequestPermissionsResult(Activity context, int requestCode, String[] permissions, int[]
             grantResults) {

@@ -1,30 +1,19 @@
 package com.kang.mybase.data;
 
-import android.app.Activity;
-import android.content.Context;
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.kang.mybase.base.BaseData;
-import com.kang.mybase.model.TestBean;
-import com.kang.mybase.pro.IGetData;
+import com.kang.mybase.pro.IJsonData;
 import com.kang.mybase.pro.IHttp;
 import com.kang.mybase.pro.ISubDelete;
-import com.kang.mybase.util.httpClient.BaseModel;
-import com.kang.mybase.util.httpClient.HttpRequest;
 import com.kang.mybase.util.httpClient.RxHelper;
 import com.kang.mybase.util.httpClient.RxSubscribe;
 
 
-import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import rx.Subscription;
@@ -34,19 +23,17 @@ import rx.Subscription;
  * E-Mail is 515849594@qq.com
  */
 
-public class TestData<T> extends BaseData {
+public class FunData<T> extends BaseData {
 
     Subscription baseSub;
     IHttp iHttp;
 
-    public TestData(ISubDelete iSubDelete, IHttp iHttp) {
+    public FunData(ISubDelete iSubDelete, IHttp iHttp) {
         super(iSubDelete);
         this.iHttp = iHttp;
     }
 
-    public void getTestData() {
-        //map 为请求参数，键值对形式
-        Map<String, Object> map = new HashMap<>();
+    public void getData(Map<String, Object> map) {
 
         baseSub = getApi().test(map)
                 .compose(RxHelper.<T>handleResult())
@@ -65,7 +52,7 @@ public class TestData<T> extends BaseData {
     }
 
 
-    public void getListData(T t, IGetData iGetData) {
+    public void getJsonData(T t, IJsonData iGetData) {
         Gson gson = new Gson();
         String strBase = gson.toJson(t);
         JsonParser jsonParser = new JsonParser();
@@ -75,7 +62,7 @@ public class TestData<T> extends BaseData {
         while (it.hasNext()) { // 循环
             jsonElement = (JsonElement) it.next(); // 提取JsonElement
             String json = jsonElement.toString(); // JsonElement转换成String
-            iGetData.getData(gson, json);
+            iGetData.getJsonData(gson, json);
         }
     }
 

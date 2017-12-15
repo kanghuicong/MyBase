@@ -22,4 +22,13 @@ public class Fragment4 extends BaseFragment {
         //do something...
     }
 
+    @Override
+    public void success(Object baseModelList) {
+
+    }
+
+    @Override
+    public void failure(String error_code, String error_msg) {
+
+    }
 }

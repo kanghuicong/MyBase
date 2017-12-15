@@ -1,19 +1,21 @@
 package com.kang.mybase;
 
+import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.util.ArrayMap;
 import android.view.View;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.kang.mybase.activity.PhotoChooseActivity;
 import com.kang.mybase.base.BaseFragment;
-import com.kang.mybase.data.TestData;
+import com.kang.mybase.data.FunData;
 import com.kang.mybase.model.TestBean;
-import com.kang.mybase.pro.IGetData;
-import com.kang.mybase.pro.IHttp;
+import com.kang.mybase.pro.IJsonData;
+
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.OnClick;
 
@@ -23,9 +25,9 @@ import static com.kang.mybase.util.ToastUtils.showShort;
  * Created by KangHuiCong on 2017/12/11.
  * E-Mail is 515849594@qq.com
  */
-public class Fragment1 extends BaseFragment implements IHttp {
+public class Fragment1 extends BaseFragment  {
 
-    TestData testData;
+    FunData funData;
     List<TestBean> list = new ArrayList<>();
     @Override
     public int setLayout() {
@@ -35,14 +37,19 @@ public class Fragment1 extends BaseFragment implements IHttp {
     @Override
     public void init() {
         //do something......
-        testData = new TestData<List<TestBean>>(this, this);
+        funData = new FunData<List<TestBean>>(this, this);
     }
 
-    @OnClick(R.id.http_click)
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @OnClick({R.id.http_click,R.id.photo_click})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.http_click:
-                testData.getTestData();
+                Map<String, Object> map = new ArrayMap<>();
+                funData.getData(map);
+                break;
+            case R.id.photo_click:
+                startActivity(new Intent(getActivity(),PhotoChooseActivity.class));
                 break;
         }
     }
@@ -52,9 +59,9 @@ public class Fragment1 extends BaseFragment implements IHttp {
 
 //        TestBean person = gson.fromJson(t.toString(), TestBean.class);
 
-        testData.getListData(t, new IGetData() {
+        funData.getJsonData(t, new IJsonData() {
             @Override
-            public void getData(Gson gson,String json) {
+            public void getJsonData(Gson gson,String json) {
                 TestBean person = gson.fromJson(json, TestBean.class); // String转化成JavaBean
                 list.add(person); // 加入List
             }

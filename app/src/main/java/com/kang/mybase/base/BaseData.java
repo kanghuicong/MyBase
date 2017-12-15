@@ -17,8 +17,8 @@ public class BaseData {
         this.iSubDelete = iSubDelete;
     }
 
-
     static Api api;
+
     public static Api getApi() {
         if (api == null)
             api = RetrofitClient.getRetrofit().create(Api.class);

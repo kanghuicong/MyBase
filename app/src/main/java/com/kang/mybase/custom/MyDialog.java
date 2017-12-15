@@ -72,12 +72,10 @@ public class MyDialog extends DialogFragment {
         tvContent.setText(content);
 
         switch (type) {
-            case 0:
-                //不含按钮
+            case 0://不含按钮
                 builder.setView(view).setPositiveButton(right, null).setNegativeButton(left, null);
                 break;
-            case 1:
-                //只有一个按钮
+            case 1://只有一个按钮
                 builder.setView(view).setPositiveButton(right, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -85,8 +83,7 @@ public class MyDialog extends DialogFragment {
                     }
                 }).setNegativeButton(left, null);
                 break;
-            case 2:
-                //两个按钮
+            case 2://两个按钮
                 builder.setView(view).setPositiveButton(right, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
@@ -115,6 +112,5 @@ public class MyDialog extends DialogFragment {
                 break;
         }
         return builder.create();
-
     }
 }

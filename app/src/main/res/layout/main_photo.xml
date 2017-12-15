@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:id="@+id/gallery_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.kang.mybase.custom.MyTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="123">
+    </com.kang.mybase.custom.MyTitle>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#000000"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:id="@+id/album"
+            style="@style/white_14sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:text="@string/album"/>
+
+        <TextView
+            android:id="@+id/selected_count"
+            style="@style/white_12sp"
+            android:layout_width="wrap_content"
+            android:minWidth="24dp"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:background="@drawable/shape_round"/>
+        <TextView
+            android:id="@+id/send_photos"
+            style="@style/white_14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center"
+            android:text="@string/send"/>
+    </LinearLayout>
+
+</RelativeLayout>

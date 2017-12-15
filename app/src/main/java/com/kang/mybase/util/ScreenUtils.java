@@ -79,10 +79,10 @@ public final class ScreenUtils {
 
     /**
      * 设置屏幕为横屏
-     * <p>还有一种就是在 DisActivity 中加属性 android:screenOrientation="landscape"</p>
-     * <p>不设置 DisActivity 的 android:configChanges 时，切屏会重新调用各个生命周期，切横屏时会执行一次，切竖屏时会执行两次</p>
-     * <p>设置 DisActivity 的 android:configChanges="orientation"时，切屏还是会重新调用各个生命周期，切横、竖屏时只会执行一次</p>
-     * <p>设置 DisActivity 的 android:configChanges="orientation|keyboardHidden|screenSize"（4.0 以上必须带最后一个参数）时
+     * <p>还有一种就是在 PhotoChooseActivity 中加属性 android:screenOrientation="landscape"</p>
+     * <p>不设置 PhotoChooseActivity 的 android:configChanges 时，切屏会重新调用各个生命周期，切横屏时会执行一次，切竖屏时会执行两次</p>
+     * <p>设置 PhotoChooseActivity 的 android:configChanges="orientation"时，切屏还是会重新调用各个生命周期，切横、竖屏时只会执行一次</p>
+     * <p>设置 PhotoChooseActivity 的 android:configChanges="orientation|keyboardHidden|screenSize"（4.0 以上必须带最后一个参数）时
      * 切屏不会重新调用各个生命周期，只会执行 onConfigurationChanged 方法</p>
      *
      * @param activity activity

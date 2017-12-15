@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.kang.mybase.R;
 
+import butterknife.OnClick;
+
 import static com.kang.mybase.util.BarUtils.addMarginTopEqualStatusBarHeight;
 
 /**
@@ -33,10 +35,9 @@ public class MyTitle extends RelativeLayout {
         rlTitle = (RelativeLayout) findViewById(R.id.rl_title);
         tvTitle = (TextView) findViewById(R.id.tv_title);
         ivBack = (ImageView) findViewById(R.id.iv_back);
-
         this.setBackgroundResource(R.color.main_color);
-        //状态栏沉浸式
         addMarginTopEqualStatusBarHeight(rlTitle);
+
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyTitle);
 
         String title = typedArray.getString(R.styleable.MyTitle_title);

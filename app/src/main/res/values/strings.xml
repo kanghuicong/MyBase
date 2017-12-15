@@ -8,4 +8,6 @@
 
     <string name="disActivity">disActivity</string>
 
+    <string name="album">相册</string>
+    <string name="send">选择</string>
 </resources>

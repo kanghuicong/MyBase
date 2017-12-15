@@ -17,7 +17,7 @@ import static com.kang.mybase.util.ToastUtils.showShort;
  * E-Mail is 515849594@qq.com
  */
 
-public abstract class BaseActivity extends BaseFragmentActivity implements ISubDelete {
+public abstract class BaseActivity extends BaseFragmentActivity implements ISubDelete , IHttp{
 
     public abstract void init();
 
@@ -36,4 +36,9 @@ public abstract class BaseActivity extends BaseFragmentActivity implements ISubD
         this.baseSub = baseSub;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (baseSub!=null && !baseSub.isUnsubscribed())baseSub.unsubscribe();
+    }
 }

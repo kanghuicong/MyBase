@@ -21,7 +21,7 @@ import java.util.List;
  *     author: Blankj
  *     blog  : http://blankj.com
  *     time  : 2016/09/23
- *     desc  : DisActivity 相关工具类
+ *     desc  : PhotoChooseActivity 相关工具类
  * </pre>
  */
 public final class ActivityUtils {
@@ -31,7 +31,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 判断 DisActivity 是否存在
+     * 判断 PhotoChooseActivity 是否存在
      *
      * @param packageName 包名
      * @param className   activity 全路径类名
@@ -47,9 +47,9 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
-     * @param clz DisActivity 类
+     * @param clz PhotoChooseActivity 类
      */
     public static void startActivity(@NonNull final Class<?> clz) {
         Context context = getActivityOrApp();
@@ -57,9 +57,9 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
-     * @param clz     DisActivity 类
+     * @param clz     PhotoChooseActivity 类
      * @param options 跳转动画
      */
     public static void startActivity(@NonNull final Class<?> clz,
@@ -69,9 +69,9 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
-     * @param clz       DisActivity 类
+     * @param clz       PhotoChooseActivity 类
      * @param enterAnim 入场动画
      * @param exitAnim  出场动画
      */
@@ -87,10 +87,10 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param activity activity
-     * @param clz      DisActivity 类
+     * @param clz      PhotoChooseActivity 类
      */
     public static void startActivity(@NonNull final Activity activity,
                                      @NonNull final Class<?> clz) {
@@ -98,10 +98,10 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param activity activity
-     * @param clz      DisActivity 类
+     * @param clz      PhotoChooseActivity 类
      * @param options  跳转动画
      */
     public static void startActivity(@NonNull final Activity activity,
@@ -111,10 +111,10 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param activity       activity
-     * @param clz            DisActivity 类
+     * @param clz            PhotoChooseActivity 类
      * @param sharedElements 共享元素
      */
     public static void startActivity(@NonNull final Activity activity,
@@ -125,10 +125,10 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param activity  activity
-     * @param clz       DisActivity 类
+     * @param clz       PhotoChooseActivity 类
      * @param enterAnim 入场动画
      * @param exitAnim  出场动画
      */
@@ -145,10 +145,10 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param extras extras
-     * @param clz    DisActivity 类
+     * @param clz    PhotoChooseActivity 类
      */
     public static void startActivity(@NonNull final Bundle extras,
                                      @NonNull final Class<?> clz) {
@@ -157,10 +157,10 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param extras  extras
-     * @param clz     DisActivity 类
+     * @param clz     PhotoChooseActivity 类
      * @param options 跳转动画
      */
     public static void startActivity(@NonNull final Bundle extras,
@@ -171,10 +171,10 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param extras    extras
-     * @param clz       DisActivity 类
+     * @param clz       PhotoChooseActivity 类
      * @param enterAnim 入场动画
      * @param exitAnim  出场动画
      */
@@ -191,11 +191,11 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param extras   extras
      * @param activity activity
-     * @param clz      DisActivity 类
+     * @param clz      PhotoChooseActivity 类
      */
     public static void startActivity(@NonNull final Bundle extras,
                                      @NonNull final Activity activity,
@@ -204,11 +204,11 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param extras   extras
      * @param activity activity
-     * @param clz      DisActivity 类
+     * @param clz      PhotoChooseActivity 类
      * @param options  跳转动画
      */
     public static void startActivity(@NonNull final Bundle extras,
@@ -219,11 +219,11 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param extras         extras
      * @param activity       activity
-     * @param clz            DisActivity 类
+     * @param clz            PhotoChooseActivity 类
      * @param sharedElements 共享元素
      */
     public static void startActivity(@NonNull final Bundle extras,
@@ -235,11 +235,11 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param extras    extras
      * @param activity  activity
-     * @param clz       DisActivity 类
+     * @param clz       PhotoChooseActivity 类
      * @param enterAnim 入场动画
      * @param exitAnim  出场动画
      */
@@ -256,7 +256,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param pkg 包名
      * @param cls 全类名
@@ -267,7 +267,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param pkg     包名
      * @param cls     全类名
@@ -280,7 +280,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param pkg       包名
      * @param cls       全类名
@@ -299,7 +299,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param activity activity
      * @param pkg      包名
@@ -312,7 +312,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param activity activity
      * @param pkg      包名
@@ -327,7 +327,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param activity       activity
      * @param pkg            包名
@@ -342,7 +342,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param activity  activity
      * @param pkg       包名
@@ -362,7 +362,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param extras extras
      * @param pkg    包名
@@ -375,7 +375,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param extras  extras
      * @param pkg     包名
@@ -390,7 +390,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param extras    extras
      * @param pkg       包名
@@ -411,7 +411,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param activity activity
      * @param extras   extras
@@ -426,7 +426,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param extras   extras
      * @param activity activity
@@ -443,7 +443,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param extras         extras
      * @param activity       activity
@@ -460,7 +460,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param extras    extras
      * @param pkg       包名
@@ -481,7 +481,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param intent 意图
      */
@@ -490,7 +490,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param intent  意图
      * @param options 跳转动画
@@ -501,7 +501,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param intent    意图
      * @param enterAnim 入场动画
@@ -518,7 +518,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param activity activity
      * @param intent   意图
@@ -529,7 +529,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param activity activity
      * @param intent   意图
@@ -542,7 +542,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param activity       activity
      * @param intent         意图
@@ -555,7 +555,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动 DisActivity
+     * 启动 PhotoChooseActivity
      *
      * @param activity  activity
      * @param intent    意图
@@ -573,7 +573,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动多个 DisActivity
+     * 启动多个 PhotoChooseActivity
      *
      * @param intents 意图
      */
@@ -582,7 +582,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动多个 DisActivity
+     * 启动多个 PhotoChooseActivity
      *
      * @param intents 意图
      * @param options 跳转动画
@@ -593,7 +593,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动多个 DisActivity
+     * 启动多个 PhotoChooseActivity
      *
      * @param intents   意图
      * @param enterAnim 入场动画
@@ -610,7 +610,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动多个 DisActivity
+     * 启动多个 PhotoChooseActivity
      *
      * @param activity activity
      * @param intents  意图
@@ -621,7 +621,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动多个 DisActivity
+     * 启动多个 PhotoChooseActivity
      *
      * @param activity activity
      * @param intents  意图
@@ -634,7 +634,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 启动多个 DisActivity
+     * 启动多个 PhotoChooseActivity
      *
      * @param activity  activity
      * @param intents   意图
@@ -661,28 +661,28 @@ public final class ActivityUtils {
     }
 
     /**
-     * 获取 DisActivity 栈链表
+     * 获取 PhotoChooseActivity 栈链表
      *
-     * @return DisActivity 栈链表
+     * @return PhotoChooseActivity 栈链表
      */
     public static List<Activity> getActivityList() {
         return Utils.sActivityList;
     }
 
     /**
-     * 获取启动项 DisActivity
+     * 获取启动项 PhotoChooseActivity
      *
-     * @return 启动项 DisActivity
+     * @return 启动项 PhotoChooseActivity
      */
     public static String getLauncherActivity() {
         return getLauncherActivity(Utils.getApp().getPackageName());
     }
 
     /**
-     * 获取启动项 DisActivity
+     * 获取启动项 PhotoChooseActivity
      *
      * @param packageName 包名
-     * @return 启动项 DisActivity
+     * @return 启动项 PhotoChooseActivity
      */
     public static String getLauncherActivity(@NonNull final String packageName) {
         Intent intent = new Intent(Intent.ACTION_MAIN, null);
@@ -699,9 +699,9 @@ public final class ActivityUtils {
     }
 
     /**
-     * 获取栈顶 DisActivity
+     * 获取栈顶 PhotoChooseActivity
      *
-     * @return 栈顶 DisActivity
+     * @return 栈顶 PhotoChooseActivity
      */
     public static Activity getTopActivity() {
         if (Utils.sTopActivityWeakRef != null) {
@@ -716,7 +716,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 判断 DisActivity 是否存在栈中
+     * 判断 PhotoChooseActivity 是否存在栈中
      *
      * @param activity activity
      * @return {@code true}: 存在<br>{@code false}: 不存在
@@ -732,9 +732,9 @@ public final class ActivityUtils {
     }
 
     /**
-     * 判断 DisActivity 是否存在栈中
+     * 判断 PhotoChooseActivity 是否存在栈中
      *
-     * @param clz DisActivity 类
+     * @param clz PhotoChooseActivity 类
      * @return {@code true}: 存在<br>{@code false}: 不存在
      */
     public static boolean isActivityExistsInStack(@NonNull final Class<?> clz) {
@@ -748,7 +748,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束 DisActivity
+     * 结束 PhotoChooseActivity
      *
      * @param activity activity
      */
@@ -757,7 +757,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束 DisActivity
+     * 结束 PhotoChooseActivity
      *
      * @param activity   activity
      * @param isLoadAnim 是否启动动画
@@ -770,7 +770,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束 DisActivity
+     * 结束 PhotoChooseActivity
      *
      * @param activity  activity
      * @param enterAnim 入场动画
@@ -784,18 +784,18 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束 DisActivity
+     * 结束 PhotoChooseActivity
      *
-     * @param clz DisActivity 类
+     * @param clz PhotoChooseActivity 类
      */
     public static void finishActivity(@NonNull final Class<?> clz) {
         finishActivity(clz, false);
     }
 
     /**
-     * 结束 DisActivity
+     * 结束 PhotoChooseActivity
      *
-     * @param clz        DisActivity 类
+     * @param clz        PhotoChooseActivity 类
      * @param isLoadAnim 是否启动动画
      */
     public static void finishActivity(@NonNull final Class<?> clz, final boolean isLoadAnim) {
@@ -811,9 +811,9 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束 DisActivity
+     * 结束 PhotoChooseActivity
      *
-     * @param clz       DisActivity 类
+     * @param clz       PhotoChooseActivity 类
      * @param enterAnim 入场动画
      * @param exitAnim  出场动画
      */
@@ -830,7 +830,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束到指定 DisActivity
+     * 结束到指定 PhotoChooseActivity
      *
      * @param activity      activity
      * @param isIncludeSelf 是否结束该 activity 自己
@@ -841,7 +841,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束到指定 DisActivity
+     * 结束到指定 PhotoChooseActivity
      *
      * @param activity      activity
      * @param isIncludeSelf 是否结束该 activity 自己
@@ -865,7 +865,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束到指定 DisActivity
+     * 结束到指定 PhotoChooseActivity
      *
      * @param activity      activity
      * @param isIncludeSelf 是否结束该 activity 自己
@@ -891,9 +891,9 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束到指定 DisActivity
+     * 结束到指定 PhotoChooseActivity
      *
-     * @param clz           DisActivity 类
+     * @param clz           PhotoChooseActivity 类
      * @param isIncludeSelf 是否结束该 activity 自己
      */
     public static boolean finishToActivity(@NonNull final Class<?> clz,
@@ -902,9 +902,9 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束到指定 DisActivity
+     * 结束到指定 PhotoChooseActivity
      *
-     * @param clz           DisActivity 类
+     * @param clz           PhotoChooseActivity 类
      * @param isIncludeSelf 是否结束该 activity 自己
      * @param isLoadAnim    是否启动动画
      */
@@ -926,9 +926,9 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束到指定 DisActivity
+     * 结束到指定 PhotoChooseActivity
      *
-     * @param clz           DisActivity 类
+     * @param clz           PhotoChooseActivity 类
      * @param isIncludeSelf 是否结束该 activity 自己
      * @param enterAnim     入场动画
      * @param exitAnim      出场动画
@@ -952,20 +952,20 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束除最新之外的同类型 DisActivity
-     * <p>也就是让栈中最多只剩下一种类型的 DisActivity</p>
+     * 结束除最新之外的同类型 PhotoChooseActivity
+     * <p>也就是让栈中最多只剩下一种类型的 PhotoChooseActivity</p>
      *
-     * @param clz DisActivity 类
+     * @param clz PhotoChooseActivity 类
      */
     public static void finishOtherActivitiesExceptNewest(@NonNull final Class<?> clz) {
         finishOtherActivitiesExceptNewest(clz, false);
     }
 
     /**
-     * 结束除最新之外的同类型 DisActivity
-     * <p>也就是让栈中最多只剩下一种类型的 DisActivity</p>
+     * 结束除最新之外的同类型 PhotoChooseActivity
+     * <p>也就是让栈中最多只剩下一种类型的 PhotoChooseActivity</p>
      *
-     * @param clz        DisActivity 类
+     * @param clz        PhotoChooseActivity 类
      * @param isLoadAnim 是否启动动画
      */
     public static void finishOtherActivitiesExceptNewest(@NonNull final Class<?> clz,
@@ -985,10 +985,10 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束除最新之外的同类型 DisActivity
-     * <p>也就是让栈中最多只剩下一种类型的 DisActivity</p>
+     * 结束除最新之外的同类型 PhotoChooseActivity
+     * <p>也就是让栈中最多只剩下一种类型的 PhotoChooseActivity</p>
      *
-     * @param clz       DisActivity 类
+     * @param clz       PhotoChooseActivity 类
      * @param enterAnim 入场动画
      * @param exitAnim  出场动画
      */
@@ -1010,14 +1010,14 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束所有 DisActivity
+     * 结束所有 PhotoChooseActivity
      */
     public static void finishAllActivities() {
         finishAllActivities(false);
     }
 
     /**
-     * 结束所有 DisActivity
+     * 结束所有 PhotoChooseActivity
      *
      * @param isLoadAnim 是否启动动画
      */
@@ -1033,7 +1033,7 @@ public final class ActivityUtils {
     }
 
     /**
-     * 结束所有 DisActivity
+     * 结束所有 PhotoChooseActivity
      *
      * @param enterAnim 入场动画
      * @param exitAnim  出场动画

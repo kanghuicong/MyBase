@@ -7,6 +7,6 @@ import com.google.gson.Gson;
  * E-Mail is 515849594@qq.com
  */
 
-public interface IGetData {
-    void getData(Gson gson,String json);
+public interface IJsonData {
+    void getJsonData(Gson gson,String json);
 }
