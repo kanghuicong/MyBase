@@ -19,7 +19,7 @@ import java.util.Map;
 
 import butterknife.OnClick;
 
-import static com.kang.mybase.util.ToastUtils.showShort;
+import static com.kang.utilssdk.ToastUtils.showShort;
 
 /**
  * Created by KangHuiCong on 2017/12/11.

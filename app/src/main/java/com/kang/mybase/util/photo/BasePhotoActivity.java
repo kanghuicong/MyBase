@@ -60,13 +60,4 @@ public abstract class BasePhotoActivity extends BaseActivity implements ChooseAd
         mAdapter.appendPhoto(entry);
     }
 
-//    @Override
-//    public void success(Object baseModelList) {
-//
-//    }
-//
-//    @Override
-//    public void failure(String error_code, String error_msg) {
-//
-//    }
 }

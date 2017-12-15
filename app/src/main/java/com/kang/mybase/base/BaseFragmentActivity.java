@@ -4,20 +4,19 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 
 import com.kang.mybase.pro.INetChange;
-import com.kang.mybase.util.NetworkUtils;
+import com.kang.utilssdk.NetworkUtils;
 
-import static com.kang.mybase.util.KeyboardUtils.isShouldHideKeyboard;
-import static com.kang.mybase.util.ToastUtils.showShort;
+import static com.kang.utilssdk.KeyboardUtils.isShouldHideKeyboard;
+import static com.kang.utilssdk.ToastUtils.showShort;
+
 
 /**
  * Created by KangHuiCong on 2017/12/11.

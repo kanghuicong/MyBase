@@ -12,9 +12,7 @@ import android.widget.TextView;
 
 import com.kang.mybase.R;
 
-import butterknife.OnClick;
-
-import static com.kang.mybase.util.BarUtils.addMarginTopEqualStatusBarHeight;
+import static com.kang.utilssdk.BarUtils.addMarginTopEqualStatusBarHeight;
 
 /**
  * Created by KangHuiCong on 2017/12/12.
@@ -24,7 +22,7 @@ import static com.kang.mybase.util.BarUtils.addMarginTopEqualStatusBarHeight;
 public class MyTitle extends RelativeLayout {
     RelativeLayout rlTitle;
     ImageView ivBack;
-    TextView tvTitle;
+    public TextView tvTitle;
     private Activity activity;
 
     public MyTitle(Context context, AttributeSet attrs) {

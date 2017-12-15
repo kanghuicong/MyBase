@@ -5,10 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 
-import com.kang.mybase.base.BaseActivity;
 import com.kang.mybase.base.BaseFragmentActivity;
 import com.kang.mybase.pro.INetChange;
-import com.kang.mybase.util.NetworkUtils;
+import com.kang.utilssdk.NetworkUtils;
 
 /**
  * Created by KangHuiCong on 2017/12/12.

@@ -9,7 +9,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
-import static com.kang.mybase.util.ToastUtils.showShort;
+import static com.kang.utilssdk.ToastUtils.showShort;
 
 public class RxHelper {
 

@@ -7,7 +7,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import static com.kang.mybase.util.AssistActivityUtils.assistActivity;
+import static com.kang.utilssdk.AssistActivityUtils.assistActivity;
+
 
 /**
  * Created by KangHuiCong on 2017/12/4.

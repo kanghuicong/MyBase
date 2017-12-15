@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.kang.mybase.R;
+import com.kang.mybase.custom.MyTitle;
 import com.litao.android.lib.Configuration;
 import com.litao.android.lib.GalleryActivity;
 import com.litao.android.lib.entity.PhotoEntry;
@@ -22,8 +23,8 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-import static com.kang.mybase.util.BarUtils.getStatusBarHeight;
-import static com.kang.mybase.util.SizeUtils.dp2px;
+import static com.kang.utilssdk.SizeUtils.dp2px;
+import static com.kang.utilssdk.BarUtils.getStatusBarHeight;
 
 /**
  * Created by KangHuiCong on 2017/12/15.
@@ -37,6 +38,8 @@ public class MyPhotoActivity extends GalleryActivity {
     TextView selectedCount;
     @InjectView(R.id.gallery_root)
     FrameLayout galleryRoot;
+    @InjectView(R.id.my_title)
+    MyTitle myTitle;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,7 +49,7 @@ public class MyPhotoActivity extends GalleryActivity {
         ButterKnife.inject(this);
         EventBus.getDefault().register(this);
 
-        galleryRoot.setPadding(0,dp2px(40)+getStatusBarHeight(),0,dp2px(40));
+        galleryRoot.setPadding(0, dp2px(40) + getStatusBarHeight(), 0, dp2px(40));
         attachFragment(R.id.gallery_root);
     }
 
@@ -71,7 +74,7 @@ public class MyPhotoActivity extends GalleryActivity {
                 .setCheckBoxColor(0xFF3F51B5)
                 .setDialogHeight(Configuration.DIALOG_HALF)
                 .setDialogMode(Configuration.DIALOG_GRID)
-                .setMaximum(3)
+                .setMaximum(6)
                 .setTip(null)
                 .setAblumsTitle(null)
                 .build();
@@ -91,13 +94,14 @@ public class MyPhotoActivity extends GalleryActivity {
         // count:当前被选中图像数量
         selectedCount.setVisibility(count > 0 ? View.VISIBLE : View.INVISIBLE);
         selectedCount.setText(String.valueOf(count));
+
     }
 
     @Override
     public void onAlbumChanged(String name) {
         //这个方法将在相册选择发生变化时调用
         //name:当前选中的相册名称
-
+        myTitle.tvTitle.setText(name);
     }
 
     @Override

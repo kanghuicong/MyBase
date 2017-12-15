@@ -1,7 +1,7 @@
 package com.kang.mybase.pro;
 
 
-import com.kang.mybase.util.NetworkUtils;
+import com.kang.utilssdk.NetworkUtils;
 
 /**
  * Created by KangHuiCong on 2017/12/7.

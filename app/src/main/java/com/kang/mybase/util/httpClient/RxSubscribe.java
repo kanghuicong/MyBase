@@ -2,10 +2,9 @@ package com.kang.mybase.util.httpClient;
 
 
 import android.net.ParseException;
-import android.util.Log;
 
 import com.google.gson.JsonParseException;
-import com.kang.mybase.util.NetworkUtils;
+import com.kang.utilssdk.NetworkUtils;
 
 import org.json.JSONException;
 

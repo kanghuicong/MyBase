@@ -15,15 +15,16 @@ import android.view.animation.AlphaAnimation;
 
 import com.kang.mybase.custom.MyDialog;
 import com.kang.mybase.pro.IDialog;
-import com.kang.mybase.util.PermissionUtils;
-import com.kang.mybase.util.PermissionUtils.*;
-import com.kang.mybase.util.SharedPreferencesUtils;
+import com.kang.utilssdk.PermissionUtils;
+import com.kang.utilssdk.PermissionUtils.OnPermissionListener;
+import com.kang.utilssdk.SharedPreferencesUtils;
 
-import static com.kang.mybase.util.AppUtils.getAppDetailsSettings;
-import static com.kang.mybase.util.PermissionUtils.getDeniedPermissions;
-import static com.kang.mybase.util.PermissionUtils.hasAlwaysDeniedPermission;
-import static com.kang.mybase.util.SharedPreferencesUtils.putPreferences;
-import static com.kang.mybase.util.ToastUtils.showShort;
+import static com.kang.utilssdk.AppUtils.getAppDetailsSettings;
+import static com.kang.utilssdk.PermissionUtils.getDeniedPermissions;
+import static com.kang.utilssdk.PermissionUtils.hasAlwaysDeniedPermission;
+import static com.kang.utilssdk.SharedPreferencesUtils.putPreferences;
+import static com.kang.utilssdk.ToastUtils.showShort;
+
 
 /**
  * Created by KangHuiCong on 2017/12/11.
