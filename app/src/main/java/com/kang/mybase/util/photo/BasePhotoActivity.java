@@ -9,7 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import com.kang.mybase.R;
 import com.kang.mybase.base.BaseActivity;
 import com.litao.android.lib.Utils.GridSpacingItemDecoration;
+import com.litao.android.lib.entity.PhotoBean;
 import com.litao.android.lib.entity.PhotoEntry;
+
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

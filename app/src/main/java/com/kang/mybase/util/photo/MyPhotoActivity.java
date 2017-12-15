@@ -11,6 +11,7 @@ import com.kang.mybase.R;
 import com.kang.mybase.custom.MyTitle;
 import com.litao.android.lib.Configuration;
 import com.litao.android.lib.GalleryActivity;
+import com.litao.android.lib.entity.PhotoBean;
 import com.litao.android.lib.entity.PhotoEntry;
 
 import org.greenrobot.eventbus.EventBus;
@@ -45,7 +46,7 @@ public class MyPhotoActivity extends GalleryActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.main_photo);
+        setContentView(R.layout.photo_choose);
         ButterKnife.inject(this);
         EventBus.getDefault().register(this);
 
