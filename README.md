@@ -1,7 +1,7 @@
 # MyBase
   本代码库主要注重于代码的封装，优雅的书写每一行代码（说白了就是偷懒，少写点代码hhh）
 # 1、类的封装
-  一系列baseAcivity，baseFragment等等....整合子类的重复代码
+  一系列baseAcivity，baseFragment等等....主要是一个代码习惯问题，减少子类公共代码，让子类看起来不那么臃肿，也方便统一修改。
 # 2、自定义控件
   写了4个实用的自定义控件MyDialog，MyBottomDialog，MyItem，MyTitle，目前写的都是结合xml文件或Java生成控件的布局，暂时没有涉及到onDraw重绘。
 # 3、网络请求封装
