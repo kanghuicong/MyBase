@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <com.kang.mybase.custom.MyTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:isBack="false"
+        app:title="@string/headerActivity"/>
+
+    <com.kang.headerpicker.CircleImageView
+        android:id="@+id/iv_header"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/defalut_header"/>
+
+
+</LinearLayout>

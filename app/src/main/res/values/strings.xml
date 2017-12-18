@@ -6,8 +6,10 @@
     <string name="rb3">维修服务</string>
     <string name="rb4">我的</string>
 
-    <string name="disActivity">disActivity</string>
-
+    <string name="photoActivity">选择图片</string>
     <string name="album">相册</string>
     <string name="send">选择</string>
+
+    <string name="headerActivity">选择头像</string>
+
 </resources>

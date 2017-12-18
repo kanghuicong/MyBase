@@ -7,6 +7,7 @@ import android.util.ArrayMap;
 import android.view.View;
 
 import com.google.gson.Gson;
+import com.kang.mybase.activity.HeaderChooseActivity;
 import com.kang.mybase.activity.PhotoChooseActivity;
 import com.kang.mybase.base.BaseFragment;
 import com.kang.mybase.data.FunData;
@@ -41,15 +42,18 @@ public class Fragment1 extends BaseFragment  {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    @OnClick({R.id.http_click,R.id.photo_click})
+    @OnClick({R.id.http_click,R.id.photo_click,R.id.header_click})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.http_click:
+            case R.id.http_click://网络请求
                 Map<String, Object> map = new ArrayMap<>();
                 funData.getData(map);
                 break;
-            case R.id.photo_click:
+            case R.id.photo_click://图片选择
                 startActivity(new Intent(getActivity(),PhotoChooseActivity.class));
+                break;
+            case R.id.header_click://头像
+                startActivity(new Intent(getActivity(),HeaderChooseActivity.class));
                 break;
         }
     }

@@ -39,20 +39,6 @@ public final class InjectUtils {
         }
     }
 
-    public static Class<?> injectModel(Object activity) {
-        Class clazz = activity.getClass();
-        Field[] fields = clazz.getFields();
-
-        for (int i = 0; i < fields.length; i++) {
-            Field field = fields[i];
-            InjiectModel injiectModel = (InjiectModel) field.getAnnotation(InjiectModel.class);
-            if (injiectModel ==null) continue;
-
-            return field.getType();
-
-        }
-        return null;
-    }
 
     //注解setOnClickListener方法
     public static void injectClick(final Activity activity) {

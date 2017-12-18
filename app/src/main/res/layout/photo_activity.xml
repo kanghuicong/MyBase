@@ -8,7 +8,7 @@
     <com.kang.mybase.custom.MyTitle
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/disActivity"/>
+        app:title="@string/photoActivity"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"

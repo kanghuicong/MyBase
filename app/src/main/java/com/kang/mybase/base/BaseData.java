@@ -10,7 +10,7 @@ import com.kang.mybase.util.httpClient.RetrofitClient;
  * E-Mail is 515849594@qq.com
  */
 
-public class BaseData {
+public abstract class BaseData {
     protected ISubDelete iSubDelete;
 
     public BaseData(ISubDelete iSubDelete) {

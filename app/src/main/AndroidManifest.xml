@@ -37,9 +37,17 @@
             </intent-filter>
         </receiver>
 
+        <service android:name=".base.InitializeService"></service>
+
         <activity android:name="com.kang.mybase.MainActivity" />
-        <activity android:name=".activity.PhotoChooseActivity" />
         <activity android:name=".util.photo.MyPhotoActivity" />
+
+        <activity android:name=".activity.PhotoChooseActivity" />
+        <!--头像选择-->
+        <activity android:name=".activity.HeaderChooseActivity" />
+        <activity android:name="com.kang.headerpicker.ClipImageActivity" />
+        <activity android:name="com.kang.headerpicker.PreviewActivity" />
+
 
     </application>
 
