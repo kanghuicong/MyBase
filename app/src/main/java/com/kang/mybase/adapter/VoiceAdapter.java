@@ -1,12 +1,14 @@
 package com.kang.mybase.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.kang.mybase.R;
 import com.kang.mybase.base.BaseAdapter;
+import com.kang.mybase.model.FileBean;
 
 import java.io.File;
 import java.util.List;
@@ -20,11 +22,11 @@ import butterknife.InjectView;
  */
 
 public class VoiceAdapter extends BaseAdapter {
-    List<File> list;
-    File file;
+    List<FileBean> list;
+    FileBean file;
     ViewHolder holder;
 
-    public VoiceAdapter(Context context, List<File> list) {
+    public VoiceAdapter(Context context, List<FileBean> list) {
         super(context, list);
         this.list = list;
     }

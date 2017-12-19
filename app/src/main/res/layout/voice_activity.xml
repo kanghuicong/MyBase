@@ -37,6 +37,12 @@
         android:layout_height="wrap_content"
         android:text="选择录音"/>
 
+    <Button
+        android:id="@+id/voice_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="手机音频"/>
+
     <ListView
         android:id="@+id/voice_list"
         android:layout_width="match_parent"

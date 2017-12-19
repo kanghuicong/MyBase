@@ -13,6 +13,7 @@ import com.kang.mybase.adapter.VoiceAdapter;
 import com.kang.mybase.base.BaseActivity;
 import com.kang.mybase.fun.FunVoiceFiles;
 import com.kang.mybase.fun.FunVoicePlay;
+import com.kang.mybase.model.FileBean;
 import com.kang.mybase.service.VoiceService;
 import com.kang.mybase.util.inject.InjectActivityView;
 
@@ -22,6 +23,8 @@ import java.util.List;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
+
+import static com.kang.mybase.fun.FunVoiceFiles.getAllFiles;
 
 /**
  * Created by KangHuiCong on 2017/12/19.
@@ -35,14 +38,15 @@ public class VoiceActivity extends BaseActivity {
     ListView voiceList;
 
     private VoiceAdapter voiceAdapter;
-    private List<File> list = new ArrayList<File>();
+    private List<FileBean> list = new ArrayList<FileBean>();
 
     @Override
     public void init() {
         getVoice();
+        getAllFiles(this);
     }
 
-    @OnClick({R.id.voice_start, R.id.voice_stop, R.id.voice_choose})
+    @OnClick({R.id.voice_start, R.id.voice_stop, R.id.voice_choose,R.id.voice_all})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.voice_start:
@@ -59,6 +63,12 @@ public class VoiceActivity extends BaseActivity {
                 break;
             case R.id.voice_choose:
                 getVoice();
+                break;
+            case R.id.voice_all:
+                list.clear();
+                list.addAll(FunVoiceFiles.getAllFiles(this));
+                voiceAdapter.changeCount(list.size());
+                voiceAdapter.notifyDataSetChanged();
                 break;
         }
     }
