@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center|top"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.kang.mybase.custom.MyTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/voiceActivity">
+    </com.kang.mybase.custom.MyTitle>
+
+
+    <Chronometer
+        android:id="@+id/chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/voice_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开始录音"/>
+
+    <Button
+        android:id="@+id/voice_stop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="停止录音"/>
+
+    <Button
+        android:id="@+id/voice_choose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择录音"/>
+
+    <ListView
+        android:id="@+id/voice_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+
+
+
+</LinearLayout>

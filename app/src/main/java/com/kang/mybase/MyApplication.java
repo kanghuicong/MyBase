@@ -1,8 +1,6 @@
 package com.kang.mybase;
 
-import android.content.Intent;
-
-import com.kang.mybase.base.InitializeService;
+import com.kang.mybase.fun.InitializeService;
 import com.kang.utilssdk.constant.BaseApplication;
 
 

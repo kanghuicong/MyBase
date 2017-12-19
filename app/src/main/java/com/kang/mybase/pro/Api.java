@@ -23,6 +23,8 @@ public interface Api<T> {
     @POST("entrance/category/list")
     @FormUrlEncoded
     Observable<BaseModel> test(@FieldMap Map<String, Object> map);
-//    Observable<BaseModel<List<TestBean>>> test(@FieldMap Map<String, Object> map);
-//    如果url后面要拼接参数，则在TestData里用Map键值对的方式传入
+    //通常数据请求的接口只有一个，只需改变map参数即可
+    //如果有多个接口，则一个接口对应一个Observable，照着上面写就行
+    //并修改FunData.getData(Observable observable,Map<String, Object> map)
+    //将其作为参数外部传入
 }

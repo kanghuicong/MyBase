@@ -12,4 +12,6 @@
 
     <string name="headerActivity">选择头像</string>
 
+    <string name="voiceActivity">音频相关</string>
+
 </resources>

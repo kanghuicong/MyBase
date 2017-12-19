@@ -15,6 +15,9 @@ public class PhotoChooseActivity extends BasePhotoActivity {
     @Override
     public void init() {
         //do something......
+        //activity继承BasePhotoActivity，本想把BasePhotoActivity写入imagePicker.aar,
+        // 但考虑到每个人的BaseActivity有差异，写的太死反而不好
+        //布局加入RecyclerView，id固定为recycler_view
     }
 
 

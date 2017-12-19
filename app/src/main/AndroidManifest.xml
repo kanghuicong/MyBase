@@ -13,7 +13,8 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
+    <!--录音权限-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -37,12 +38,16 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".base.InitializeService"></service>
+        <!--录音服务-->
+        <service android:name=".service.VoiceService" />
+        <service android:name=".fun.InitializeService"/>
 
         <activity android:name="com.kang.mybase.MainActivity" />
+        <!--图片选择-->
         <activity android:name=".util.photo.MyPhotoActivity" />
-
         <activity android:name=".activity.PhotoChooseActivity" />
+        <!--音频-->
+        <activity android:name=".activity.VoiceActivity" />
         <!--头像选择-->
         <activity android:name=".activity.HeaderChooseActivity" />
         <activity android:name="com.kang.headerpicker.ClipImageActivity" />

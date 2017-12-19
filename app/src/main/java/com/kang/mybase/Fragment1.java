@@ -9,8 +9,9 @@ import android.view.View;
 import com.google.gson.Gson;
 import com.kang.mybase.activity.HeaderChooseActivity;
 import com.kang.mybase.activity.PhotoChooseActivity;
+import com.kang.mybase.activity.VoiceActivity;
 import com.kang.mybase.base.BaseFragment;
-import com.kang.mybase.data.FunData;
+import com.kang.mybase.fun.FunData;
 import com.kang.mybase.model.TestBean;
 import com.kang.mybase.pro.IJsonData;
 
@@ -42,7 +43,7 @@ public class Fragment1 extends BaseFragment  {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    @OnClick({R.id.http_click,R.id.photo_click,R.id.header_click})
+    @OnClick({R.id.http_click,R.id.photo_click,R.id.header_click,R.id.voice_click})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.http_click://网络请求
@@ -54,6 +55,9 @@ public class Fragment1 extends BaseFragment  {
                 break;
             case R.id.header_click://头像
                 startActivity(new Intent(getActivity(),HeaderChooseActivity.class));
+                break;
+            case R.id.voice_click://音频
+                startActivity(new Intent(getActivity(),VoiceActivity.class));
                 break;
         }
     }

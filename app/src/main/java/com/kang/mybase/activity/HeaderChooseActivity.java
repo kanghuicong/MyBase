@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+
+import com.bumptech.glide.Glide;
 import com.kang.headerpicker.CircleImageView;
 import com.kang.headerpicker.PicUtils;
 import com.kang.headerpicker.SDPathUtils;
@@ -34,16 +36,11 @@ public class HeaderChooseActivity extends BaseActivity implements IDialogBottom 
 
     List<String> list = new ArrayList<>();
     List<String> pathList = new ArrayList<>();
+    private Uri imageFileUri;
+
     @InjectView(R.id.iv_header)
     CircleImageView ivHeader;
 
-    @Override
-    public void success(Object baseModelList) {
-    }
-
-    @Override
-    public void failure(String error_code, String error_msg) {
-    }
 
     @Override
     public void init() {
@@ -51,21 +48,22 @@ public class HeaderChooseActivity extends BaseActivity implements IDialogBottom 
         list.add("拍照");
     }
 
-
     @OnClick(R.id.iv_header)
     public void onViewClicked() {
+        //底部弹起dialog,iDialog接口回调
         new MyBottomDialog(this, list, this);
     }
-    private Uri imageFileUri;
+
     @Override
     public void iDialog(int position) {
+        //position即list的位置
         switch (position) {
-            case 0:
+            case 0://调用系统图库
                 Intent intent = new Intent(Intent.ACTION_PICK, null);
                 intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 startActivityForResult(intent, CHOOSE_HEADER);
                 break;
-            case 1:
+            case 1://调用摄像头
                 String image_path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + System.currentTimeMillis() + ".jpg";
                 File file = new File(image_path);
                 imageFileUri = Uri.fromFile(file);
@@ -87,7 +85,8 @@ public class HeaderChooseActivity extends BaseActivity implements IDialogBottom 
         } else if (requestCode == PicUtils.PREVIEW_HEADER) {
             //裁剪图片并返回地址。按照实际开发情况，在头像上传完了后应该调用
             if (data != null) {
-                String path = PicUtils.setPicToView(this, ivHeader, data);
+                String path = PicUtils.getPicPath(this, ivHeader, data);
+                Glide.with(this).load(path).into(ivHeader);
                 pathList.add(path);
             }
         }
@@ -103,5 +102,14 @@ public class HeaderChooseActivity extends BaseActivity implements IDialogBottom 
                 SDPathUtils.delFile(pathList.get(i));//删除裁剪地址的图片
             }
         }
+    }
+
+
+    @Override
+    public void success(Object baseModelList) {
+    }
+
+    @Override
+    public void failure(String error_code, String error_msg) {
     }
 }

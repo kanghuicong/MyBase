@@ -1,14 +1,8 @@
-package com.kang.mybase.base;
+package com.kang.mybase.fun;
 
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
-
-import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
 /**
  * Created by KangHuiCong on 2017/12/11.
@@ -36,14 +30,14 @@ public class InitializeService extends IntentService {
     //第三方初始化操作
     private void performInit() {
         //头像选择
-        ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(context);
-        config.threadPriority(Thread.NORM_PRIORITY - 2);
-        config.denyCacheImageMultipleSizesInMemory();
-        config.diskCacheFileNameGenerator(new Md5FileNameGenerator());
-        config.diskCacheSize(50 * 1024 * 1024); // 50 MiB
-        config.tasksProcessingOrder(QueueProcessingType.LIFO);
-        config.writeDebugLogs(); // Remove for release app
-        ImageLoader.getInstance().init(config.build());
+//        ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(context);
+//        config.threadPriority(Thread.NORM_PRIORITY - 2);
+//        config.denyCacheImageMultipleSizesInMemory();
+//        config.diskCacheFileNameGenerator(new Md5FileNameGenerator());
+//        config.diskCacheSize(50 * 1024 * 1024); // 50 MiB
+//        config.tasksProcessingOrder(QueueProcessingType.LIFO);
+//        config.writeDebugLogs(); // Remove for release app
+//        ImageLoader.getInstance().init(config.build());
     }
 
     public static void start(Context _context) {

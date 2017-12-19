@@ -1,4 +1,4 @@
-package com.kang.mybase.data;
+package com.kang.mybase.fun;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -12,7 +12,6 @@ import com.kang.mybase.util.httpClient.RxHelper;
 import com.kang.mybase.util.httpClient.RxSubscribe;
 
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -40,6 +39,7 @@ public class FunData<T> extends BaseData {
                 .subscribe(new RxSubscribe<T>() {
                     @Override
                     protected void _onNext(T t) {
+                        //返回的是Json格式字符串
                         iHttp.success(t);
                     }
 
