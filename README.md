@@ -3,7 +3,8 @@
 # 1、类的封装
   一系列baseAcivity，baseFragment等等....主要是一个代码习惯问题，减少子类公共代码，让子类看起来不那么臃肿，也方便统一修改。
 # 2、自定义控件
-  写了4个实用的自定义控件MyDialog，MyBottomDialog，MyItem，MyTitle，目前写的都是结合xml文件或Java生成控件的布局，暂时没有涉及到onDraw重绘。
+  写了4个实用的自定义控件MyDialog，MyBottomDialog，MySuperItem，MyTitle，目前写的都是结合xml文件或Java生成控件的布局，暂时没有涉及到onDraw重绘。
+  弃用开始写的MyItem，重新编写MySuperItem,可以适用大部分场景....持续更新
 # 3、网络请求封装
   基于okHttp、rxAndroid与retrofit2写的网络请求，已封装，只需调用FunData方法传入请求参数，就在回调接口获得json数据
 # 4、收集的各种工具类
