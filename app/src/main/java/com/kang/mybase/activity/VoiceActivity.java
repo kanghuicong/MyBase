@@ -76,7 +76,6 @@ public class VoiceActivity extends BaseActivity {
     public void getVoice() {
         //设置文件储存目录
         FunVoiceFiles.setPath(Environment.getExternalStorageDirectory() + "/Kang");
-        //获取目录文件下的文件
         list.clear();
         list.addAll(FunVoiceFiles.getFiles());
         if(!list.isEmpty()) {

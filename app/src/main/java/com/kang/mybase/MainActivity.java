@@ -17,6 +17,8 @@ import com.kang.mybase.receiver.NetBroadcastReceiver;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.kang.utilssdk.AssistActivityUtils.assistActivity;
+
 /**
  * Created by KangHuiCong on 2017/12/11.
  * E-Mail is 515849594@qq.com
@@ -34,6 +36,7 @@ public class MainActivity extends BaseFragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        assistActivity(findViewById(android.R.id.content));
         setContentView(R.layout.main_activity);
         ButterKnife.inject(this);
 

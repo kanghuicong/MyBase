@@ -34,14 +34,14 @@ public class MyItem extends LinearLayout {
         this.setGravity(Gravity.CENTER);
         this.setBackgroundColor(Color.WHITE);
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyItem);
+//        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyItem);
+//
+//        String itemName = typedArray.getString(R.styleable.MyItem_item_name);
+//        tvItem.setText(itemName);
+//
+//        String leftText = typedArray.getString(R.styleable.MyItem_left_text);
+//        tvLeft.setText(leftText);
 
-        String itemName = typedArray.getString(R.styleable.MyItem_item_name);
-        tvItem.setText(itemName);
-
-        String leftText = typedArray.getString(R.styleable.MyItem_left_text);
-        tvLeft.setText(leftText);
-
-        typedArray.recycle();
+//        typedArray.recycle();
     }
 }

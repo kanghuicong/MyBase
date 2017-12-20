@@ -19,7 +19,7 @@ public class FunVoicePlay {
     public static void beginVoice(final String path) {
         try {
             if (mMediaPlayer == null) mMediaPlayer = new MediaPlayer();
-             else {
+            else {
                 mMediaPlayer.stop();
                 mMediaPlayer.reset();
             }

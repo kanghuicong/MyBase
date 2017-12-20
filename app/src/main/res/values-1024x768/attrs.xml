@@ -1,12 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="MyItem">
-        <attr name="item_name" format="string"></attr>
-        <attr name="left_text" format="string"></attr>
-    </declare-styleable>
+    <!--<declare-styleable name="MyItem">-->
+        <!--<attr name="item_name" format="string"></attr>-->
+        <!--<attr name="left_text" format="string"></attr>-->
+    <!--</declare-styleable>-->
 
     <declare-styleable name="MyTitle">
         <attr name="title" format="string"></attr>
         <attr name="isBack" format="boolean"></attr>
     </declare-styleable>
+
+    <declare-styleable name="MySuperItem">
+        <!--左边文字->左边图片-->
+        <attr name="left_limg" format="reference"></attr>
+        <attr name="left_limg_width" format="dimension"></attr>
+        <attr name="left_limg_height" format="dimension"></attr>
+        <!--左边文字-->
+        <attr name="left_text" format="string"></attr>
+        <attr name="left_text_color" format="color"></attr>
+        <attr name="left_text_size" format="dimension"></attr>
+        <attr name="left_drawable_padding" format="dimension"></attr>
+        <!--左边文字->右边图片-->
+        <attr name="left_rimg" format="reference"></attr>
+        <attr name="left_rimg_width" format="dimension"></attr>
+        <attr name="left_rimg_height" format="dimension"></attr>
+        <!--右边文字->左边图片-->
+        <attr name="right_rimg" format="reference"></attr>
+        <attr name="right_limg_width" format="dimension"></attr>
+        <attr name="right_limg_height" format="dimension"></attr>
+        <!--右边文字-->
+        <attr name="right_text" format="string"></attr>
+        <attr name="right_text_color" format="color"></attr>
+        <attr name="right_text_size" format="dimension"></attr>
+        <attr name="right_drawable_padding" format="dimension"></attr>
+        <!--右边文字->右边文字-->
+        <attr name="right_limg" format="reference"></attr>
+        <attr name="right_rimg_width" format="dimension"></attr>
+        <attr name="right_rimg_height" format="dimension"></attr>
+        <attr name="isArrow" format="boolean"></attr>
+
+
+        <attr name="center_ltop" format="string"></attr>
+        <attr name="center_rtop" format="string"></attr>
+        <attr name="center_lbottom" format="string"></attr>
+        <attr name="center_rbottom" format="string"></attr>
+
+
+    </declare-styleable>
+
 </resources>

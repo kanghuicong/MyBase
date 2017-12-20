@@ -11,4 +11,21 @@
         app:isBack="false"
         app:title="@string/rb2"/>
 
+    <com.kang.mybase.custom.MySuperItem
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:left_text_color="@color/main_color"
+        app:right_text="3333"
+        app:left_limg_width="30dp"
+        app:left_limg_height="30dp"
+        app:isArrow="true">
+    </com.kang.mybase.custom.MySuperItem>
+
+    <ViewStub
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
 </LinearLayout>

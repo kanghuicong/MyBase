@@ -11,6 +11,7 @@ import com.kang.mybase.activity.HeaderChooseActivity;
 import com.kang.mybase.activity.PhotoChooseActivity;
 import com.kang.mybase.activity.VoiceActivity;
 import com.kang.mybase.base.BaseFragment;
+import com.kang.mybase.custom.MySuperItem;
 import com.kang.mybase.fun.FunData;
 import com.kang.mybase.model.TestBean;
 import com.kang.mybase.pro.IJsonData;
