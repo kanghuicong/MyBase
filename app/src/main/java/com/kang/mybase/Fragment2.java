@@ -28,7 +28,10 @@ public class Fragment2 extends BaseFragment {
     public void init() {
         item.setLeftText("555")
                 .setLeftImageL("http://p0.so.qhmsg.com/t014156c14c469bae95.jpg")
-                .setRightText("666");
+                .setRightText("666")
+                .setRightTextColor(R.color.main_color)
+                .setTopLeftText("123");
+
 
     }
 

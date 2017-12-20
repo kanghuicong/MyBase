@@ -11,40 +11,53 @@
     </declare-styleable>
 
     <declare-styleable name="MySuperItem">
-        <!--左边文字->左边图片-->
+        <!--left-left图片-->
         <attr name="left_limg" format="reference"></attr>
         <attr name="left_limg_width" format="dimension"></attr>
         <attr name="left_limg_height" format="dimension"></attr>
-        <!--左边文字-->
+        <!--left文字-->
         <attr name="left_text" format="string"></attr>
         <attr name="left_text_color" format="color"></attr>
         <attr name="left_text_size" format="dimension"></attr>
         <attr name="left_drawable_padding" format="dimension"></attr>
-        <!--左边文字->右边图片-->
+        <!--left-right图片-->
         <attr name="left_rimg" format="reference"></attr>
         <attr name="left_rimg_width" format="dimension"></attr>
         <attr name="left_rimg_height" format="dimension"></attr>
-        <!--右边文字->左边图片-->
+        <!--right-left图片-->
         <attr name="right_rimg" format="reference"></attr>
         <attr name="right_limg_width" format="dimension"></attr>
         <attr name="right_limg_height" format="dimension"></attr>
-        <!--右边文字-->
+        <!--right文字-->
         <attr name="right_text" format="string"></attr>
         <attr name="right_text_color" format="color"></attr>
         <attr name="right_text_size" format="dimension"></attr>
         <attr name="right_drawable_padding" format="dimension"></attr>
-        <!--右边文字->右边文字-->
+        <!--right-right文字-->
         <attr name="right_limg" format="reference"></attr>
         <attr name="right_rimg_width" format="dimension"></attr>
         <attr name="right_rimg_height" format="dimension"></attr>
         <attr name="isArrow" format="boolean"></attr>
-
-
-        <attr name="center_ltop" format="string"></attr>
-        <attr name="center_rtop" format="string"></attr>
-        <attr name="center_lbottom" format="string"></attr>
-        <attr name="center_rbottom" format="string"></attr>
-
+        <!--top-->
+        <attr name="top_gravity" format="integer"></attr>
+        <!--top-left文字-->
+        <attr name="top_left_text" format="string"></attr>
+        <attr name="top_left_textSize" format="dimension"></attr>
+        <attr name="top_left_textColor" format="color"></attr>
+        <!--top-right文字-->
+        <attr name="top_right_text" format="string"></attr>
+        <attr name="top_right_textSize" format="dimension"></attr>
+        <attr name="top_right_textColor" format="color"></attr>
+        <!--bottom-->
+        <attr name="bottom_gravity" format="integer"></attr>
+        <!--top-left文字-->
+        <attr name="bottom_left_text" format="string"></attr>
+        <attr name="bottom_left_textSize" format="dimension"></attr>
+        <attr name="bottom_left_textColor" format="color"></attr>
+        <!--top-right文字-->
+        <attr name="bottom_right_text" format="string"></attr>
+        <attr name="bottom_right_textSize" format="dimension"></attr>
+        <attr name="bottom_right_textColor" format="color"></attr>
 
     </declare-styleable>
 
