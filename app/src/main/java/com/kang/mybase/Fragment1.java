@@ -71,8 +71,8 @@ public class Fragment1 extends BaseFragment  {
         funData.getJsonData(t, new IJsonData() {
             @Override
             public void getJsonData(Gson gson,String json) {
-                TestBean person = gson.fromJson(json, TestBean.class); // String转化成JavaBean
-                list.add(person); // 加入List
+                TestBean textBean = gson.fromJson(json, TestBean.class); // String转化成JavaBean
+                list.add(textBean); // 加入List
             }
         });
         showShort("success:" + list.get(0).getName());
