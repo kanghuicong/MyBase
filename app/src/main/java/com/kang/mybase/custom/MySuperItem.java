@@ -9,14 +9,15 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.kang.mybase.R;
+import com.kang.mybase.fun.CircleTransform;
 
 /**
  * Created by KangHuiCong on 2017/12/19.
@@ -27,16 +28,22 @@ public class MySuperItem extends LinearLayout {
     int defaultColor = Color.BLACK;
     int defaultSize = 14;
     int defaultDrawablePadding = 5;
+    int defaultMargins_0 = 0;
+    int defaultMargins_20 = 20;
 
     /*left--left图片*/
     private Drawable mLeftImageL;
     private int mLeftImageLWidth;
     private int mLeftImageLHeight;
+    private boolean noLeftImgL;
     /*left文字*/
     private String mLeftText;
     private int mLeftTextColor;
     private int mLeftTextSize;
     private int mLeftDrawablePadding;
+    private int mLeftTextLeftMargins;
+    private int mLeftTextRightMargins;
+    private boolean noLeftText;
     /*left--right图片*/
     private Drawable mLeftImageR;
     private int mLeftImageRWidth;
@@ -45,18 +52,33 @@ public class MySuperItem extends LinearLayout {
     private Drawable mRightImageL;
     private int mRightImageLWidth;
     private int mRightImageLHeight;
+    private boolean noRightImgL;
     /*right文字*/
     private String mRightText;
     private int mRightTextColor;
     private int mRightTextSize;
     private int mRightDrawablePadding;
+    private int mRightTextLeftMargins;
+    private int mRightTextRightMargins;
+    private boolean noRightText;
     /*right--right图片*/
     private Drawable mRightImageR;
     private int mRightImageRWidth;
     private int mRightImageRHeight;
     private boolean isArrow;
+    /*CheckBox*/
+    private boolean isCheckBox;
+    private int mCheckBoxWidth;
+    private int mCheckBoxHeight;
     /*top*/
     private int mTopGravity;
+    private int mTopBetweenMargins;
+    private int mTop_leftMargins;
+    private int mTop_topMargins;
+    private int mTop_bottomMargins;
+    private int mTop_rightMargins;
+    private boolean noTop;
+    private boolean isTopBetween;
     /*top--left文字*/
     private String mTopLeftText;
     private int mTopLeftTextSize;
@@ -67,6 +89,13 @@ public class MySuperItem extends LinearLayout {
     private int mTopRightTextColor;
     /*bottom*/
     private int mBottomGravity;
+    private int mBottomBetweenMargins;
+    private boolean noBottom;
+    private boolean isBottomBetween;
+    private int mBottom_leftMargins;
+    private int mBottom_topMargins;
+    private int mBottom_bottomMargins;
+    private int mBottom_rightMargins;
     /*bottom--left文字*/
     private String mBottomLeftText;
     private int mBottomLeftTextSize;
@@ -84,6 +113,9 @@ public class MySuperItem extends LinearLayout {
     private TextView leftText;
     private ImageView rightImageL;
     private TextView rightText;
+    private CheckBox checkBox;
+
+    private LinearLayout centerLayout;
 
     private LinearLayout topLayout;
     private TextView topLeftText;
@@ -92,7 +124,6 @@ public class MySuperItem extends LinearLayout {
     private LinearLayout bottomLayout;
     private TextView bottomLeftText;
     private TextView bottomRightText;
-
 
     public MySuperItem(Context context) {
         this(context, null);
@@ -115,11 +146,15 @@ public class MySuperItem extends LinearLayout {
         mLeftImageL = typedArray.getDrawable(R.styleable.MySuperItem_left_limg);
         mLeftImageLWidth = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_left_limg_width, LayoutParams.WRAP_CONTENT);
         mLeftImageLHeight = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_left_limg_height, LayoutParams.WRAP_CONTENT);
+        noLeftImgL = typedArray.getBoolean(R.styleable.MySuperItem_noLeftImageL, false);
         /*left文字*/
         mLeftText = typedArray.getString(R.styleable.MySuperItem_left_text);
         mLeftTextColor = typedArray.getColor(R.styleable.MySuperItem_left_text_color, defaultColor);
         mLeftTextSize = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_left_text_size, defaultSize);
         mLeftDrawablePadding = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_left_drawable_padding, defaultDrawablePadding);
+        mLeftTextLeftMargins = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_left_text_leftMargins, defaultMargins_0);
+        mLeftTextRightMargins = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_left_text_rightMargins, defaultMargins_20);
+        noLeftText = typedArray.getBoolean(R.styleable.MySuperItem_noLeftText, false);
         /*left--right图片*/
         mLeftImageR = typedArray.getDrawable(R.styleable.MySuperItem_left_rimg);
         mLeftImageRWidth = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_left_rimg_width, -1);
@@ -128,18 +163,33 @@ public class MySuperItem extends LinearLayout {
         mRightImageL = typedArray.getDrawable(R.styleable.MySuperItem_right_limg);
         mRightImageLWidth = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_right_limg_width, -1);
         mRightImageLHeight = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_right_limg_height, -1);
+        noRightImgL = typedArray.getBoolean(R.styleable.MySuperItem_noRightImgL, false);
         /*right文字*/
         mRightText = typedArray.getString(R.styleable.MySuperItem_right_text);
         mRightTextColor = typedArray.getColor(R.styleable.MySuperItem_right_text_color, defaultColor);
         mRightTextSize = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_right_text_size, defaultSize);
         mRightDrawablePadding = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_right_drawable_padding, defaultDrawablePadding);
+        mRightTextLeftMargins = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_right_text_leftMargins,defaultMargins_20 );
+        mRightTextRightMargins = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_right_text_rightMargins, defaultMargins_0);
+        noRightText = typedArray.getBoolean(R.styleable.MySuperItem_noRightText, false);
         /*right--right图片*/
         mRightImageR = typedArray.getDrawable(R.styleable.MySuperItem_right_rimg);
         mRightImageRWidth = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_right_rimg_width, -1);
         mRightImageRHeight = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_right_rimg_height, -1);
         isArrow = typedArray.getBoolean(R.styleable.MySuperItem_isArrow, false);
+        /*CheckBox*/
+        isCheckBox = typedArray.getBoolean(R.styleable.MySuperItem_isCheckBox, false);
+        mCheckBoxWidth = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_checkBox_width, 80);
+        mCheckBoxHeight = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_checkBox_height, 80);
         /*top*/
         mTopGravity = typedArray.getInteger(R.styleable.MySuperItem_top_gravity, Gravity.LEFT);
+        mTopBetweenMargins = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_top_betweenMargins, 20);
+        mTop_leftMargins = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_top_leftMargin, 0);
+        mTop_topMargins = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_top_topMargin, 0);
+        mTop_bottomMargins = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_top_bottomMargin, 0);
+        mTop_rightMargins = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_top_rightMargin, 0);
+        noTop = typedArray.getBoolean(R.styleable.MySuperItem_noTop, false);
+        isTopBetween = typedArray.getBoolean(R.styleable.MySuperItem_isTopBetween, false);
         /*top--left文字*/
         mTopLeftText = typedArray.getString(R.styleable.MySuperItem_top_left_text);
         mTopLeftTextSize = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_top_left_textSize, defaultSize);
@@ -150,6 +200,13 @@ public class MySuperItem extends LinearLayout {
         mTopRightTextColor = typedArray.getColor(R.styleable.MySuperItem_top_right_textColor, defaultColor);
         /*bottom*/
         mBottomGravity = typedArray.getInteger(R.styleable.MySuperItem_bottom_gravity, Gravity.LEFT);
+        mBottomBetweenMargins = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_bottom_betweenMargins, 20);
+        mBottom_topMargins = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_bottom_topMargin, 0);
+        mBottom_leftMargins = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_bottom_leftMargin, 0);
+        mBottom_bottomMargins = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_bottom_bottomMargin, 0);
+        mBottom_rightMargins = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_bottom_rightMargin, 0);
+        noBottom = typedArray.getBoolean(R.styleable.MySuperItem_noBottom, false);
+        isBottomBetween = typedArray.getBoolean(R.styleable.MySuperItem_isBottomBetween, false);
         /*bottom--left文字*/
         mBottomLeftText = typedArray.getString(R.styleable.MySuperItem_bottom_left_text);
         mBottomLeftTextSize = typedArray.getDimensionPixelSize(R.styleable.MySuperItem_bottom_left_textSize, defaultSize);
@@ -165,7 +222,6 @@ public class MySuperItem extends LinearLayout {
     private void init() {
         this.setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom());
         this.setOrientation(HORIZONTAL);
-        this.setBackgroundResource(R.color.LitterGrey);
         this.setGravity(Gravity.CENTER);
 
         initLeftImage();
@@ -173,93 +229,143 @@ public class MySuperItem extends LinearLayout {
         initCenter();
         initRightImage();
         initRightText();
+        initCheckBox();
     }
 
     /*-----------------------------------------初始化布局------------------------------------------------*/
-    /*左边文字---左边图片*/
+    /*left---left图片*/
     private void initLeftImage() {
+        if (noLeftImgL)return;
         leftImageL = new ImageView(context);
-        initImage(leftImageL, mLeftImageLWidth, mLeftImageLHeight, mLeftImageL);
+        initImage(leftImageL, mLeftImageLWidth, mLeftImageLHeight, mLeftImageL, 20, 0);
     }
 
-    /*左边文字*/
+    /*left文字*/
     private void initLeftText() {
+        if (noLeftText)return;
         leftText = new TextView(context);
-        initText(leftText, mLeftText, mLeftTextSize, mLeftTextColor, mLeftImageR, mLeftImageRWidth, mLeftImageRHeight, mLeftDrawablePadding,20);
+        initText(leftText, mLeftText, mLeftTextSize, mLeftTextColor, mLeftImageR, mLeftImageRWidth, mLeftImageRHeight, mLeftDrawablePadding, mLeftTextLeftMargins,mLeftTextRightMargins);
+        goneText(mLeftText, leftText);
     }
 
-    /*中间布局*/
+    /*center*/
     private void initCenter() {
-        LinearLayout centerLayout = new LinearLayout(context);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1);
+        centerLayout = new LinearLayout(context);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1);
         centerLayout.setLayoutParams(lp);
         centerLayout.setOrientation(VERTICAL);
         centerLayout.setGravity(Gravity.CENTER);
-
-        /*top*/
+        initTop();
+        initBottom();
+        addView(centerLayout);
+    }
+    /*top*/
+    private void initTop() {
+        if (noTop)return;
         topLayout = new LinearLayout(context);
-        initCenterLayout(topLayout, mTopGravity);
+        initCenterLayout(topLayout, mTopGravity, mTop_leftMargins, mTop_topMargins, mTop_rightMargins, mTop_bottomMargins);
+
         topLeftText = new TextView(context);
-        initCenterText(topLeftText, mTopLeftText, mTopLeftTextSize, mTopLeftTextColor);
+        initCenterLeft(topLeftText, mTopLeftText, mTopLeftTextSize, mTopLeftTextColor, mTopBetweenMargins,isTopBetween);
         topRightText = new TextView(context);
-        initCenterText(topRightText, mTopRightText, mTopRightTextSize, mTopRightTextColor);
+        initCenterRight(topRightText, mTopRightText, mTopRightTextSize, mTopRightTextColor, mTopBetweenMargins,isTopBetween);
+        goneText(mTopRightText,topRightText);
 
         topLayout.addView(topLeftText);
         topLayout.addView(topRightText);
         centerLayout.addView(topLayout);
-
-        /*bottom*/
+    }
+    /*bottom*/
+    private void initBottom() {
+        if (noBottom)return;
         bottomLayout = new LinearLayout(context);
-        initCenterLayout(bottomLayout, mBottomGravity);
-        if (mBottomLeftText==null && mBottomRightText==null)bottomLayout.setVisibility(GONE);
+        initCenterLayout(bottomLayout, mBottomGravity,mBottom_leftMargins,mBottom_topMargins,mBottom_rightMargins,mBottom_bottomMargins);
+
+        if (mBottomLeftText == null && mBottomRightText == null) bottomLayout.setVisibility(GONE);
+
         bottomLeftText = new TextView(context);
-        initCenterText(bottomLeftText, mBottomLeftText, mBottomLeftTextSize, mBottomLeftTextColor);
+        initCenterLeft(bottomLeftText, mBottomLeftText, mBottomLeftTextSize, mBottomLeftTextColor, mBottomBetweenMargins,isBottomBetween);
         bottomRightText = new TextView(context);
-        initCenterText(bottomRightText, mBottomRightText, mBottomRightTextSize, mBottomRightTextColor);
+        initCenterRight(bottomRightText, mBottomRightText, mBottomRightTextSize, mBottomRightTextColor, mBottomBetweenMargins,isBottomBetween);
+        goneText(mBottomRightText,bottomRightText);
 
         bottomLayout.addView(bottomLeftText);
         bottomLayout.addView(bottomRightText);
         centerLayout.addView(bottomLayout);
-
-        addView(centerLayout);
     }
 
-    /*右边文字---左边图片*/
+    /*right---left图片*/
     private void initRightImage() {
+        if (noRightImgL)return;
         rightImageL = new ImageView(context);
-        initImage(rightImageL, mRightImageLWidth, mRightImageLHeight, mRightImageL);
+        initImage(rightImageL, mRightImageLWidth, mRightImageLHeight, mRightImageL, 0, 20);
     }
 
-    /*右边文字*/
+    /*right文字*/
     private void initRightText() {
+        if (noRightText)return;
         rightText = new TextView(context);
-        if (!isArrow)
-            initText(rightText, mRightText, mRightTextSize, mRightTextColor, mRightImageR, mRightImageRWidth, mRightImageRHeight, mRightDrawablePadding,0);
-        else
-            initText(rightText, mRightText, mRightTextSize, mRightTextColor, context.getResources().getDrawable(R.mipmap.arrow_right), 30, 60, 20, 0);
+        if (!isArrow) {
+            initText(rightText, mRightText, mRightTextSize, mRightTextColor, mRightImageR, mRightImageRWidth, mRightImageRHeight, mRightDrawablePadding, mRightTextLeftMargins,mRightTextRightMargins);
+            goneText(mRightText, rightText);
+        } else
+            initText(rightText, mRightText, mRightTextSize, mRightTextColor, context.getResources().getDrawable(R.mipmap.arrow_right), 30, 60, 20, mRightTextLeftMargins,mRightTextRightMargins);
+    }
+    /*CheckBox*/
+    private void initCheckBox() {
+        if (isCheckBox) {
+            checkBox = new CheckBox(context);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(mCheckBoxWidth,mCheckBoxHeight);
+            lp.setMargins(20,0,0,0);
+            checkBox.setLayoutParams(lp);
+            checkBox.setButtonDrawable(null);
+            checkBox.setBackgroundResource(R.drawable.item_choose);
+
+            addView(checkBox);
+        }
     }
 
 /*-------------------------------------------公共方法----------------------------------------------*/
 
-    public void initCenterLayout(LinearLayout layout, int gravity) {
-        layout.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1));
+    private void initCenterLayout(LinearLayout layout, int gravity,int leftMargin,int topMargin,int rightMargin,int bottomMargin) {
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1);
+        lp.setMargins(leftMargin,topMargin,rightMargin,bottomMargin);
+        layout.setLayoutParams(lp);
         layout.setOrientation(HORIZONTAL);
         layout.setGravity(gravity);
     }
 
-    public void initCenterText(TextView textView, String content, int size, int color) {
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-        lp.setMargins(0, 0, 20, 0);
+    private void initCenterLeft(TextView textView, String content, int size, int color, int margins,boolean isBetween) {
+        LinearLayout.LayoutParams lp = null;
+        if (isBetween) {
+            lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1);
+            lp.setMargins(0, 0, margins, 0);
+        }else lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
         textView.setLayoutParams(lp);
-        textView.setGravity(Gravity.CENTER);
+        textView.setGravity(Gravity.CENTER | Gravity.LEFT);
         textView.setText(content);
         textView.setTextSize(size);
         textView.setTextColor(color);
     }
 
-    public void initText(TextView textView, String content, int textSize, int textColor, Drawable drawable, int drawableWidth, int drawableHight, int drawablePadding,int rightMargin) {
+    private void initCenterRight(TextView textView, String content, int size, int color, int margins,boolean isBetween) {
+        LinearLayout.LayoutParams lp = null;
+        if (isBetween) lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        else {
+            lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1);
+            lp.setMargins(margins, 0, 0, 0);
+        }
+        textView.setLayoutParams(lp);
+        textView.setGravity(Gravity.CENTER | Gravity.LEFT);
+        textView.setText(content);
+        textView.setTextSize(size);
+        textView.setTextColor(color);
+    }
+
+    private void initText(TextView textView, String content, int textSize, int textColor, Drawable drawable, int drawableWidth, int drawableHight, int drawablePadding, int leftMargins,int rightMargins) {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        lp.setMargins(0, 0, rightMargin, 0);
+        lp.setMargins(leftMargins, 0, rightMargins, 0);
         textView.setLayoutParams(lp);
         textView.setGravity(Gravity.CENTER);
         textView.setText(content);
@@ -276,26 +382,40 @@ public class MySuperItem extends LinearLayout {
         addView(textView);
     }
 
-    public void initImage(ImageView imageView, int imageWidth, int imageHeight, Drawable drawable) {
+    private void initImage(ImageView imageView, int imageWidth, int imageHeight, Drawable drawable, int rightMargins, int leftMargins) {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(imageWidth, imageHeight);
-        lp.setMargins(0, 0, 50, 0);
+        lp.setMargins(leftMargins, 0, rightMargins, 0);
         imageView.setLayoutParams(lp);
         imageView.setBackgroundDrawable(drawable);
         addView(imageView);
-        if (drawable == null) imageView.setVisibility(GONE);
+        goneText(drawable, imageView);
+    }
+
+    private void goneText(Object content, View view) {
+        if (content == null) view.setVisibility(GONE);
+    }
+
+    private void visibleText(View view) {
+        if (view.getVisibility() == GONE) view.setVisibility(VISIBLE);
+    }
+
+    private void glideImage(ImageView view,String url, boolean isRound) {
+        if (isRound) Glide.with(context).load(url).transform(new CircleTransform(context)).into(view);
+        else Glide.with(context).load(url).into(view);
     }
 
     /*----------------------------------------------动态修改----------------------------------------*/
     /*-------------------------------------------left-----------------------------------------------*/
     /*left--left图片*/
-    public MySuperItem setLeftImageL(String url) {
-        leftImageL.setVisibility(VISIBLE);
-        Glide.with(context).load(url).into(leftImageL);
+    public MySuperItem setLeftImageL(String url,boolean isRound) {
+        visibleText(leftImageL);
+        glideImage(leftImageL, url, isRound);
         return this;
     }
 
     /*left文字content*/
     public MySuperItem setLeftText(String mLeftText) {
+        visibleText(leftText);
         leftText.setText(mLeftText);
         return this;
     }
@@ -308,7 +428,7 @@ public class MySuperItem extends LinearLayout {
 
     /*left文字color*/
     public MySuperItem setLeftTextColor(int color) {
-        leftText.setTextColor(color);
+        leftText.setTextColor(getResources().getColor(color));
         return this;
     }
 
@@ -332,12 +452,13 @@ public class MySuperItem extends LinearLayout {
 
     /*top--left文字color*/
     public MySuperItem setTopLeftTextColor(int color) {
-        topLeftText.setTextColor(color);
+        topLeftText.setTextColor(getResources().getColor(color));
         return this;
     }
 
     /*top--right文字content*/
     public MySuperItem setTopRightText(String content) {
+        visibleText(topRightText);
         topRightText.setText(content);
         return this;
     }
@@ -350,7 +471,7 @@ public class MySuperItem extends LinearLayout {
 
     /*top--right文字color*/
     public MySuperItem setTopRightTextColor(int color) {
-        topRightText.setTextColor(color);
+        topRightText.setTextColor(getResources().getColor(color));
         return this;
     }
 
@@ -362,7 +483,7 @@ public class MySuperItem extends LinearLayout {
 
     /*bottom--left文字content*/
     public MySuperItem setBottomLeftText(String content) {
-        bottomLayout.setVisibility(VISIBLE);
+        visibleText(bottomLayout);
         bottomLeftText.setText(content);
         return this;
     }
@@ -373,20 +494,21 @@ public class MySuperItem extends LinearLayout {
         return this;
     }
 
-    /*top--left文字color*/
+    /*bottom--left文字color*/
     public MySuperItem setBottomLeftTextColor(int color) {
-        bottomLeftText.setTextColor(color);
+        bottomLeftText.setTextColor(getResources().getColor(color));
         return this;
     }
 
-    /*top--right文字content*/
+    /*bottom--right文字content*/
     public MySuperItem setBottomRightText(String content) {
-        bottomLayout.setVisibility(VISIBLE);
+        visibleText(bottomLayout);
+        visibleText(bottomRightText);
         bottomRightText.setText(content);
         return this;
     }
 
-    /*top--right文字size*/
+    /*bottom--right文字size*/
     public MySuperItem setBottomRightTextSize(int size) {
         bottomRightText.setTextSize(size);
         return this;
@@ -394,20 +516,21 @@ public class MySuperItem extends LinearLayout {
 
     /*top--right文字color*/
     public MySuperItem setBottomRightTextColor(int color) {
-        bottomRightText.setTextColor(color);
+        bottomRightText.setTextColor(getResources().getColor(color));
         return this;
     }
 
     /*-------------------------------------------right-----------------------------------------------*/
     /*right---left图片*/
-    public MySuperItem setRightImageL(String url) {
-        rightImageL.setVisibility(VISIBLE);
-        Glide.with(context).load(url).into(rightImageL);
+    public MySuperItem setRightImageL(String url,boolean isRound) {
+        visibleText(rightImageL);
+        glideImage(rightImageL, url, isRound);
         return this;
     }
 
     /*right文字content*/
     public MySuperItem setRightText(String mRightText) {
+        visibleText(rightText);
         rightText.setText(mRightText);
         return this;
     }
@@ -420,26 +543,72 @@ public class MySuperItem extends LinearLayout {
 
     /*right文字size*/
     public MySuperItem setRightTextColor(int color) {
-        rightText.setTextColor(color);
+        rightText.setTextColor(getResources().getColor(color));
         return this;
     }
 
     /*-------------------------------------------click----------------------------------------------*/
 
-    /*item点击事件*/
-//    public MySuperItem setOnClickItem(final IItemClick iItemClick) {
-//        this.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                iItemClick.onClick();
-//            }
-//        });
-//        return this;
-//    }
-//
-//    public interface IItemClick {
-//        void onClick();
-//    }
+    public MySuperItem setOnClickItem(final IItemClick iItemClick) {
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iItemClick.onClick(view);
+            }
+        });
+        return this;
+    }
+
+    /*left---left图片点击事件*/
+    public MySuperItem setOnClickLeftImgL(final IItemClick iItemClick) {
+        leftImageL.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iItemClick.onClick(view);
+            }
+        });
+        return this;
+    }
+
+    /*bottom---left文字点击事件*/
+    public MySuperItem setOnClickBottomLeftText(final IItemClick iItemClick) {
+        bottomLeftText.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iItemClick.onClick(view);
+            }
+        });
+        return this;
+    }
+
+    /*bottom---right文字点击事件*/
+    public MySuperItem setOnClickBottomRightText(final IItemClick iItemClick) {
+        bottomRightText.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iItemClick.onClick(view);
+            }
+        });
+        return this;
+    }
+
+    public MySuperItem setOnClickCheckBox(final ICheckBoxClick iCheckBox) {
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                iCheckBox.onClick(buttonView,isChecked);
+            }
+        });
+        return this;
+    }
+
+    public interface IItemClick {
+        void onClick(View view);
+    }
+
+    public interface ICheckBoxClick {
+        void onClick(CompoundButton buttonView, boolean isChecked);
+    }
 }
 //    Bitmap bitmap= BitmapFactory.decodeResource(context.getResources(), R.drawable.note_play);
 //    ImageSpan imgSpan = new ImageSpan(context,bitmap);

@@ -6,6 +6,9 @@
 
     <color name="ViewLine">#cdcdcd</color>
     <color name="Grey">#888888</color>
+    <color name="Green">#00cc00</color>
+    <color name="Red">#FF0000 </color>
+
 
     <color name="LitterGrey">#ededed</color>
     <drawable name="LitterGrey">#ededed</drawable>
