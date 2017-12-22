@@ -33,6 +33,8 @@ public class Fragment2 extends BaseFragment {
     MySuperItem itemOther;
     @InjectView(R.id.item_other1)
     MySuperItem itemOther1;
+    @InjectView(R.id.item_switch)
+    MySuperItem itemSwitch;
     @Override
     public int setLayout() {
         return R.layout.fragment2;
@@ -61,7 +63,7 @@ public class Fragment2 extends BaseFragment {
                 .setRightTextSize(12);
         itemOther.setTopLeftText("标题")
                 .setTopLeftTextSize(16)
-                .setBottomLeftText("55555555555555555555555555555555555555555555555555555555555");
+                .setBottomLeftText("1111111111111111111111111111111111111111111111111111111111111");
         itemOther1.setTopLeftText("标题")
                 .setTopRightText("标题")
                 .setBottomLeftText("标题")
@@ -87,7 +89,14 @@ public class Fragment2 extends BaseFragment {
             public void onClick(View view) {
                 showShort("clickText");
             }
-        }).setOnClickCheckBox(new MySuperItem.ICheckBoxClick() {
+        }).setOnClickCheckBox(new MySuperItem.IChangeClick() {
+            @Override
+            public void onClick(CompoundButton buttonView, boolean isChecked) {
+                showShort(isChecked+"");
+            }
+        });
+
+        itemSwitch.setOnClickSwitch(new MySuperItem.IChangeClick() {
             @Override
             public void onClick(CompoundButton buttonView, boolean isChecked) {
                 showShort(isChecked+"");

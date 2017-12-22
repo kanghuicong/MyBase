@@ -15,69 +15,65 @@
         android:id="@+id/item_header1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        app:left_limg_width="40dp"
-        app:left_limg_height="40dp"
+        app:left_limg_width="15dp"
+        app:left_limg_height="15dp"
         app:isArrow="true">
     </com.kang.mybase.custom.MySuperItem>
 
-    <include layout="@layout/main_splitter2" />
+    <include layout="@layout/main_splitter1" />
 
     <com.kang.mybase.custom.MySuperItem
         android:id="@+id/item_header2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        app:right_limg_width="40dp"
-        app:right_limg_height="40dp"
+        app:right_limg_width="15dp"
+        app:right_limg_height="15dp"
         app:noLeftImageL="true"
         app:noTop="true"
         app:noBottom="true"
         app:noRightText="true">
     </com.kang.mybase.custom.MySuperItem>
 
-    <include layout="@layout/main_splitter2" />
+    <include layout="@layout/main_splitter1" />
 
     <com.kang.mybase.custom.MySuperItem
         android:id="@+id/item_water"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         app:left_limg="@mipmap/test_water"
-        app:left_limg_width="30dp"
-        app:left_limg_height="30dp"
+        app:left_limg_width="10dp"
+        app:left_limg_height="10dp"
         app:top_left_text="水费"
         app:bottom_left_text="明细查询>>"
         app:bottom_left_textColor="@color/main_color"
+        app:right_text="123"
         app:noRightImgL="true"
         app:isCheckBox="true">
     </com.kang.mybase.custom.MySuperItem>
 
-    <include layout="@layout/main_splitter2" />
+    <include layout="@layout/main_splitter1" />
 
     <com.kang.mybase.custom.MySuperItem
         android:id="@+id/item_game"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         app:left_limg="@mipmap/test_game"
-        app:left_limg_width="30dp"
-        app:left_limg_height="30dp"
+        app:left_limg_width="10dp"
+        app:left_limg_height="10dp"
         app:left_text="游戏点卡"
         app:noTop="true"
         app:noBottom="true">
     </com.kang.mybase.custom.MySuperItem>
 
-    <include layout="@layout/main_splitter2" />
+    <include layout="@layout/main_splitter1" />
 
     <com.kang.mybase.custom.MySuperItem
         android:id="@+id/item_traffic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         app:left_limg="@mipmap/test_traffic"
-        app:left_limg_width="30dp"
-        app:left_limg_height="30dp"
+        app:left_limg_width="10dp"
+        app:left_limg_height="10dp"
         app:left_text="交通罚款"
         app:isArrow="true"
         app:noTop="true"
@@ -85,16 +81,15 @@
         app:noRightImgL="true">
     </com.kang.mybase.custom.MySuperItem>
 
-    <include layout="@layout/main_splitter2" />
+    <include layout="@layout/main_splitter1" />
 
     <com.kang.mybase.custom.MySuperItem
         android:id="@+id/item_more"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         app:left_limg="@mipmap/test_more"
-        app:left_limg_width="30dp"
-        app:left_limg_height="30dp"
+        app:left_limg_width="10dp"
+        app:left_limg_height="10dp"
         app:left_text="更多"
         app:isArrow="true"
         app:noTop="true"
@@ -102,33 +97,43 @@
         app:noRightImgL="true">
     </com.kang.mybase.custom.MySuperItem>
 
-    <include layout="@layout/main_splitter2" />
+    <include layout="@layout/main_splitter1" />
 
     <com.kang.mybase.custom.MySuperItem
         android:id="@+id/item_other"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         app:noLeftImageL="true"
         app:noLeftText="true"
         app:noRightText="true"
         app:noRightImgL="true">
     </com.kang.mybase.custom.MySuperItem>
 
-    <include layout="@layout/main_splitter2" />
+    <include layout="@layout/main_splitter1" />
 
     <com.kang.mybase.custom.MySuperItem
         android:id="@+id/item_other1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        app:left_text_rightMargins="20dp"
-        app:bottom_topMargin="5dp"
+        app:left_text_rightMargin="2dp"
+        app:bottom_topMargin="2dp"
         app:isTopBetween="true"
         app:noLeftImageL="true"
         app:noRightImgL="true">
     </com.kang.mybase.custom.MySuperItem>
 
-    <include layout="@layout/main_splitter2" />
+    <include layout="@layout/main_splitter1" />
+
+    <com.kang.mybase.custom.MySuperItem
+        android:id="@+id/item_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:left_text="标题"
+        app:top_left_text="标题"
+        app:top_gravity="center"
+        app:isSwitch="true">
+    </com.kang.mybase.custom.MySuperItem>
+
+    <include layout="@layout/main_splitter1" />
 
 </LinearLayout>

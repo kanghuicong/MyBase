@@ -15,14 +15,20 @@
         <attr name="left_limg" format="reference"></attr>
         <attr name="left_limg_width" format="dimension"></attr>
         <attr name="left_limg_height" format="dimension"></attr>
+        <attr name="left_limg_leftMargin" format="dimension"></attr>
+        <attr name="left_limg_rightMargin" format="dimension"></attr>
+        <attr name="left_limg_topMargin" format="dimension"></attr>
+        <attr name="left_limg_bottomMargin" format="dimension"></attr>
         <attr name="noLeftImageL" format="boolean"></attr>
         <!--left文字-->
         <attr name="left_text" format="string"></attr>
         <attr name="left_text_color" format="color"></attr>
         <attr name="left_text_size" format="dimension"></attr>
         <attr name="left_drawable_padding" format="dimension"></attr>
-        <attr name="left_text_rightMargins" format="dimension"></attr>
-        <attr name="left_text_leftMargins" format="dimension"></attr>
+        <attr name="left_text_rightMargin" format="dimension"></attr>
+        <attr name="left_text_leftMargin" format="dimension"></attr>
+        <attr name="left_text_topMargin" format="dimension"></attr>
+        <attr name="left_text_bottomMargin" format="dimension"></attr>
         <attr name="noLeftText" format="boolean"></attr>
         <!--left-right图片-->
         <attr name="left_rimg" format="reference"></attr>
@@ -32,15 +38,20 @@
         <attr name="right_rimg" format="reference"></attr>
         <attr name="right_limg_width" format="dimension"></attr>
         <attr name="right_limg_height" format="dimension"></attr>
+        <attr name="right_limg_leftMargin" format="dimension"></attr>
+        <attr name="right_limg_rightMargin" format="dimension"></attr>
+        <attr name="right_limg_topMargin" format="dimension"></attr>
+        <attr name="right_limg_bottomMargin" format="dimension"></attr>
         <attr name="noRightImgL" format="boolean"></attr>
-
         <!--right文字-->
         <attr name="right_text" format="string"></attr>
         <attr name="right_text_color" format="color"></attr>
         <attr name="right_text_size" format="dimension"></attr>
         <attr name="right_drawable_padding" format="dimension"></attr>
-        <attr name="right_text_rightMargins" format="dimension"></attr>
-        <attr name="right_text_leftMargins" format="dimension"></attr>
+        <attr name="right_text_rightMargin" format="dimension"></attr>
+        <attr name="right_text_leftMargin" format="dimension"></attr>
+        <attr name="right_text_topMargin" format="dimension"></attr>
+        <attr name="right_text_bottomMargin" format="dimension"></attr>
         <attr name="noRightText" format="boolean"></attr>
         <!--right-right图片-->
         <attr name="right_limg" format="reference"></attr>
@@ -51,9 +62,14 @@
         <attr name="isCheckBox" format="boolean"></attr>
         <attr name="checkBox_width" format="boolean"></attr>
         <attr name="checkBox_height" format="boolean"></attr>
+        <attr name="checkBox_leftMargin" format="boolean"></attr>
+        <attr name="checkBox_topMargin" format="dimension"></attr>
+        <attr name="checkBox_rightMargin" format="dimension"></attr>
+        <attr name="checkBox_bottomMargin" format="dimension"></attr>
+        <!--switch-->
+        <attr name="isSwitch" format="boolean"></attr>
         <!--top-->
-        <attr name="top_gravity" format="integer"></attr>
-        <attr name="top_betweenMargins" format="dimension"></attr>
+        <attr name="top_gravity" format="string"></attr>
         <attr name="top_topMargin" format="dimension"></attr>
         <attr name="top_leftMargin" format="dimension"></attr>
         <attr name="top_rightMargin" format="dimension"></attr>
@@ -64,27 +80,42 @@
         <attr name="top_left_text" format="string"></attr>
         <attr name="top_left_textSize" format="dimension"></attr>
         <attr name="top_left_textColor" format="color"></attr>
+        <attr name="top_left_leftMargin" format="dimension"></attr>
+        <attr name="top_left_topMargin" format="dimension"></attr>
+        <attr name="top_left_rightMargin" format="dimension"></attr>
+        <attr name="top_left_bottomMargin" format="dimension"></attr>
         <!--top-right文字-->
         <attr name="top_right_text" format="string"></attr>
         <attr name="top_right_textSize" format="dimension"></attr>
         <attr name="top_right_textColor" format="color"></attr>
+        <attr name="top_right_leftMargin" format="dimension"></attr>
+        <attr name="top_right_topMargin" format="dimension"></attr>
+        <attr name="top_right_rightMargin" format="dimension"></attr>
+        <attr name="top_right_bottomMargin" format="dimension"></attr>
         <!--bottom-->
-        <attr name="bottom_gravity" format="integer"></attr>
-        <attr name="bottom_betweenMargins" format="dimension"></attr>
+        <attr name="bottom_gravity" format="string"></attr>
         <attr name="bottom_topMargin" format="dimension"></attr>
         <attr name="bottom_leftMargin" format="dimension"></attr>
         <attr name="bottom_rightMargin" format="dimension"></attr>
         <attr name="bottom_bottomMargin" format="dimension"></attr>
         <attr name="noBottom" format="boolean"></attr>
         <attr name="isBottomBetween" format="boolean"></attr>
-        <!--top-left文字-->
+        <!--bottom-left文字-->
         <attr name="bottom_left_text" format="string"></attr>
         <attr name="bottom_left_textSize" format="dimension"></attr>
         <attr name="bottom_left_textColor" format="color"></attr>
-        <!--top-right文字-->
+        <attr name="bottom_left_leftMargin" format="dimension"></attr>
+        <attr name="bottom_left_topMargin" format="dimension"></attr>
+        <attr name="bottom_left_rightMargin" format="dimension"></attr>
+        <attr name="bottom_left_bottomMargin" format="dimension"></attr>
+        <!--bottom-right文字-->
         <attr name="bottom_right_text" format="string"></attr>
         <attr name="bottom_right_textSize" format="dimension"></attr>
         <attr name="bottom_right_textColor" format="color"></attr>
+        <attr name="bottom_right_leftMargin" format="dimension"></attr>
+        <attr name="bottom_right_topMargin" format="dimension"></attr>
+        <attr name="bottom_right_rightMargin" format="dimension"></attr>
+        <attr name="bottom_right_bottomMargin" format="dimension"></attr>
 
     </declare-styleable>
 
