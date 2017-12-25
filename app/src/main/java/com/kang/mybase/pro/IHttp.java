@@ -13,7 +13,7 @@ import rx.Subscription;
  */
 
 public interface IHttp<T> {
-    void success(T baseModelList);
+    void success(T baseModelList,String type);
 
     void failure(String error_code, String error_msg);
 

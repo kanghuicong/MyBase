@@ -30,6 +30,14 @@ public class BaseModel<T> implements Serializable {
         return data;
     }
 
+    public String getError_code() {
+        return error_code;
+    }
+
+    public void setError_code(String error_code) {
+        this.error_code = error_code;
+    }
+
     public void setData(T data) {
         this.data = data;
     }
@@ -39,12 +47,12 @@ public class BaseModel<T> implements Serializable {
         return error_code.equals("0");
     }
 
-    @Override
-    public String toString() {
-        return "BaseError{" +
-                "data=" + data +
-                ", error_code='" + error_code + '\'' +
-                ", error_code='" + error_msg + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "BaseError{" +
+//                "data=" + data +
+//                ", error_code='" + error_code + '\'' +
+//                ", error_msg='" + error_msg + '\'' +
+//                '}';
+//    }
 }

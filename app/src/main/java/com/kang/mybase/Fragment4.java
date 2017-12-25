@@ -23,7 +23,7 @@ public class Fragment4 extends BaseFragment {
     }
 
     @Override
-    public void success(Object baseModelList) {
+    public void success(Object baseModelList,String type) {
 
     }
 

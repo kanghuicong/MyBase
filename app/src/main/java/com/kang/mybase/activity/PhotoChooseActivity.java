@@ -22,7 +22,7 @@ public class PhotoChooseActivity extends BasePhotoActivity {
 
 
     @Override
-    public void success(Object baseModelList) {
+    public void success(Object baseModelList,String type) {
 
     }
 

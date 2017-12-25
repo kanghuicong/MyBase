@@ -1,13 +1,17 @@
 package com.kang.mybase.fun;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.kang.mybase.base.BaseData;
+import com.kang.mybase.model.TestBean;
 import com.kang.mybase.pro.IJsonData;
 import com.kang.mybase.pro.IHttp;
 import com.kang.mybase.pro.ISubDelete;
+import com.kang.mybase.util.httpClient.BaseModel;
 import com.kang.mybase.util.httpClient.RxHelper;
 import com.kang.mybase.util.httpClient.RxSubscribe;
 
@@ -32,7 +36,7 @@ public class FunData<T> extends BaseData {
         this.iHttp = iHttp;
     }
 
-    public void getData(Map<String, Object> map) {
+    public void getData(Map<String, Object> map, final String type) {
 
         baseSub = getApi().test(map)
                 .compose(RxHelper.<T>handleResult())
@@ -40,9 +44,10 @@ public class FunData<T> extends BaseData {
                     @Override
                     protected void _onNext(T t) {
                         //返回的是Json格式字符串
-                        iHttp.success(t);
-                    }
+                        Log.i("khc", t.toString());
 
+//                        iHttp.success(t,type);
+                    }
                     @Override
                     protected void _onError(String error_code, String error_msg) {
                         iHttp.failure(error_code, error_msg);

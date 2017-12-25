@@ -106,7 +106,7 @@ public class HeaderChooseActivity extends BaseActivity implements IDialogBottom 
 
 
     @Override
-    public void success(Object baseModelList) {
+    public void success(Object baseModelList,String type) {
     }
 
     @Override

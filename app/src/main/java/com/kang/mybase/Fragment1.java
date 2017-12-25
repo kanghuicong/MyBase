@@ -49,7 +49,7 @@ public class Fragment1 extends BaseFragment  {
         switch (view.getId()) {
             case R.id.http_click://网络请求
                 Map<String, Object> map = new ArrayMap<>();
-                funData.getData(map);
+                funData.getData(map,null);
                 break;
             case R.id.photo_click://图片选择
                 startActivity(new Intent(getActivity(),PhotoChooseActivity.class));
@@ -64,7 +64,7 @@ public class Fragment1 extends BaseFragment  {
     }
 
     @Override
-    public void success(Object t) {
+    public void success(Object t,String type) {
 
 //        TestBean person = gson.fromJson(t.toString(), TestBean.class);
 

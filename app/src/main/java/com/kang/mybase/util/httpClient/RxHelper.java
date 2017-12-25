@@ -3,6 +3,9 @@ package com.kang.mybase.util.httpClient;
 
 import android.util.Log;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -31,6 +34,25 @@ public class RxHelper {
             }
         };
     }
+
+//    public static <T> Observable.Transformer<T, T> handleResult(boolean isBase) {
+//        return new Observable.Transformer<T, T>() {
+//            @Override
+//            public Observable<T> call(Observable<T> tObservable) {
+//                return tObservable.flatMap(new Func1<T, Observable<T>>() {
+//                    @Override
+//                    public Observable<T> call(T result) {
+//                        Log.i("result--", result.toString());
+////                        if (result.success()) {
+//                            return createData(result);
+////                        } else {
+////                            return Observable.error(new ServerException(result.error_code, result.error_msg));
+////                        }
+//                    }
+//                }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+//            }
+//        };
+//    }
 
     private static <T> Observable<T> createData(final T data) {
         return Observable.create(new Observable.OnSubscribe<T>() {
