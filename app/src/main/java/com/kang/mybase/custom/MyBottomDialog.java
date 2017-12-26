@@ -33,7 +33,7 @@ public class MyBottomDialog extends LinearLayout {
     private Dialog dialog;
     private boolean type = true;
 
-    //传入list列表内容，在IDialogBottom接口回调里写对应点击事件
+    /*传入list列表内容，在IDialogBottom接口回调里写对应点击事件*/
     public MyBottomDialog(Context context, List<String> list, IDialogBottom iDialogBottom) {
         super(context);
         this.context = context;
@@ -125,7 +125,7 @@ public class MyBottomDialog extends LinearLayout {
         wl.height = ViewGroup.LayoutParams.WRAP_CONTENT;
         dialog.onWindowAttributesChanged(wl);
 
-        dialog.setCanceledOnTouchOutside(true);// 设置点击外围解散
+        dialog.setCanceledOnTouchOutside(true);/*设置点击外围解散*/
         dialog.show();
     }
 

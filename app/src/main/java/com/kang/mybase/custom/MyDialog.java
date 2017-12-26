@@ -18,7 +18,6 @@ import com.kang.mybase.pro.IDialog;
  * E-Mail is 515849594@qq.com
  */
 
-//自定义dialog
 public class MyDialog extends DialogFragment {
 
     String title, content, left, right;
@@ -55,8 +54,8 @@ public class MyDialog extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (type!=0) {
-            //含有按钮时，点击屏幕Dialog不消失
-            this.setCancelable(false);// 设置点击屏幕Dialog不消失
+            /*含有按钮时，点击屏幕Dialog不消失*/
+            this.setCancelable(false);
         }
     }
 
@@ -72,10 +71,10 @@ public class MyDialog extends DialogFragment {
         tvContent.setText(content);
 
         switch (type) {
-            case 0://不含按钮
+            case 0:/*不含按钮*/
                 builder.setView(view).setPositiveButton(right, null).setNegativeButton(left, null);
                 break;
-            case 1://只有一个按钮
+            case 1:/*只有一个按钮*/
                 builder.setView(view).setPositiveButton(right, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -83,7 +82,7 @@ public class MyDialog extends DialogFragment {
                     }
                 }).setNegativeButton(left, null);
                 break;
-            case 2://两个按钮
+            case 2:/*两个按钮*/
                 builder.setView(view).setPositiveButton(right, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
@@ -100,7 +99,7 @@ public class MyDialog extends DialogFragment {
                     public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
                         if (keyCode == KeyEvent.KEYCODE_BACK) {
                             if (isFinish){
-                                //SplashActivity权限弹框，返回键关闭activity
+                                /*SplashActivity权限弹框，返回键关闭activity*/
                                 getActivity().finish();
                             }else {
                                 return true;

@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.kang.mybase.R;
 
@@ -22,27 +24,45 @@ import com.kang.mybase.R;
  */
 
 public class MyRefresh extends LinearLayout {
-    Context context;
-
-    View headerView;
-    AdapterView<?> listerView;
-    View footerView;
-
     int mHeaderHeight;
     int mFooterHeight;
-
     int startY;
-
-    private final static int STOP = 0;
-    private final static int ING = 1;
-    private final static int IS_FOOTER = 2;
-    private final static int IS_HEADER = 3;
 
     int mHeaderState = STOP;
     int mFooterState = STOP;
     int mPullState;
     boolean isRepeat = false;
 
+    private final static int STOP = 0;
+    private final static int ING = 1;
+    private final static int IS_FOOTER = 2;
+    private final static int IS_HEADER = 3;
+
+    private final static String REFRESH_1 = "下拉刷新";
+    private final static String REFRESH_2 = "松手立即刷新";
+    private final static String REFRESH_3 = "正在刷新数据";
+    private final static String REFRESH_FAILURE = "刷新失败";
+    private final static String REFRESH_SUCCESS = "刷新成功";
+
+    private final static String LOAD_1 = "上拉加载";
+    private final static String LOAD_2 = "松手立即加载";
+    private final static String LOAD_3 = "正在加载数据";
+    private final static String LOAD_FAILURE = "加载失败";
+    private final static String LOAD_SUCCESS = "加载成功";
+    private final static String LOAD_NOTHING = "没有更多数据了";
+
+    Context context;
+    View headerView;
+    AdapterView<?> listerView;
+    View footerView;
+
+    TextView tvHeader;
+    TextView tvFooter;
+    ImageView ivHeaderState;
+    ImageView ivFooterState;
+
+    Handler handler = new Handler();
+    IListerRefresh iListerRefresh;
 
     public MyRefresh(Context context) {
         this(context, null);
@@ -62,6 +82,9 @@ public class MyRefresh extends LinearLayout {
         this.setOrientation(VERTICAL);
         /*添加header*/
         headerView = View.inflate(context, R.layout.refresh_header, null);
+        tvHeader = (TextView) headerView.findViewById(R.id.tv_header);
+        ivHeaderState = (ImageView) headerView.findViewById(R.id.iv_state);
+
         measureView(headerView);
         mHeaderHeight = headerView.getMeasuredHeight();
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, mHeaderHeight);
@@ -74,11 +97,15 @@ public class MyRefresh extends LinearLayout {
         super.onFinishInflate();
         /*加载完布局后，添加footer*/
         footerView = View.inflate(context, R.layout.refresh_footer, null);
+        tvFooter = (TextView) footerView.findViewById(R.id.tv_footer);
+        ivFooterState = (ImageView) footerView.findViewById(R.id.iv_state);
+
         measureView(footerView);
         mFooterHeight = footerView.getMeasuredHeight();
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, mFooterHeight);
         addView(footerView, params);
 
+        /*获取AbsListView，目前设计的布局限制为header,AbsListView,footer*/
         if (getChildAt(1) instanceof AbsListView) {
             listerView = (AdapterView<?>) getChildAt(1);
         }
@@ -92,14 +119,11 @@ public class MyRefresh extends LinearLayout {
                 startY = y;
                 break;
             case MotionEvent.ACTION_MOVE:
-                // header-->大于0,footer-->小于0
+                /*header-->大于0,footer-->小于0*/
                 int deltaY = y - startY;
-                if ((deltaY > 0 && mFooterState == ING) || (deltaY < 0 && mHeaderState == ING)) {
+                if ((deltaY > 0 && mFooterState == ING) || (deltaY < 0 && mHeaderState == ING))
                     setHeaderTopMargin(-mHeaderHeight);
-                }
-                if (isRefreshViewScroll(deltaY)) {
-                    return true;
-                }
+                if (isRefreshViewScroll(deltaY)) return true;
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
@@ -113,8 +137,6 @@ public class MyRefresh extends LinearLayout {
         int y = (int) event.getRawY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                // onInterceptTouchEvent已经记录
-                // mLastMotionY = y;
                 break;
             case MotionEvent.ACTION_MOVE:
                 int deltaY = y - startY;
@@ -124,70 +146,53 @@ public class MyRefresh extends LinearLayout {
                     int topMargin = changeHeaderViewTopMargin(deltaY);
                     /*header完全展示*/
                     if (topMargin > 0) {
+                        tvHeader.setText(REFRESH_2);
                         mHeaderState = ING;
                     }
-
                 } else if (mPullState == IS_FOOTER && mHeaderState == STOP) {
                     int topMargin = changeHeaderViewTopMargin(deltaY);
                     if (Math.abs(topMargin) >= (mHeaderHeight + mFooterHeight)) {
+                        tvFooter.setText(LOAD_2);
                         mFooterState = ING;
                     }
-
                 }
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
                 if (mPullState == IS_HEADER) {
                     if (mHeaderState == ING) {
-                        setHeaderTopMargin(mHeaderHeight);
-                        /*ING时，又再次下拉，移除之前的runnable*/
-                        if (isRepeat) {
-                            if (handler != null && runnable != null) {
-                                handler.removeCallbacks(runnable);
-                            }
-                        }
-                        isRepeat = true;
-                        handler.postDelayed(runnable, 2000);
-                    } else {
-                        setHeaderTopMargin(-mHeaderHeight);
-                    }
+                        tvHeader.setText(REFRESH_3);
+                        setHeaderTopMargin(0);
+                        doHandler(runnableRefresh);
+                    } else stopAll();
                 } else if (mPullState == IS_FOOTER) {
                     if (mFooterState == ING) {
+                        tvFooter.setText(LOAD_3);
                         setHeaderTopMargin(-(mHeaderHeight + mFooterHeight));
-                        if (isRepeat) {
-                            if (handler != null && runnable != null) {
-                                handler.removeCallbacks(runnable);
-                            }
-                        }
-                        isRepeat = true;
-                        handler.postDelayed(runnable, 2000);
-                    } else {
-                        setHeaderTopMargin(-mHeaderHeight);
-                    }
+                        doHandler(runnableLoad);
+                    } else stopAll();
                 }
                 break;
         }
         return super.onTouchEvent(event);
     }
 
+    /*measure子View*/
     private void measureView(View child) {
         ViewGroup.LayoutParams p = child.getLayoutParams();
-        if (p == null) {
-            p = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-        }
+        if (p == null) p = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         int childWidthSpec = ViewGroup.getChildMeasureSpec(0, 0 + 0, p.width);
         int lpHeight = p.height;
         int childHeightSpec;
-        if (lpHeight > 0) {
-            childHeightSpec = MeasureSpec.makeMeasureSpec(lpHeight, MeasureSpec.EXACTLY);
-        } else {
-            childHeightSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
-        }
+
+        if (lpHeight > 0) childHeightSpec = MeasureSpec.makeMeasureSpec(lpHeight, MeasureSpec.EXACTLY);
+        else childHeightSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+
         child.measure(childWidthSpec, childHeightSpec);
     }
 
+    /*设置header的topMargin*/
     private void setHeaderTopMargin(int topMargin) {
         LayoutParams params = (LayoutParams) headerView.getLayoutParams();
         params.topMargin = topMargin;
@@ -195,6 +200,7 @@ public class MyRefresh extends LinearLayout {
         invalidate();
     }
 
+    /*设置header的topMargin及回弹系数0.3f*/
     private int changeHeaderViewTopMargin(int deltaY) {
         LayoutParams params = (LayoutParams) headerView.getLayoutParams();
         float newTopMargin = params.topMargin + deltaY * 0.3f;
@@ -207,19 +213,15 @@ public class MyRefresh extends LinearLayout {
     private boolean isRefreshViewScroll(int deltaY) {
         if (listerView != null) {
             View child = listerView.getChildAt(0);
-            if (child == null) {
-                /*没有数据*/
-                return false;
-            }
+            /*没有数据*/
+            if (child == null) return false;
             /*item(ListView/GridView)滑动到最顶端*/
             if (deltaY > 0 && child.getTop() == 0) {
                 mPullState = IS_HEADER;
                 return true;
             } else if (deltaY < 0) {
                 View lastChild = listerView.getChildAt(listerView.getChildCount() - 1);
-                if (lastChild == null) {
-                    return false;
-                }
+                if (lastChild == null) return false;
                 /*item(ListView/GridView)滑动到最底部*/
                 if (lastChild.getBottom() <= getHeight()) {
                     mPullState = IS_FOOTER;
@@ -230,25 +232,81 @@ public class MyRefresh extends LinearLayout {
         return false;
     }
 
-    IListerRefresh iListerRefresh;
+    private Runnable runnableRefresh = new Runnable() {
+        public void run() {
+            if (iListerRefresh!=null)iListerRefresh.Refresh();
+            else setRefreshState(1);
+        }
+    };
+
+    private Runnable runnableLoad = new Runnable() {
+        public void run() {
+            if (iListerRefresh!=null)iListerRefresh.Load();
+            else setLoadState(1);
+        }
+    };
+
+    private void doHandler(Runnable runnable) {
+        /*ING时，重复下拉/上拉，移除之前的runnable*/
+        if (isRepeat) {
+            if (handler != null && runnable != null) {
+                handler.removeCallbacks(runnable);
+            }
+        }
+        isRepeat = true;
+        handler.postDelayed(runnable, 500);
+    }
+
+    private void stopAll() {
+        setHeaderTopMargin(-mHeaderHeight);
+        if (ivHeaderState.getVisibility()==VISIBLE)ivHeaderState.setVisibility(GONE);
+        if (ivFooterState.getVisibility()==VISIBLE)ivFooterState.setVisibility(GONE);
+        tvHeader.setText(REFRESH_1);
+        tvFooter.setText(LOAD_1);
+        mHeaderState = STOP;
+        mFooterState = STOP;
+        isRepeat = false;
+    }
+
+    /*刷新结束时状态*/
+    public void setRefreshState(int flag) {
+        if(flag==0)tvHeader.setText(REFRESH_FAILURE);
+        else if (flag==1){
+            ivHeaderState.setVisibility(VISIBLE);
+            tvHeader.setText(REFRESH_SUCCESS);
+        }
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                stopAll();
+            }
+        }, 500);
+    }
+
+    /*加载结束时状态*/
+    public void setLoadState(int flag) {
+        if (flag==0)tvFooter.setText(LOAD_FAILURE);
+        else if(flag==1) {
+            ivFooterState.setVisibility(VISIBLE);
+            tvFooter.setText(LOAD_SUCCESS);
+        }
+        else if (flag==2)tvFooter.setText(LOAD_NOTHING);
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                stopAll();
+            }
+        }, 500);
+    }
 
     public void setOnListerRefresh(IListerRefresh iListerRefresh) {
         this.iListerRefresh = iListerRefresh;
     }
 
     public interface IListerRefresh {
-        void running();
-    }
+        void Load();
 
-    Handler handler = new Handler();
-    private Runnable runnable = new Runnable() {
-        public void run() {
-            Log.i("khc----", "3333");
-            setHeaderTopMargin(-mHeaderHeight);
-            mHeaderState = STOP;
-            mFooterState = STOP;
-            isRepeat = false;
-        }
-    };
+        void Refresh();
+    }
 
 }
