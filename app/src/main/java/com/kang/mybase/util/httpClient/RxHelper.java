@@ -23,7 +23,6 @@ public class RxHelper {
                 return tObservable.flatMap(new Func1<BaseModel<T>, Observable<T>>() {
                     @Override
                     public Observable<T> call(BaseModel<T> result) {
-                        Log.i("result", result.toString());
                         if (result.success()) {
                             return createData(result.data);
                         } else {

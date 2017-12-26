@@ -38,11 +38,11 @@ public class SplashActivity extends Activity implements OnPermissionListener {
     private DialogInterface dialog;
     private String IS_FIRST = "is_first";
 
-
+    String[] permissions = {Manifest.permission.CAMERA, Manifest.permission.ACCESS_NETWORK_STATE};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //隐藏状态栏
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -79,7 +79,7 @@ public class SplashActivity extends Activity implements OnPermissionListener {
             //权限申请，当执行onRequestPermissionsResult，activity会走onResume，进入死循环，用flag标记
             //写在onResume方法里主要是考虑进入权限设置后却依然没有给予权限，返回界面继续弹框
             //方法内会系统版本，小于23的只需要在清单设置可
-            PermissionUtils.requestPermissions(SplashActivity.this, 10001, new String[]{Manifest.permission.CAMERA,Manifest.permission.ACCESS_NETWORK_STATE}, this);
+            PermissionUtils.requestPermissions(SplashActivity.this, 10001, permissions, this);
         }
     }
 
@@ -107,7 +107,7 @@ public class SplashActivity extends Activity implements OnPermissionListener {
 
     @Override
     public void onPermissionDenied(String[] deniedPermissions) {
-        if (hasAlwaysDeniedPermission(SplashActivity.this, Manifest.permission.CAMERA)) {
+        if (hasAlwaysDeniedPermission(SplashActivity.this, permissions)) {
             new MyDialog("设置", "是否前往设置权限", "取消", "确定", true,new IDialog() {
                 @Override
                 public void leftClick(DialogInterface dialog) {

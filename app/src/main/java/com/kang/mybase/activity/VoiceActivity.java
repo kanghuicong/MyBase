@@ -25,6 +25,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 import static com.kang.mybase.fun.FunVoiceFiles.getAllFiles;
+import static com.kang.utilssdk.ToastUtils.showShort;
 
 /**
  * Created by KangHuiCong on 2017/12/19.
@@ -43,10 +44,9 @@ public class VoiceActivity extends BaseActivity {
     @Override
     public void init() {
         getVoice();
-        getAllFiles(this);
     }
 
-    @OnClick({R.id.voice_start, R.id.voice_stop, R.id.voice_choose,R.id.voice_all})
+    @OnClick({R.id.voice_start, R.id.voice_stop, R.id.voice_choose, R.id.voice_all})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.voice_start:
@@ -65,10 +65,17 @@ public class VoiceActivity extends BaseActivity {
                 getVoice();
                 break;
             case R.id.voice_all:
-                list.clear();
-                list.addAll(FunVoiceFiles.getAllFiles(this));
-                voiceAdapter.changeCount(list.size());
-                voiceAdapter.notifyDataSetChanged();
+                if (getAllFiles(this) != null) {
+                    list.clear();
+                    list.addAll(getAllFiles(this));
+                    if (voiceAdapter == null) {
+                        voiceAdapter = new VoiceAdapter(this, list);
+                        voiceList.setAdapter(voiceAdapter);
+                    }else {
+                        voiceAdapter.changeCount(list.size());
+                        voiceAdapter.notifyDataSetChanged();
+                    }
+                }else showShort("无音频文件");
                 break;
         }
     }
@@ -78,8 +85,8 @@ public class VoiceActivity extends BaseActivity {
         FunVoiceFiles.setPath(Environment.getExternalStorageDirectory() + "/Kang");
         list.clear();
         list.addAll(FunVoiceFiles.getFiles());
-        if(!list.isEmpty()) {
-            if (voiceAdapter==null) {
+        if (!list.isEmpty()) {
+            if (voiceAdapter == null) {
                 voiceAdapter = new VoiceAdapter(this, list);
                 voiceList.setAdapter(voiceAdapter);
                 voiceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -98,10 +105,12 @@ public class VoiceActivity extends BaseActivity {
                         return true;
                     }
                 });
-            }else {
+            } else {
                 voiceAdapter.changeCount(list.size());
                 voiceAdapter.notifyDataSetChanged();
             }
+        }else {
+            showShort("无录音文件");
         }
     }
 
@@ -113,7 +122,7 @@ public class VoiceActivity extends BaseActivity {
 
 
     @Override
-    public void success(Object baseModelList,String type) {
+    public void success(Object baseModelList, String type) {
     }
 
     @Override

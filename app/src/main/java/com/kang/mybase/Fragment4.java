@@ -1,11 +1,15 @@
 package com.kang.mybase;
 
-import android.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.kang.mybase.base.BaseFragment;
-import com.kang.mybase.util.httpClient.BaseModel;
+import com.kang.mybase.custom.MyRefresh;
 
-import java.util.List;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 /**
  * Created by KangHuiCong on 2017/12/11.
@@ -13,17 +17,19 @@ import java.util.List;
  */
 
 public class Fragment4 extends BaseFragment {
+
     @Override
     public int setLayout() {
         return R.layout.fragment4;
     }
+
     @Override
     public void init() {
-        //do something...
+
     }
 
     @Override
-    public void success(Object baseModelList,String type) {
+    public void success(Object baseModelList, String type) {
 
     }
 
@@ -31,4 +37,5 @@ public class Fragment4 extends BaseFragment {
     public void failure(String error_code, String error_msg) {
 
     }
+
 }

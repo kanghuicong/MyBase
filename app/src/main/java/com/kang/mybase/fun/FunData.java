@@ -45,8 +45,7 @@ public class FunData<T> extends BaseData {
                     protected void _onNext(T t) {
                         //返回的是Json格式字符串
                         Log.i("khc", t.toString());
-
-//                        iHttp.success(t,type);
+                        iHttp.success(t,type);
                     }
                     @Override
                     protected void _onError(String error_code, String error_msg) {
@@ -55,7 +54,6 @@ public class FunData<T> extends BaseData {
                 });
         iSubDelete.deleteSub(baseSub);
     }
-
 
     public void getJsonData(T t, IJsonData iGetData) {
         Gson gson = new Gson();

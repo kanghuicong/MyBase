@@ -11,17 +11,16 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_toLeftOf="@+id/tv_header"
-        android:layout_toStartOf="@+id/tv_header"
+        android:layout_toLeftOf="@+id/tv_footer"
+        android:layout_toStartOf="@+id/tv_footer"
         android:background="@mipmap/choose_checked"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tv_footer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="上拉加载" />
+        android:layout_centerVertical="true" />
 
 </RelativeLayout>

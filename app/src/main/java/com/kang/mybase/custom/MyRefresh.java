@@ -14,6 +14,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.kang.mybase.R;
@@ -32,11 +33,14 @@ public class MyRefresh extends LinearLayout {
     int mFooterState = STOP;
     int mPullState;
     boolean isRepeat = false;
+    int pageCount = 10;
+    boolean isNoLoad = false;
 
     private final static int STOP = 0;
     private final static int ING = 1;
     private final static int IS_FOOTER = 2;
     private final static int IS_HEADER = 3;
+//    private final static int IS_NOTHING = 4;
 
     private final static String REFRESH_1 = "下拉刷新";
     private final static String REFRESH_2 = "松手立即刷新";
@@ -54,6 +58,7 @@ public class MyRefresh extends LinearLayout {
     Context context;
     View headerView;
     AdapterView<?> listerView;
+    ScrollView scrollView;
     View footerView;
 
     TextView tvHeader;
@@ -105,9 +110,11 @@ public class MyRefresh extends LinearLayout {
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, mFooterHeight);
         addView(footerView, params);
 
-        /*获取AbsListView，目前设计的布局限制为header,AbsListView,footer*/
+        /*获取AbsListView，目前设计的布局限制为header,AbsListView/ScrollView,footer*/
         if (getChildAt(1) instanceof AbsListView) {
             listerView = (AdapterView<?>) getChildAt(1);
+        }else if (getChildAt(1) instanceof ScrollView) {
+            scrollView = (ScrollView) getChildAt(1);
         }
     }
 
@@ -151,7 +158,7 @@ public class MyRefresh extends LinearLayout {
                     }
                 } else if (mPullState == IS_FOOTER && mHeaderState == STOP) {
                     int topMargin = changeHeaderViewTopMargin(deltaY);
-                    if (Math.abs(topMargin) >= (mHeaderHeight + mFooterHeight)) {
+                    if (!isNoLoad && (Math.abs(topMargin) >= (mHeaderHeight + mFooterHeight))) {
                         tvFooter.setText(LOAD_2);
                         mFooterState = ING;
                     }
@@ -159,7 +166,7 @@ public class MyRefresh extends LinearLayout {
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-                if (mPullState == IS_HEADER) {
+                if (mPullState == IS_HEADER ) {
                     if (mHeaderState == ING) {
                         tvHeader.setText(REFRESH_3);
                         setHeaderTopMargin(0);
@@ -171,6 +178,8 @@ public class MyRefresh extends LinearLayout {
                         setHeaderTopMargin(-(mHeaderHeight + mFooterHeight));
                         doHandler(runnableLoad);
                     } else stopAll();
+                } else if (isNoLoad) {
+                    setHeaderTopMargin(-mHeaderHeight + mFooterHeight);
                 }
                 break;
         }
@@ -214,16 +223,38 @@ public class MyRefresh extends LinearLayout {
         if (listerView != null) {
             View child = listerView.getChildAt(0);
             /*没有数据*/
-            if (child == null) return false;
             /*item(ListView/GridView)滑动到最顶端*/
             if (deltaY > 0 && child.getTop() == 0) {
+                tvHeader.setText(REFRESH_1);
                 mPullState = IS_HEADER;
                 return true;
             } else if (deltaY < 0) {
+                if (child == null && listerView.getChildCount()<pageCount) return false;
+
                 View lastChild = listerView.getChildAt(listerView.getChildCount() - 1);
                 if (lastChild == null) return false;
                 /*item(ListView/GridView)滑动到最底部*/
                 if (lastChild.getBottom() <= getHeight()) {
+                    tvFooter.setText(LOAD_1);
+                    mPullState = IS_FOOTER;
+                    return true;
+                }
+            }
+        } else if (scrollView != null) {
+            ViewGroup layoutChild = (ViewGroup) scrollView.getChildAt(0);
+            View child = layoutChild.getChildAt(0);
+
+            if (deltaY > 0 && getScrollY() == 0) {
+                tvHeader.setText(REFRESH_1);
+                mPullState = IS_HEADER;
+                return true;
+            }else if (deltaY < 0){
+                if (child == null) return false;
+
+                View lastChild = scrollView.getChildAt(scrollView.getChildCount() - 1);
+                if (lastChild == null) return false;
+                if (lastChild.getBottom() <= getHeight()) {
+                    if (!isNoLoad)tvFooter.setText(LOAD_1);
                     mPullState = IS_FOOTER;
                     return true;
                 }
@@ -262,7 +293,7 @@ public class MyRefresh extends LinearLayout {
         if (ivHeaderState.getVisibility()==VISIBLE)ivHeaderState.setVisibility(GONE);
         if (ivFooterState.getVisibility()==VISIBLE)ivFooterState.setVisibility(GONE);
         tvHeader.setText(REFRESH_1);
-        tvFooter.setText(LOAD_1);
+        if (!isNoLoad)tvFooter.setText(LOAD_1);
         mHeaderState = STOP;
         mFooterState = STOP;
         isRepeat = false;
@@ -289,8 +320,7 @@ public class MyRefresh extends LinearLayout {
         else if(flag==1) {
             ivFooterState.setVisibility(VISIBLE);
             tvFooter.setText(LOAD_SUCCESS);
-        }
-        else if (flag==2)tvFooter.setText(LOAD_NOTHING);
+        } else if (flag==2)tvFooter.setText(LOAD_NOTHING);
         postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -299,14 +329,26 @@ public class MyRefresh extends LinearLayout {
         }, 500);
     }
 
+    /*设置list每页个数*/
+    private MyRefresh setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+        return this;
+    }
+
+    /*设置scrollView是否需要上拉提示语*/
+    public MyRefresh setNoLoad(boolean isNoLoad) {
+        this.isNoLoad = isNoLoad;
+        return this;
+    }
+
     public void setOnListerRefresh(IListerRefresh iListerRefresh) {
         this.iListerRefresh = iListerRefresh;
     }
 
     public interface IListerRefresh {
-        void Load();
-
         void Refresh();
+
+        void Load();
     }
 
 }

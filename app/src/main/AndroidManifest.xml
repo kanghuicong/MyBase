@@ -46,12 +46,15 @@
         <!--图片选择-->
         <activity android:name=".util.photo.MyPhotoActivity" />
         <activity android:name=".activity.PhotoChooseActivity" />
-        <!--音频-->
-        <activity android:name=".activity.VoiceActivity" />
         <!--头像选择-->
         <activity android:name=".activity.HeaderChooseActivity" />
         <activity android:name="com.kang.headerpicker.ClipImageActivity" />
         <activity android:name="com.kang.headerpicker.PreviewActivity" />
+        <!--音频-->
+        <activity android:name=".activity.VoiceActivity" />
+        <!--视频-->
+        <activity android:name=".activity.VideoActivity" />
+
 
 
     </application>

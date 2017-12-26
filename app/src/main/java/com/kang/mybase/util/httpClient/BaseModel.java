@@ -16,7 +16,7 @@ public class BaseModel<T> implements Serializable {
     //data里为返回的数据，如：
     //    {
     //        "error_code": "0",
-    //         error_msg": "ok",
+    //        "error_msg": "ok",
     //        "data": [
     //        {
     //            "category_id": 1,

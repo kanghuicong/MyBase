@@ -1,7 +1,7 @@
 # MyBase
   本代码库主要注重于代码的封装，优雅的书写每一行代码（说白了就是偷懒，少写点代码hhh）
 # 1、类的封装
-  12.14---一系列baseAcivity，baseFragment,baseAdapter等等....主要是一个代码习惯问题，减少子类公共代码，让子类看起来不那么臃肿，也方便统一修改。
+  12.14---一系列baseAcivity，baseFragment，baseAdapter等等....主要是一个代码习惯问题，减少子类公共代码，让子类看起来不那么臃肿，也方便统一修改。
 # 2、自定义控件
   12.14---写了4个实用的自定义控件MyDialog，MyBottomDialog，MyItem，MySuperTitle，目前写的都是结合xml文件或Java生成控件的布局，暂时没有涉及到onDraw重绘。  
   12.20---删除MyItem，重新编写MySuperItem  
@@ -15,7 +15,7 @@
 # 4、收集的各种工具类
   12.14---本来是自己写了一些工具类，后来发现了这一堆实用的工具类，忘了是哪位大神的了......已打包成utils.jar
 # 5、注解
-  12.14---自定义注解(学习中)，InjectUtils-->setContentView方法,setOnClickListener方法
+  12.14---自定义注解(学习中)，InjectUtils-->setContentView方法，setOnClickListener方法
 # 6、广播
   12.14---只写一个实时监控网络变化的广播NetBroadcastReceiver，广播的调用思路基本一致
 # 7、权限申请
@@ -31,7 +31,8 @@
   12.19---音频的录制，停止，查看，播放（目前暂时没有处理上传后格式与IOS相适配的问题）
 # 12、刷新加载
   12.25---自定义刷新加载布局实现，已完成基本实现思路  
-  12.26---修改细节，添加各种情况的提示语，目前只针对AbsListView
+  12.26---修改细节，添加各种情况的提示语，目前只针对AbsListView  
+  12.26---解决各种特殊情况下的显示异常;添加ScrollView，此外在不需要加载的页面可以设置为上拉回弹
   
 # 持续更新中.....
 

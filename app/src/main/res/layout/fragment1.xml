@@ -34,4 +34,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="音频相关"/>
+
+    <Button
+        android:id="@+id/video_click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="视频相关"/>
 </LinearLayout>

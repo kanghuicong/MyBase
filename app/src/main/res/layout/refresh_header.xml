@@ -15,15 +15,13 @@
         android:layout_toLeftOf="@+id/tv_header"
         android:layout_toStartOf="@+id/tv_header"
         android:background="@mipmap/choose_checked"
-        android:visibility="gone
-"/>
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tv_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="下拉刷新" />
+        android:layout_centerVertical="true" />
 
 </RelativeLayout>

@@ -16,7 +16,7 @@ import java.util.List;
  * E-Mail is 515849594@qq.com
  */
 
-public final class FunVoiceFiles {
+public class FunVoiceFiles {
     public static String path;
     public static String fileName;
 
