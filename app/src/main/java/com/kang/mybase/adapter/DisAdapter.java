@@ -27,17 +27,4 @@ public class DisAdapter extends BaseAdapter {
         return null;
     }
 
-
-
-
-    static class ViewHolder{
-        @InjectView(R.id.tvTitle)
-        TextView tvTitle;
-        @InjectView(R.id.tvContent)
-        TextView tvContent;
-
-        ViewHolder(View view) {
-            ButterKnife.inject(this, view);
-        }
-    }
 }

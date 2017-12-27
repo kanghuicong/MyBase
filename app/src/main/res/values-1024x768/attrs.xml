@@ -6,6 +6,11 @@
         <attr name="isBack" format="boolean"></attr>
     </declare-styleable>
 
+    <declare-styleable name="MyLoading">
+        <attr name="width" format="dimension"></attr>
+        <attr name="height" format="dimension"></attr>
+    </declare-styleable>
+
     <declare-styleable name="MySuperItem">
         <!--left-left图片-->
         <attr name="left_limg" format="reference"></attr>

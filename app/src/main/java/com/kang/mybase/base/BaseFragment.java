@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
+import com.kang.mybase.custom.MyDialog;
 import com.kang.mybase.pro.IHttp;
 import com.kang.mybase.pro.ISubDelete;
 
@@ -25,6 +26,7 @@ public abstract class BaseFragment extends Fragment implements ISubDelete , IHtt
 
     protected Activity activity;
     private View view;
+    private MyDialog myDialog;
 
     public Subscription baseSub;
     protected Gson gson ;
@@ -54,4 +56,11 @@ public abstract class BaseFragment extends Fragment implements ISubDelete , IHtt
         this.baseSub = baseSub;
     }
 
+    protected void showLoading() {
+        if (myDialog == null) myDialog = new MyDialog();
+        myDialog.show(getActivity().getFragmentManager(), "dialog");
+    }
+    private void dismissLoading() {
+        if (myDialog!=null)myDialog.dismiss();
+    }
 }

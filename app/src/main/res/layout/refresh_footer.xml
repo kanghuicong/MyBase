@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="10dp">
 
     <ImageView
@@ -15,6 +16,19 @@
         android:layout_toStartOf="@+id/tv_footer"
         android:background="@mipmap/choose_checked"
         android:visibility="gone"/>
+
+    <com.kang.mybase.custom.MyLoading
+        android:id="@+id/iv_loading"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/tv_footer"
+        android:layout_toStartOf="@+id/tv_footer"
+        android:visibility="gone"
+        app:height="5dp"
+        app:width="2dp"/>
 
     <TextView
         android:id="@+id/tv_footer"

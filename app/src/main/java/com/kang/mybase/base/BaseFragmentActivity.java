@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
+import com.kang.mybase.custom.MyDialog;
+import com.kang.mybase.custom.MyLoading;
 import com.kang.mybase.pro.INetChange;
 import com.kang.utilssdk.NetworkUtils;
 
@@ -26,6 +28,7 @@ import static com.kang.utilssdk.ToastUtils.showShort;
 public abstract class BaseFragmentActivity extends FragmentActivity implements INetChange{
 
     public static INetChange iNetChange;
+    private MyDialog myDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,5 +77,12 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
         return super.dispatchTouchEvent(ev);
     }
 
+    protected void showLoading() {
+        if (myDialog == null) myDialog = new MyDialog();
+        myDialog.show(getFragmentManager(), "dialog");
+    }
+    protected void dismissLoading() {
+        if (myDialog!=null)myDialog.dismiss();
+    }
 }
 

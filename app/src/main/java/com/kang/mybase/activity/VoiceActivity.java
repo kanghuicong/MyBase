@@ -49,22 +49,27 @@ public class VoiceActivity extends BaseActivity {
     @OnClick({R.id.voice_start, R.id.voice_stop, R.id.voice_choose, R.id.voice_all})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.voice_start:
+            case R.id.voice_start://开始录音
+                //开始计时
                 chronometer.setBase(SystemClock.elapsedRealtime());
                 chronometer.start();
                 Intent intentStart = new Intent(this, VoiceService.class);
+                //设置音频名字
                 FunVoiceFiles.setFileName("MyVoice_" + System.currentTimeMillis() + ".mp4");
+                //开启录音服务
                 this.startService(intentStart);
                 break;
-            case R.id.voice_stop:
+            case R.id.voice_stop://停止录音
+                //停止计时
                 chronometer.stop();
                 Intent intentStop = new Intent(this, VoiceService.class);
+                //停止录音服务
                 this.stopService(intentStop);
                 break;
-            case R.id.voice_choose:
+            case R.id.voice_choose://选择录音文件
                 getVoice();
                 break;
-            case R.id.voice_all:
+            case R.id.voice_all://查看音频文件
                 if (getAllFiles(this) != null) {
                     list.clear();
                     list.addAll(getAllFiles(this));
@@ -117,7 +122,7 @@ public class VoiceActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        FunVoicePlay.stopPlaying();
+        FunVoicePlay.stopPlaying();//关闭MediaPlayer
     }
 
 

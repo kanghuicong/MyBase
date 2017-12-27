@@ -108,7 +108,7 @@ public class SplashActivity extends Activity implements OnPermissionListener {
     @Override
     public void onPermissionDenied(String[] deniedPermissions) {
         if (hasAlwaysDeniedPermission(SplashActivity.this, permissions)) {
-            new MyDialog("设置", "是否前往设置权限", "取消", "确定", true,new IDialog() {
+            new MyDialog("设置", "是否前往设置权限", "取消", "确定", new IDialog() {
                 @Override
                 public void leftClick(DialogInterface dialog) {
                     dialog.dismiss();
@@ -122,7 +122,7 @@ public class SplashActivity extends Activity implements OnPermissionListener {
                     //前往设置
                     getAppDetailsSettings();
                 }
-            }).show(getFragmentManager(), "settingDialog");
+            }).isFinish(true).show(getFragmentManager(), "settingDialog");
         } else {
             showShort("授权失败");
             finish();
