@@ -47,12 +47,12 @@ public class BaseModel<T> implements Serializable {
         return error_code.equals("0");
     }
 
-//    @Override
-//    public String toString() {
-//        return "BaseError{" +
-//                "data=" + data +
-//                ", error_code='" + error_code + '\'' +
-//                ", error_msg='" + error_msg + '\'' +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "BaseError{" +
+                "data=" + data +
+                ", error_code='" + error_code + '\'' +
+                ", error_msg='" + error_msg + '\'' +
+                '}';
+    }
 }

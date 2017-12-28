@@ -77,12 +77,15 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
         return super.dispatchTouchEvent(ev);
     }
 
-    protected void showLoading() {
+    public void showLoading() {
         if (myDialog == null) myDialog = new MyDialog();
         myDialog.show(getFragmentManager(), "dialog");
     }
-    protected void dismissLoading() {
-        if (myDialog!=null)myDialog.dismiss();
+    public void dismissLoading() {
+        if (myDialog!=null){
+            myDialog.dismiss();
+            myDialog.stopAnimator();
+        }
     }
 }
 

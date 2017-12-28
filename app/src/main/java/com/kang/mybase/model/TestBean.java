@@ -1,13 +1,11 @@
 package com.kang.mybase.model;
 
-import java.util.List;
-
 /**
  * Created by KangHuiCong on 2017/12/13.
  * E-Mail is 515849594@qq.com
  */
 
-public class TestBean extends NoDataResponseBean{
+public class TestBean extends BaseBean {
     int category_id;
     String name;
     String description;

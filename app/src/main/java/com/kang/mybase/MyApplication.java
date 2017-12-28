@@ -1,6 +1,8 @@
 package com.kang.mybase;
 
 import com.kang.mybase.fun.InitializeService;
+import com.kang.mybase.pro.Api;
+import com.kang.mybase.util.httpClient.RetrofitClient;
 import com.kang.utilssdk.constant.BaseApplication;
 
 
@@ -17,5 +19,6 @@ public class MyApplication extends BaseApplication {
     public void _onCreate() {
         InitializeService.start(this);//第三方初始化操作
     }
+
 
 }

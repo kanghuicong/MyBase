@@ -28,6 +28,7 @@ public class MyDialog extends DialogFragment {
     int type ;
     boolean isFinish = false;
     boolean isLoading = false;
+    MyLoading myLoading;
 
     public MyDialog() {
         this.isLoading = true;
@@ -78,7 +79,7 @@ public class MyDialog extends DialogFragment {
             view.setPadding(10, 30, 10, 30);
             view.setGravity(Gravity.CENTER);
 
-            final MyLoading myLoading = new MyLoading(getActivity());
+            myLoading = new MyLoading(getActivity());
             myLoading.setLayoutParams(new LinearLayout.LayoutParams(60, 60));
             myLoading.startAnimator();
             view.addView(myLoading);
@@ -163,5 +164,9 @@ public class MyDialog extends DialogFragment {
             }
         }
         return builder.create();
+    }
+
+    public void stopAnimator() {
+        if (myLoading!=null)myLoading.stopAnimator();
     }
 }

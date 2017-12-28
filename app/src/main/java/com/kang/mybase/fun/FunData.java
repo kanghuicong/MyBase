@@ -1,5 +1,6 @@
 package com.kang.mybase.fun;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -7,11 +8,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.kang.mybase.base.BaseData;
-import com.kang.mybase.model.TestBean;
+import com.kang.mybase.base.BaseFragment;
+import com.kang.mybase.base.BaseFragmentActivity;
 import com.kang.mybase.pro.IJsonData;
 import com.kang.mybase.pro.IHttp;
 import com.kang.mybase.pro.ISubDelete;
-import com.kang.mybase.util.httpClient.BaseModel;
 import com.kang.mybase.util.httpClient.RxHelper;
 import com.kang.mybase.util.httpClient.RxSubscribe;
 
@@ -19,7 +20,10 @@ import com.kang.mybase.util.httpClient.RxSubscribe;
 import java.util.Iterator;
 import java.util.Map;
 
+import rx.Observable;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by KangHuiCong on 2017/12/13.
@@ -30,25 +34,40 @@ public class FunData<T> extends BaseData {
 
     Subscription baseSub;
     IHttp iHttp;
+    BaseFragmentActivity activity;
+    BaseFragment context;
 
-    public FunData(ISubDelete iSubDelete, IHttp iHttp) {
+
+    public FunData(BaseFragmentActivity activity, ISubDelete iSubDelete, IHttp iHttp) {
         super(iSubDelete);
+        this.activity = activity;
         this.iHttp = iHttp;
     }
 
-    public void getData(Map<String, Object> map, final String type) {
+    public FunData(BaseFragment context, ISubDelete iSubDelete, IHttp iHttp) {
+        super(iSubDelete);
+        this.context = context;
+        this.iHttp = iHttp;
+    }
 
-        baseSub = getApi().test(map)
-                .compose(RxHelper.<T>handleResult())
+    public void getData(Observable observable, final String type) {
+        if (activity!=null)activity.showLoading();
+        if (context!=null) context.showLoading();
+
+        baseSub =observable.compose(RxHelper.<T>handleResult())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new RxSubscribe<T>() {
                     @Override
                     protected void _onNext(T t) {
-                        //返回的是Json格式字符串
-                        Log.i("khc", t.toString());
+                        if (activity!=null)activity.dismissLoading();
+                        if (context!=null)context.dismissLoading();
                         iHttp.success(t,type);
                     }
                     @Override
                     protected void _onError(String error_code, String error_msg) {
+                        if (activity!=null)activity.dismissLoading();
+                        if (context!=null)context.dismissLoading();
                         iHttp.failure(error_code, error_msg);
                     }
                 });

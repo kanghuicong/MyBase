@@ -56,11 +56,15 @@ public abstract class BaseFragment extends Fragment implements ISubDelete , IHtt
         this.baseSub = baseSub;
     }
 
-    protected void showLoading() {
+    public void showLoading() {
         if (myDialog == null) myDialog = new MyDialog();
         myDialog.show(getActivity().getFragmentManager(), "dialog");
     }
-    private void dismissLoading() {
-        if (myDialog!=null)myDialog.dismiss();
+
+    public void dismissLoading() {
+        if (myDialog!=null){
+            myDialog.dismiss();
+            myDialog.stopAnimator();
+        }
     }
 }

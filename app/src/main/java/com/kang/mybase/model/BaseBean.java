@@ -5,11 +5,11 @@ package com.kang.mybase.model;
  * E-Mail is 515849594@qq.com
  */
 
-public class NoDataResponseBean {
-    private String error_code;
-    private String error_msg;
+public class BaseBean {
+    public String error_code;
+    public String error_msg;
 
-    public NoDataResponseBean() {}
+    public BaseBean() {}
 
     public String getError_code() {
         return error_code;
