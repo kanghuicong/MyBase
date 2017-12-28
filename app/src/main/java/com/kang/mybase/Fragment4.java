@@ -24,9 +24,6 @@ import static com.kang.utilssdk.AppUtils.getAppDetailsSettings;
 
 public class Fragment4 extends BaseFragment {
 
-    @InjectView(R.id.loading)
-    MyLoading loading;
-
     @Override
     public int setLayout() {
         return R.layout.fragment4;
@@ -45,18 +42,6 @@ public class Fragment4 extends BaseFragment {
     @Override
     public void failure(String error_code, String error_msg) {
 
-    }
-
-    @OnClick({R.id.start, R.id.stop})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.start:
-                loading.startAnimator();
-                break;
-            case R.id.stop:
-                loading.stopAnimator();
-                break;
-        }
     }
 
 }

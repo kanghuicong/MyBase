@@ -7,7 +7,6 @@ import android.support.annotation.RequiresApi;
 import android.util.ArrayMap;
 import android.view.View;
 
-import com.google.gson.Gson;
 import com.kang.mybase.activity.HeaderChooseActivity;
 import com.kang.mybase.activity.PhotoChooseActivity;
 import com.kang.mybase.activity.VideoActivity;
@@ -18,14 +17,11 @@ import com.kang.mybase.fun.FunData;
 import com.kang.mybase.model.TestBean;
 import com.kang.mybase.model.TestBean2;
 import com.kang.mybase.pro.IDialog;
-import com.kang.mybase.pro.IJsonData;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import butterknife.OnClick;
-import rx.Observable;
 
 import static com.kang.mybase.util.httpClient.HttpRequest.getApi;
 import static com.kang.utilssdk.AppUtils.getAppDetailsSettings;

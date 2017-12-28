@@ -11,21 +11,4 @@
         app:isBack="false"
         app:title="@string/rb4" />
 
-    <com.kang.mybase.custom.MyLoading
-        android:id="@+id/loading"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
-
-    <Button
-        android:id="@+id/start"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="start"/>
-
-    <Button
-        android:id="@+id/stop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="stop"/>
-
 </LinearLayout>

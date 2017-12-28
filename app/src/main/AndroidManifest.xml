@@ -24,6 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="com.kang.mybase.SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,7 +55,6 @@
         <activity android:name=".activity.VoiceActivity" />
         <!--视频-->
         <activity android:name=".activity.VideoActivity" />
-
 
 
     </application>

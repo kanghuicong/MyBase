@@ -5,7 +5,7 @@ package com.kang.mybase.model;
  * E-Mail is 515849594@qq.com
  */
 
-public class TestBean extends BaseBean {
+public class TestBean {
     int category_id;
     String name;
     String description;
