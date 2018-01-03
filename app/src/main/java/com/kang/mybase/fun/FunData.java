@@ -30,13 +30,11 @@ import rx.schedulers.Schedulers;
  * E-Mail is 515849594@qq.com
  */
 
-public class FunData<T> extends BaseData {
+public class FunData extends BaseData {
 
     Subscription baseSub;
     IHttp iHttp;
     BaseFragmentActivity activity;
-    BaseFragment context;
-
 
     public FunData(BaseFragmentActivity activity, ISubDelete iSubDelete, IHttp iHttp) {
         super(iSubDelete);
@@ -44,48 +42,39 @@ public class FunData<T> extends BaseData {
         this.iHttp = iHttp;
     }
 
-    public FunData(BaseFragment context, ISubDelete iSubDelete, IHttp iHttp) {
-        super(iSubDelete);
-        this.context = context;
-        this.iHttp = iHttp;
-    }
-
-    public void getData(Observable observable, final String type) {
+    public <T> void getData(Observable observable, final String type) {
         if (activity!=null)activity.showLoading();
-        if (context!=null) context.showLoading();
 
-        baseSub =observable.compose(RxHelper.<T>handleResult())
+        baseSub =observable.compose(RxHelper.handleResult())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new RxSubscribe<T>() {
                     @Override
                     protected void _onNext(T t) {
                         if (activity!=null)activity.dismissLoading();
-                        if (context!=null)context.dismissLoading();
                         iHttp.success(t,type);
                     }
                     @Override
                     protected void _onError(String error_code, String error_msg) {
                         if (activity!=null)activity.dismissLoading();
-                        if (context!=null)context.dismissLoading();
                         iHttp.failure(error_code, error_msg);
                     }
                 });
         iSubDelete.deleteSub(baseSub);
     }
 
-    public void getJsonData(T t, IJsonData iGetData) {
-        Gson gson = new Gson();
-        String strBase = gson.toJson(t);
-        JsonParser jsonParser = new JsonParser();
-        JsonElement jsonElement = jsonParser.parse(strBase); // 将json字符串转换成JsonElement
-        JsonArray jsonArray = jsonElement.getAsJsonArray(); // 将JsonElement转换成JsonArray
-        Iterator it = jsonArray.iterator(); // Iterator处理
-        while (it.hasNext()) { // 循环
-            jsonElement = (JsonElement) it.next(); // 提取JsonElement
-            String json = jsonElement.toString(); // JsonElement转换成String
-            iGetData.getJsonData(gson, json);
-        }
-    }
+//    public <T> void getJsonData(T t, IJsonData iGetData) {
+//        Gson gson = new Gson();
+//        String strBase = gson.toJson(t);
+//        JsonParser jsonParser = new JsonParser();
+//        JsonElement jsonElement = jsonParser.parse(strBase); // 将json字符串转换成JsonElement
+//        JsonArray jsonArray = jsonElement.getAsJsonArray(); // 将JsonElement转换成JsonArray
+//        Iterator it = jsonArray.iterator(); // Iterator处理
+//        while (it.hasNext()) { // 循环
+//            jsonElement = (JsonElement) it.next(); // 提取JsonElement
+//            String json = jsonElement.toString(); // JsonElement转换成String
+//            iGetData.getJsonData(gson, json);
+//        }
+//    }
 
 }

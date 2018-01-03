@@ -84,7 +84,6 @@ public class MyLoading extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 control = (int) animation.getAnimatedValue();
-                Log.i("control", control + "");
                 invalidate();
             }
         });

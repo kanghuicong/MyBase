@@ -41,7 +41,6 @@ public class RxHelper {
                 return tObservable.flatMap(new Func1<T, Observable<T>>() {
                     @Override
                     public Observable<T> call(T result) {
-                        Log.i("result--", ((BaseBean) result).getError_code());
                         if (((BaseBean) result).getError_code().equals("0")) {
                             return createData(result);
                         } else {

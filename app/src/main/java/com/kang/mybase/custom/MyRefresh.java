@@ -41,7 +41,7 @@ public class MyRefresh extends LinearLayout {
     private final static int ING = 1;
     private final static int IS_FOOTER = 2;
     private final static int IS_HEADER = 3;
-//    private final static int IS_NOTHING = 4;
+    private final static int IS_NOTHING = 4;
 
     private final static String REFRESH_1 = "下拉刷新";
     private final static String REFRESH_2 = "松手立即刷新";
@@ -144,6 +144,7 @@ public class MyRefresh extends LinearLayout {
         /*获取AbsListView，目前设计的布局限制为header,AbsListView/ScrollView,footer*/
         if (getChildAt(1) instanceof AbsListView) {
             listerView = (AdapterView<?>) getChildAt(1);
+
         } else if (getChildAt(1) instanceof ScrollView) {
             scrollView = (ScrollView) getChildAt(1);
         }
@@ -159,12 +160,12 @@ public class MyRefresh extends LinearLayout {
             case MotionEvent.ACTION_MOVE:
                 /*header-->大于0,footer-->小于0*/
                 int deltaY = y - startY;
-                if (deltaY > 0 && mFooterState == ING)
+                if (deltaY > 0 && mFooterState == ING) {
                     setHeaderTopMargin(0);
-
-                if (deltaY < 0 && mHeaderState == ING)
+                }
+                if (deltaY < 0 && mHeaderState == ING) {
                     setHeaderTopMargin(-(mHeaderHeight + mFooterHeight));
-
+                }
                 if (isRefreshViewScroll(deltaY)) return true;
                 break;
             case MotionEvent.ACTION_UP:
@@ -278,7 +279,7 @@ public class MyRefresh extends LinearLayout {
                 View lastChild = listerView.getChildAt(listerView.getChildCount() - 1);
                 if (lastChild == null) return false;
                 /*item(ListView/GridView)滑动到最底部*/
-                if (lastChild.getBottom() <= getHeight()) {
+                if ((lastChild.getBottom() <= getHeight()) && (listerView.getLastVisiblePosition() == (listerView.getAdapter().getCount() - 1))) {
                     tvFooter.setText(LOAD_1);
                     mPullState = IS_FOOTER;
                     return true;

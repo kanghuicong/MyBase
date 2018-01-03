@@ -23,8 +23,11 @@ public class DisAdapter extends BaseAdapter {
 
     @Override
     public View setView(int position, View convertView, ViewGroup viewGroup) {
+        convertView = View.inflate(context, R.layout.item_voice, null);
 
-        return null;
+        TextView tv = (TextView) convertView.findViewById(R.id.name);
+        tv.setText(((List<String>)list).get(position));
+        return convertView;
     }
 
 }

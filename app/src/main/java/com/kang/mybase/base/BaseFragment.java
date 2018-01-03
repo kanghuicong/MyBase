@@ -26,8 +26,6 @@ public abstract class BaseFragment extends Fragment implements ISubDelete , IHtt
 
     protected Activity activity;
     private View view;
-    private MyDialog myDialog;
-
     public Subscription baseSub;
     protected Gson gson ;
     protected abstract int setLayout();
@@ -56,15 +54,4 @@ public abstract class BaseFragment extends Fragment implements ISubDelete , IHtt
         this.baseSub = baseSub;
     }
 
-    public void showLoading() {
-        if (myDialog == null) myDialog = new MyDialog();
-        myDialog.show(getActivity().getFragmentManager(), "dialog");
-    }
-
-    public void dismissLoading() {
-        if (myDialog!=null){
-            myDialog.dismiss();
-            myDialog.stopAnimator();
-        }
-    }
 }

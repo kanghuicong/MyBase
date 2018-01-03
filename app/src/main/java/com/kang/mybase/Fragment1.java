@@ -42,7 +42,7 @@ public class Fragment1 extends BaseFragment  {
 
     @Override
     public void init() {
-        funData = new FunData<List<TestBean>>(this,this, this);
+        funData = new FunData((MainActivity)activity,this, this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -76,7 +76,7 @@ public class Fragment1 extends BaseFragment  {
                 }).show(activity.getFragmentManager(), "settingDialog");
                 break;
             case R.id.loading_click:
-                showLoading();
+                ((MainActivity)activity).showLoading();
                 break;
         }
     }
@@ -85,7 +85,6 @@ public class Fragment1 extends BaseFragment  {
     public void success(Object t,String type) {
         TestBean2 testBean2 = (TestBean2)t;
         showShort("success:" + testBean2.getData().get(0).getName());
-
     }
 
     @Override

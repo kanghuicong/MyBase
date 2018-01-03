@@ -5,7 +5,7 @@ package com.kang.mybase.model;
  * E-Mail is 515849594@qq.com
  */
 
-public class BaseBean {
+public class BaseBean<T> {
     public String error_code;
     public String error_msg;
 
