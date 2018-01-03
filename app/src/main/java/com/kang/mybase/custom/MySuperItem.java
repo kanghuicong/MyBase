@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.SwitchCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +18,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.kang.mybase.R;
-import com.kang.mybase.fun.CircleTransform;
 
 import static com.kang.utilssdk.SizeUtils.dp2px;
-import static com.kang.utilssdk.SizeUtils.px2dp;
 
 /**
  * Created by KangHuiCong on 2017/12/19.

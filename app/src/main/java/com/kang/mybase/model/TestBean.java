@@ -1,5 +1,8 @@
 package com.kang.mybase.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by KangHuiCong on 2017/12/13.
  * E-Mail is 515849594@qq.com
