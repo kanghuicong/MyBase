@@ -1,12 +1,7 @@
 package com.kang.mybase.fun;
 
-import android.content.Context;
-
-import com.kang.mybase.base.BaseFragmentActivity;
 import com.kang.mybase.custom.MyRefresh;
-import com.kang.mybase.model.TestBean;
-
-import java.util.List;
+import com.kang.mybase.pro.IRefresh;
 
 import rx.Observable;
 
@@ -15,16 +10,17 @@ import rx.Observable;
  * E-Mail is 515849594@qq.com
  */
 
-public class RefreshUtil implements MyRefresh.IListerRefresh {
+public class RefreshUtil implements MyRefresh.IListerRefresh{
     MyRefresh myRefresh;
     Observable observable;
     RefreshData refreshData;
+    IRefresh iRefresh;
 
-    public RefreshUtil(RefreshData refreshData, Observable observable,MyRefresh myRefresh) {
+    public RefreshUtil(RefreshData refreshData, Observable observable,MyRefresh myRefresh,IRefresh iRefresh) {
         this.refreshData = refreshData;
         this.observable = observable;
         this.myRefresh = myRefresh;
-
+        this.iRefresh = iRefresh;
         init();
     }
 
@@ -34,11 +30,12 @@ public class RefreshUtil implements MyRefresh.IListerRefresh {
 
     @Override
     public void Refresh() {
-        refreshData.getRefreshData(observable);
+        refreshData.getRefreshData(observable,iRefresh);
     }
 
     @Override
     public void Load() {
-        refreshData.getLoadData(observable);
+        refreshData.getLoadData(iRefresh.loadObservable(),iRefresh);
     }
+
 }

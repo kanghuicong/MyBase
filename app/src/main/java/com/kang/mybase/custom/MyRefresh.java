@@ -141,10 +141,9 @@ public class MyRefresh extends LinearLayout {
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, mFooterHeight);
         addView(footerView, params);
 
-        /*获取AbsListView，目前设计的布局限制为header,AbsListView/ScrollView,footer*/
+        /*获取AbsListView/ScrollView，目前设计的布局限制为header,AbsListView/ScrollView,footer*/
         if (getChildAt(1) instanceof AbsListView) {
             listerView = (AdapterView<?>) getChildAt(1);
-
         } else if (getChildAt(1) instanceof ScrollView) {
             scrollView = (ScrollView) getChildAt(1);
         }

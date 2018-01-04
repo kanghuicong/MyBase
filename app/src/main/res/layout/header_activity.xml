@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         app:title="@string/headerActivity"/>
 
-    <com.kang.headerpicker.CircleImageView
+    <ImageView
         android:id="@+id/iv_header"
         android:layout_width="50dp"
         android:layout_height="50dp"

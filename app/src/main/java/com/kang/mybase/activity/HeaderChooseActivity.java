@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.kang.headerpicker.CircleImageView;
-import com.kang.headerpicker.PicUtils;
-import com.kang.headerpicker.SDPathUtils;
+
 import com.kang.mybase.R;
 import com.kang.mybase.base.BaseActivity;
 import com.kang.mybase.base.BaseHeaderActivity;
+import com.kang.mybase.custom.CircleTransform;
 import com.kang.mybase.custom.MyBottomDialog;
 import com.kang.mybase.pro.IDialogBottom;
 import com.kang.mybase.util.inject.InjectActivityView;
@@ -36,7 +36,7 @@ public class HeaderChooseActivity extends BaseHeaderActivity implements IDialogB
     List<String> list = new ArrayList<>();
 
     @InjectView(R.id.iv_header)
-    CircleImageView ivHeader;
+    ImageView ivHeader;
 
     @Override
     public void init() {
@@ -65,7 +65,7 @@ public class HeaderChooseActivity extends BaseHeaderActivity implements IDialogB
 
     @Override
     public void getUrl(String url) {
-        Glide.with(this).load(url).into(ivHeader);
+        Glide.with(this).load(url).transform(new CircleTransform(this)).into(ivHeader);
     }
 
     @Override
