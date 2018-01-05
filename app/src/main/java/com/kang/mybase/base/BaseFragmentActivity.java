@@ -80,6 +80,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
         if (myDialog == null) myDialog = new MyDialog();
         myDialog.show(getFragmentManager(), "dialog");
     }
+
     public void dismissLoading() {
         if (myDialog!=null){
             myDialog.dismiss();

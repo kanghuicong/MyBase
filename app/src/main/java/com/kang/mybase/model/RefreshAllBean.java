@@ -1,7 +1,5 @@
 package com.kang.mybase.model;
 
-import com.kang.mybase.base.BaseBean;
-
 import java.util.List;
 
 /**

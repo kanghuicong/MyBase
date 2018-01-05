@@ -1,9 +1,7 @@
 package com.kang.mybase.activity;
 
-import android.util.Log;
-
 import com.kang.mybase.R;
-import com.kang.mybase.util.photo.BasePhotoActivity;
+import com.kang.mybase.base.BasePhotoActivity;
 import com.kang.mybase.util.inject.InjectActivityView;
 
 /**

@@ -3,7 +3,7 @@ package com.kang.mybase.fun;
 import android.widget.ListView;
 
 import com.kang.mybase.base.BaseMyAdapter;
-import com.kang.mybase.base.BaseItem;
+import com.kang.mybase.model.BaseItem;
 import com.kang.mybase.custom.view.MyRefresh;
 import com.kang.mybase.pro.IRefresh;
 import com.kang.mybase.pro.ISubDelete;
@@ -57,11 +57,9 @@ public class RefreshUtil implements MyRefresh.IListerRefresh{
     public void refreshSuccess(BaseItem mItem,List list) {
         if (myAdapter == null) {
             myAdapter = new BaseMyAdapter(mItem);
-            myAdapter.reRefreshData(list);
             listView.setAdapter(myAdapter);
-        } else {
-            myAdapter.reRefreshData(list);
         }
+        myAdapter.reRefreshData(list);
     }
 
     //加载数据成功，更新adapter

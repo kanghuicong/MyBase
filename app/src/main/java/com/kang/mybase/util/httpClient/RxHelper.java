@@ -1,7 +1,7 @@
 package com.kang.mybase.util.httpClient;
 
 
-import com.kang.mybase.base.BaseBean;
+import com.kang.mybase.model.BaseBean;
 
 import rx.Observable;
 import rx.Subscriber;

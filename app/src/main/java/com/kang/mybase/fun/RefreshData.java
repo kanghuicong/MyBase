@@ -2,7 +2,7 @@ package com.kang.mybase.fun;
 
 import com.kang.mybase.base.BaseData;
 import com.kang.mybase.custom.view.MyRefresh;
-import com.kang.mybase.base.BaseBean;
+import com.kang.mybase.model.BaseBean;
 import com.kang.mybase.pro.IRefresh;
 import com.kang.mybase.pro.ISubDelete;
 import com.kang.mybase.util.httpClient.RxHelper;

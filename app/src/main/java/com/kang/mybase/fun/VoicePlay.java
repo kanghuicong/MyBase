@@ -1,8 +1,12 @@
 package com.kang.mybase.fun;
 
+import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.WindowManager;
+
+import com.kang.mybase.service.VoiceService;
 
 import java.io.IOException;
 
@@ -50,5 +54,21 @@ public class VoicePlay {
             mMediaPlayer = null;
         }
     }
+
+    public static void startVoiceService(Context context) {
+        Intent intentStart = new Intent(context, VoiceService.class);
+        //设置音频名字
+        VoiceFiles.setFileName("MyVoice_" + System.currentTimeMillis() + ".mp4");
+        //开启录音服务
+        context.startService(intentStart);
+    }
+
+
+    public static void stopVoiceService(Context context) {
+        Intent intentStop = new Intent(context, VoiceService.class);
+        //停止录音服务
+        context.stopService(intentStop);
+    }
+
 
 }

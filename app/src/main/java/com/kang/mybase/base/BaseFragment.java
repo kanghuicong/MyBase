@@ -25,7 +25,6 @@ public abstract class BaseFragment extends Fragment implements ISubDelete , IHtt
     protected Activity activity;
     private View view;
     public Subscription baseSub;
-    protected Gson gson ;
     protected abstract int setLayout();
     protected abstract void init();
 
@@ -33,7 +32,6 @@ public abstract class BaseFragment extends Fragment implements ISubDelete , IHtt
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         activity = getActivity();
-        gson = new Gson();
         if (view == null) {
             view = View.inflate(activity, setLayout(), null);
             ButterKnife.inject(this, view);

@@ -50,21 +50,13 @@ public class VoiceActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.voice_start://开始录音
-                //开始计时
                 chronometer.setBase(SystemClock.elapsedRealtime());
-                chronometer.start();
-                Intent intentStart = new Intent(this, VoiceService.class);
-                //设置音频名字
-                VoiceFiles.setFileName("MyVoice_" + System.currentTimeMillis() + ".mp4");
-                //开启录音服务
-                this.startService(intentStart);
+                chronometer.start();//开始计时
+                VoicePlay.startVoiceService(this);
                 break;
             case R.id.voice_stop://停止录音
-                //停止计时
-                chronometer.stop();
-                Intent intentStop = new Intent(this, VoiceService.class);
-                //停止录音服务
-                this.stopService(intentStop);
+                chronometer.stop();//停止计时
+                VoicePlay.stopVoiceService(this);
                 break;
             case R.id.voice_choose://选择录音文件
                 getVoice();
@@ -73,7 +65,6 @@ public class VoiceActivity extends BaseActivity {
                 if (getAllFiles(this) != null) {
                     list.clear();
                     list.addAll(getAllFiles(this));
-
 
                     if (voiceAdapter == null) {
                         voiceAdapter = new BaseMyAdapter(new VoiceAdapter(this));

@@ -1,0 +1,8 @@
+
+1、将.apk后缀改成.zip，解压可以看到classes.dex文件
+2、将classes.dex文件放到dex2jar-2.0文件夹下面
+3、打开cmd，先进入到dex2jar-2.0文件夹内
+4、输入到d2j-dex2jar.bat classes.dex   
+  (注意：mac是用d2j-dex2jar.sh)
+5、完成上述步骤后，将会在dex2jar-2.0文件夹内生成classes-dex2jar.jar
+6、进入jd-gui-1.4.0，打开classes-dex2jar.jar即可

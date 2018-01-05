@@ -13,7 +13,6 @@ import static com.kang.utilssdk.Utils.getApp;
 public class RetrofitClient {
     RetrofitClient() {}
 
-    //普通
     public static Retrofit getRetrofit() {
         Retrofit retrofit = new Retrofit.Builder()
                 //设置OKHttpClient

@@ -23,7 +23,7 @@
         android:name=".MyApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.kang.mybase.SplashActivity">
+        <activity android:name="com.kang.mybase.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -41,9 +41,9 @@
         <service android:name=".service.VoiceService" />
         <service android:name=".custom.other.InitializeService"/>
 
-        <activity android:name="com.kang.mybase.MainActivity" />
+        <activity android:name="com.kang.mybase.activity.MainActivity" />
         <!--图片选择-->
-        <activity android:name=".util.photo.MyPhotoActivity" />
+        <activity android:name=".activity.MyPhotoActivity" />
         <activity android:name=".activity.PhotoChooseActivity" />
         <!--头像选择-->
         <activity android:name=".activity.HeaderChooseActivity" />

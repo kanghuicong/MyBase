@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.kang.mybase.R;
-import com.kang.mybase.base.BaseItem;
+import com.kang.mybase.model.BaseItem;
 import com.kang.mybase.model.FileBean;
 
 import butterknife.InjectView;
