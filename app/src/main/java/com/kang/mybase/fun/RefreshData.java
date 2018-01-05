@@ -1,8 +1,8 @@
 package com.kang.mybase.fun;
 
 import com.kang.mybase.base.BaseData;
-import com.kang.mybase.custom.MyRefresh;
-import com.kang.mybase.model.BaseBean;
+import com.kang.mybase.custom.view.MyRefresh;
+import com.kang.mybase.base.BaseBean;
 import com.kang.mybase.pro.IRefresh;
 import com.kang.mybase.pro.ISubDelete;
 import com.kang.mybase.util.httpClient.RxHelper;
@@ -20,8 +20,9 @@ import rx.schedulers.Schedulers;
 
 public class RefreshData extends BaseData {
 
-    Subscription baseSub;
-    MyRefresh myRefresh;
+    private Subscription baseSub;
+    private MyRefresh myRefresh;
+
     public RefreshData(MyRefresh myRefresh,ISubDelete iSubDelete) {
         super(iSubDelete);
         this.myRefresh = myRefresh;

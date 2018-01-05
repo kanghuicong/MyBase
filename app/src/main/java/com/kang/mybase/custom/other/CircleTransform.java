@@ -1,4 +1,4 @@
-package com.kang.mybase.custom;
+package com.kang.mybase.custom.other;
 
 import android.content.Context;
 import android.graphics.Bitmap;

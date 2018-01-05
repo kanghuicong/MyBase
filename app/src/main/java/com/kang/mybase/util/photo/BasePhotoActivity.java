@@ -22,7 +22,7 @@ import org.greenrobot.eventbus.ThreadMode;
  * E-Mail is 515849594@qq.com
  */
 
-public abstract class BasePhotoActivity extends BaseActivity implements ChooseAdapter.OnItmeClickListener{
+public abstract class BasePhotoActivity extends BaseActivity implements ChooseAdapter.OnItmeClickListener {
 
     RecyclerView mRecyclerView;
     ChooseAdapter mAdapter;
@@ -46,7 +46,8 @@ public abstract class BasePhotoActivity extends BaseActivity implements ChooseAd
             startActivity(new Intent(this, MyPhotoActivity.class));
             EventBus.getDefault().postSticky(new PhotoBean(mAdapter.getData(), PhotoBean.SELECTED_PHOTOS_ID));
         } else {
-            //点击大图
+            //其他操作，如点击查看大图，点击删除之类的
+            setItemClicked(position);
         }
     }
 
@@ -61,5 +62,12 @@ public abstract class BasePhotoActivity extends BaseActivity implements ChooseAd
     public void photoMessageEvent(PhotoEntry entry) {
         mAdapter.appendPhoto(entry);
     }
+
+    public abstract void setItemClicked(int position);
+
+    public int setMaximum() {
+        return 6;
+    }
+
 
 }

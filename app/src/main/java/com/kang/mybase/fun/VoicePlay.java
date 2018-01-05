@@ -11,10 +11,9 @@ import java.io.IOException;
  * E-Mail is 515849594@qq.com
  */
 
-public class FunVoicePlay {
+public class VoicePlay {
 
     private static MediaPlayer mMediaPlayer;
-
 
     public static void beginVoice(final String path) {
         try {

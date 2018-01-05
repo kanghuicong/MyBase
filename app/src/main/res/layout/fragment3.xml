@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.kang.mybase.custom.MyTitle
+    <com.kang.mybase.custom.view.MyTitle
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:isBack="false"
         app:title="@string/rb3"/>
 
-    <com.kang.mybase.custom.MyRefresh
+    <com.kang.mybase.custom.view.MyRefresh
         android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -23,7 +23,7 @@
         </ListView>
 
 
-    </com.kang.mybase.custom.MyRefresh>
+    </com.kang.mybase.custom.view.MyRefresh>
 
 
 

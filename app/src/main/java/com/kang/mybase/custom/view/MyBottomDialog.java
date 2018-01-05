@@ -1,4 +1,4 @@
-package com.kang.mybase.custom;
+package com.kang.mybase.custom.view;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
@@ -27,29 +27,20 @@ import java.util.List;
 
 public class MyBottomDialog extends LinearLayout {
     private Context context;
-    private List<String> list;
+    private String[] list;
     private IDialogBottom iDialogBottom;
     private Activity activity;
     private Dialog dialog;
-    private boolean type = true;
+    private boolean isCancel;
 
     /*传入list列表内容，在IDialogBottom接口回调里写对应点击事件*/
-    public MyBottomDialog(Context context, List<String> list, IDialogBottom iDialogBottom) {
+    public MyBottomDialog(Context context, String[] list, boolean isCancel,IDialogBottom iDialogBottom) {
         super(context);
         this.context = context;
         this.list = list;
         this.iDialogBottom = iDialogBottom;
         this.activity = (Activity) context;
-        init();
-    }
-
-    public MyBottomDialog(Context context, List<String> list, boolean type,IDialogBottom iDialogBottom) {
-        super(context);
-        this.context = context;
-        this.list = list;
-        this.iDialogBottom = iDialogBottom;
-        this.activity = (Activity) context;
-        this.type = type;
+        this.isCancel = isCancel;
         init();
     }
 
@@ -65,7 +56,7 @@ public class MyBottomDialog extends LinearLayout {
         line.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1));
         line.setBackgroundResource(R.color.ViewLine);
 
-        switch (list.size()) {
+        switch (list.length) {
             case 1:
                 TextView tvNormal = new TextView(context);
                 setTextStyle(tvNormal,R.drawable.dialog_normal,0,null);
@@ -76,16 +67,16 @@ public class MyBottomDialog extends LinearLayout {
                 setTextStyle(tvTop,R.drawable.dialog_top,0,null);
 
                 TextView tvBottom = new TextView(context);
-                setTextStyle(tvBottom,R.drawable.dialog_bottom,list.size()-1,null);
+                setTextStyle(tvBottom,R.drawable.dialog_bottom,list.length-1,null);
 
-                if(list.size()==2){
+                if(list.length==2){
                     this.addView(tvTop);
                     this.addView(line);
                     this.addView(tvBottom);
                 }else {
                     this.addView(tvTop);
                     this.addView(line);
-                    for (int i=1;i<list.size()-1;i++) {
+                    for (int i=1;i<list.length-1;i++) {
                         TextView tvCenter = new TextView(context);
                         setTextStyle(tvCenter,R.drawable.dialog_center,i,null);
                         this.addView(tvCenter);
@@ -99,7 +90,7 @@ public class MyBottomDialog extends LinearLayout {
                 break;
         }
 
-        if (type) {
+        if (isCancel) {
             TextView tvCancel = new TextView(context);
             LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             params.setMargins(0, 20, 0, 0);
@@ -134,7 +125,7 @@ public class MyBottomDialog extends LinearLayout {
         else view.setLayoutParams(params);
         view.setBackgroundResource(background);
         if (position == -1)view.setText("取消");
-        else view.setText(list.get(position));
+        else view.setText(list[position]);
         view.setPadding(0,30,0,30);
         view.setOnClickListener(new Click(position));
         view.setGravity(Gravity.CENTER);

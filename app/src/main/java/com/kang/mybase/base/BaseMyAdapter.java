@@ -1,4 +1,4 @@
-package com.kang.mybase.adapter;
+package com.kang.mybase.base;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +14,13 @@ import java.util.List;
  * E-Mail is 515849594@qq.com
  */
 
-public class MyAdapter<T> extends BaseAdapter {
+public class BaseMyAdapter<T> extends BaseAdapter {
 
     private List mTotalList = new ArrayList<>();
 
     private BaseItem mItem;
 
-    public MyAdapter(BaseItem mItem) {
+    public BaseMyAdapter(BaseItem mItem) {
         this.mItem = mItem;
     }
 

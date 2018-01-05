@@ -9,22 +9,22 @@ import android.widget.Chronometer;
 import android.widget.ListView;
 
 import com.kang.mybase.R;
+import com.kang.mybase.base.BaseMyAdapter;
 import com.kang.mybase.adapter.VoiceAdapter;
 import com.kang.mybase.base.BaseActivity;
-import com.kang.mybase.fun.FunVoiceFiles;
-import com.kang.mybase.fun.FunVoicePlay;
+import com.kang.mybase.fun.VoiceFiles;
+import com.kang.mybase.fun.VoicePlay;
 import com.kang.mybase.model.FileBean;
 import com.kang.mybase.service.VoiceService;
 import com.kang.mybase.util.inject.InjectActivityView;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-import static com.kang.mybase.fun.FunVoiceFiles.getAllFiles;
+import static com.kang.mybase.fun.VoiceFiles.getAllFiles;
 import static com.kang.utilssdk.ToastUtils.showShort;
 
 /**
@@ -38,7 +38,7 @@ public class VoiceActivity extends BaseActivity {
     @InjectView(R.id.voice_list)
     ListView voiceList;
 
-    private VoiceAdapter voiceAdapter;
+    private BaseMyAdapter voiceAdapter;
     private List<FileBean> list = new ArrayList<FileBean>();
 
     @Override
@@ -55,7 +55,7 @@ public class VoiceActivity extends BaseActivity {
                 chronometer.start();
                 Intent intentStart = new Intent(this, VoiceService.class);
                 //设置音频名字
-                FunVoiceFiles.setFileName("MyVoice_" + System.currentTimeMillis() + ".mp4");
+                VoiceFiles.setFileName("MyVoice_" + System.currentTimeMillis() + ".mp4");
                 //开启录音服务
                 this.startService(intentStart);
                 break;
@@ -73,13 +73,13 @@ public class VoiceActivity extends BaseActivity {
                 if (getAllFiles(this) != null) {
                     list.clear();
                     list.addAll(getAllFiles(this));
+
+
                     if (voiceAdapter == null) {
-                        voiceAdapter = new VoiceAdapter(this, list);
+                        voiceAdapter = new BaseMyAdapter(new VoiceAdapter(this));
                         voiceList.setAdapter(voiceAdapter);
-                    }else {
-                        voiceAdapter.changeCount(list.size());
-                        voiceAdapter.notifyDataSetChanged();
                     }
+                    voiceAdapter.reRefreshData(list);
                 }else showShort("无音频文件");
                 break;
         }
@@ -87,32 +87,32 @@ public class VoiceActivity extends BaseActivity {
 
     public void getVoice() {
         //设置文件储存目录
-        FunVoiceFiles.setPath(Environment.getExternalStorageDirectory() + "/Kang");
+        VoiceFiles.setPath(Environment.getExternalStorageDirectory() + "/Kang");
         list.clear();
-        list.addAll(FunVoiceFiles.getFiles());
+        list.addAll(VoiceFiles.getFiles());
         if (!list.isEmpty()) {
             if (voiceAdapter == null) {
-                voiceAdapter = new VoiceAdapter(this, list);
+                voiceAdapter = new BaseMyAdapter(new VoiceAdapter(this));
                 voiceList.setAdapter(voiceAdapter);
+                voiceAdapter.reRefreshData(list);
+
                 voiceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        FunVoicePlay.beginVoice(voiceAdapter.getPath(i));
+                        VoicePlay.beginVoice(((FileBean)voiceAdapter.getItem(i)).getPath());
                     }
                 });
                 voiceList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        FunVoiceFiles.deleteFile(voiceAdapter.getPath(i));
+                        VoiceFiles.deleteFile(((FileBean)voiceAdapter.getItem(i)).getPath());
                         list.remove(i);
-                        voiceAdapter.changeCount(list.size());
-                        voiceAdapter.notifyDataSetChanged();
+                        voiceAdapter.reRefreshData(list);
                         return true;
                     }
                 });
             } else {
-                voiceAdapter.changeCount(list.size());
-                voiceAdapter.notifyDataSetChanged();
+                voiceAdapter.reRefreshData(list);
             }
         }else {
             showShort("无录音文件");
@@ -122,7 +122,7 @@ public class VoiceActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        FunVoicePlay.stopPlaying();//关闭MediaPlayer
+        VoicePlay.stopPlaying();//关闭MediaPlayer
     }
 
 

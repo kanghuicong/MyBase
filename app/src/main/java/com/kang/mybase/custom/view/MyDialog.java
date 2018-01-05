@@ -1,4 +1,4 @@
-package com.kang.mybase.custom;
+package com.kang.mybase.custom.view;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -7,12 +7,10 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.kang.mybase.R;
 import com.kang.mybase.pro.IDialog;
 
 
@@ -23,12 +21,12 @@ import com.kang.mybase.pro.IDialog;
 
 public class MyDialog extends DialogFragment {
 
-    String title, content, left, right;
-    IDialog iDialog;
-    int type ;
-    boolean isFinish = false;
-    boolean isLoading = false;
-    MyLoading myLoading;
+    private String title, content, left, right;
+    private IDialog iDialog;
+    private int type ;
+    private boolean isFinish = false;
+    private boolean isLoading = false;
+    private MyLoading myLoading;
 
     public MyDialog() {
         this.isLoading = true;

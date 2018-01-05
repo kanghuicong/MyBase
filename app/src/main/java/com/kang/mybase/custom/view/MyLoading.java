@@ -1,4 +1,4 @@
-package com.kang.mybase.custom;
+package com.kang.mybase.custom.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -20,7 +20,6 @@ import com.kang.mybase.R;
  */
 
 public class MyLoading extends View {
-    Paint mPaint;
     int mWidth;
     int mHeight;
     int mCenterX;
@@ -28,7 +27,9 @@ public class MyLoading extends View {
     int mLineLength;
     int mLineWidth;
     int control = 1;
-    ValueAnimator valueAnimator;
+
+    private Paint mPaint;
+    private ValueAnimator valueAnimator;
 
     public MyLoading(Context context) {
         this(context,null);

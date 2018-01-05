@@ -11,8 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
-import com.kang.mybase.custom.MyDialog;
-import com.kang.mybase.custom.MyLoading;
+import com.kang.mybase.custom.view.MyDialog;
 import com.kang.mybase.pro.INetChange;
 import com.kang.utilssdk.NetworkUtils;
 

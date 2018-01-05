@@ -17,7 +17,7 @@
         android:background="@mipmap/choose_checked"
         android:visibility="gone"/>
 
-    <com.kang.mybase.custom.MyLoading
+    <com.kang.mybase.custom.view.MyLoading
         android:id="@+id/iv_loading"
         android:layout_width="20dp"
         android:layout_height="20dp"

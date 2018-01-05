@@ -2,9 +2,9 @@ package com.kang.mybase.fun;
 
 import android.widget.ListView;
 
-import com.kang.mybase.adapter.MyAdapter;
+import com.kang.mybase.base.BaseMyAdapter;
 import com.kang.mybase.base.BaseItem;
-import com.kang.mybase.custom.MyRefresh;
+import com.kang.mybase.custom.view.MyRefresh;
 import com.kang.mybase.pro.IRefresh;
 import com.kang.mybase.pro.ISubDelete;
 
@@ -18,13 +18,14 @@ import rx.Observable;
  */
 
 public class RefreshUtil implements MyRefresh.IListerRefresh{
-    MyRefresh myRefresh;
-    Observable observable;
-    RefreshData refreshData;
-    IRefresh iRefresh;
-    MyAdapter myAdapter = null;
-    ListView listView;
-    ISubDelete iSubDelete;
+    private MyRefresh myRefresh;
+    private Observable observable;
+    private RefreshData refreshData;
+    private IRefresh iRefresh;
+    private BaseMyAdapter myAdapter = null;
+    private ListView listView;
+    private ISubDelete iSubDelete;
+
     public RefreshUtil(Observable observable,MyRefresh myRefresh,ListView listView,IRefresh iRefresh,ISubDelete iSubDelete) {
         this.observable = observable;
         this.myRefresh = myRefresh;
@@ -55,7 +56,7 @@ public class RefreshUtil implements MyRefresh.IListerRefresh{
     //刷新数据成功，配置adapter
     public void refreshSuccess(BaseItem mItem,List list) {
         if (myAdapter == null) {
-            myAdapter = new MyAdapter(mItem);
+            myAdapter = new BaseMyAdapter(mItem);
             myAdapter.reRefreshData(list);
             listView.setAdapter(myAdapter);
         } else {

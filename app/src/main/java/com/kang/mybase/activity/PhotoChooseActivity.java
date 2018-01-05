@@ -18,7 +18,7 @@ public class PhotoChooseActivity extends BasePhotoActivity {
     public void init() {
         //do something......
         //activity继承BasePhotoActivity，本想把BasePhotoActivity写入imagePicker.aar,
-        // 但考虑到每个人的BaseActivity有差异，写的太死反而不好
+        // 但考虑到每个人的adapter有差异，写的太死的话反而限制太多
         //布局加入RecyclerView，id固定为recycler_view
     }
 
@@ -33,4 +33,6 @@ public class PhotoChooseActivity extends BasePhotoActivity {
 
     }
 
+    @Override
+    public void setItemClicked(int position) {}
 }

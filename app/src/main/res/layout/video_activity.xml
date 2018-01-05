@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.kang.mybase.custom.MyTitle
+    <com.kang.mybase.custom.view.MyTitle
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:title="@string/videoActivity"/>

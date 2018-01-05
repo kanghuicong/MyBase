@@ -3,7 +3,6 @@ package com.kang.mybase.fun;
 import android.app.Activity;
 import android.database.Cursor;
 import android.provider.MediaStore;
-import android.util.Log;
 
 import com.kang.mybase.model.FileBean;
 
@@ -16,7 +15,8 @@ import java.util.List;
  * E-Mail is 515849594@qq.com
  */
 
-public class FunVoiceFiles {
+public class VoiceFiles {
+
     public static String path;
     public static String fileName;
 
@@ -70,7 +70,7 @@ public class FunVoiceFiles {
     }
 
     public static void setPath(String path) {
-        FunVoiceFiles.path = path;
+        VoiceFiles.path = path;
     }
 
     public static String getPath() {
@@ -82,6 +82,6 @@ public class FunVoiceFiles {
     }
 
     public static void setFileName(String fileName) {
-        FunVoiceFiles.fileName = fileName;
+        VoiceFiles.fileName = fileName;
     }
 }

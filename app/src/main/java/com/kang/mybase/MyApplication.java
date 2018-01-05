@@ -1,8 +1,6 @@
 package com.kang.mybase;
 
-import com.kang.mybase.fun.InitializeService;
-import com.kang.mybase.pro.Api;
-import com.kang.mybase.util.httpClient.RetrofitClient;
+import com.kang.mybase.custom.other.InitializeService;
 import com.kang.utilssdk.constant.BaseApplication;
 
 

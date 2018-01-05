@@ -12,13 +12,11 @@ import com.kang.mybase.activity.PhotoChooseActivity;
 import com.kang.mybase.activity.VideoActivity;
 import com.kang.mybase.activity.VoiceActivity;
 import com.kang.mybase.base.BaseFragment;
-import com.kang.mybase.custom.MyDialog;
+import com.kang.mybase.custom.view.MyDialog;
 import com.kang.mybase.fun.FunData;
-import com.kang.mybase.model.TestBean;
-import com.kang.mybase.model.TestBean2;
+import com.kang.mybase.model.RefreshAllBean;
 import com.kang.mybase.pro.IDialog;
 
-import java.util.List;
 import java.util.Map;
 
 import butterknife.OnClick;
@@ -83,8 +81,8 @@ public class Fragment1 extends BaseFragment  {
 
     @Override
     public void success(Object t,String type) {
-        TestBean2 testBean2 = (TestBean2)t;
-        showShort("success:" + testBean2.getData().get(0).getName());
+        RefreshAllBean testAllBean = (RefreshAllBean)t;
+        showShort("success:" + testAllBean.getData().get(0).getName());
     }
 
     @Override

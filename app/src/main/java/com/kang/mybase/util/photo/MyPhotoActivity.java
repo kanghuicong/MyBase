@@ -7,8 +7,9 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.kang.mybase.MainActivity;
 import com.kang.mybase.R;
-import com.kang.mybase.custom.MyTitle;
+import com.kang.mybase.custom.view.MyTitle;
 import com.litao.android.lib.Configuration;
 import com.litao.android.lib.GalleryActivity;
 import com.litao.android.lib.entity.PhotoBean;
@@ -95,7 +96,6 @@ public class MyPhotoActivity extends GalleryActivity {
         // count:当前被选中图像数量
         selectedCount.setVisibility(count > 0 ? View.VISIBLE : View.INVISIBLE);
         selectedCount.setText(String.valueOf(count));
-
     }
 
     @Override

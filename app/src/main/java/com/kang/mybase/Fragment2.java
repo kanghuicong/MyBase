@@ -1,15 +1,11 @@
 package com.kang.mybase;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
 import com.kang.mybase.base.BaseFragment;
-import com.kang.mybase.custom.MySuperItem;
+import com.kang.mybase.custom.view.MySuperItem;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 import static com.kang.utilssdk.ToastUtils.showShort;

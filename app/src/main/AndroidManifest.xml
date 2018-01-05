@@ -39,7 +39,7 @@
 
         <!--录音服务-->
         <service android:name=".service.VoiceService" />
-        <service android:name=".fun.InitializeService"/>
+        <service android:name=".custom.other.InitializeService"/>
 
         <activity android:name="com.kang.mybase.MainActivity" />
         <!--图片选择-->

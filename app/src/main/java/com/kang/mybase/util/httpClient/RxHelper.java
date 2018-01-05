@@ -1,9 +1,7 @@
 package com.kang.mybase.util.httpClient;
 
 
-import android.util.Log;
-
-import com.kang.mybase.model.BaseBean;
+import com.kang.mybase.base.BaseBean;
 
 import rx.Observable;
 import rx.Subscriber;

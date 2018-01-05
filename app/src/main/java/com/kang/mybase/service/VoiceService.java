@@ -7,7 +7,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.kang.mybase.fun.FunVoiceFiles;
+import com.kang.mybase.fun.VoiceFiles;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,11 +34,11 @@ public class VoiceService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(TAG, "start");
-        File folder = new File(new FunVoiceFiles().getPath());
+        File folder = new File(new VoiceFiles().getPath());
         if (!folder.exists()) folder.mkdir();//新建文件夹
 
-        mFileName = FunVoiceFiles.getFileName();
-        mFilePath = FunVoiceFiles.getPath()+"/" + mFileName;
+        mFileName = VoiceFiles.getFileName();
+        mFilePath = VoiceFiles.getPath()+"/" + mFileName;
         File file = new File(mFilePath);//新建文件
 
         mRecorder = new MediaRecorder();

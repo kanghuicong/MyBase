@@ -1,4 +1,4 @@
-package com.kang.mybase.custom;
+package com.kang.mybase.custom.view;
 
 import android.app.Activity;
 import android.content.Context;
@@ -36,7 +36,7 @@ public class MyTitle extends RelativeLayout {
         ivBack = (ImageView) findViewById(R.id.iv_back);
         this.setBackgroundResource(R.color.main_color);
         addMarginTopEqualStatusBarHeight(rlTitle);
-        //状态栏
+      //状态栏
 //    compile 'com.githang:status-bar-compat:0.7'
 //    StatusBarCompat.setStatusBarColor(this, color);
 

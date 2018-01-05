@@ -1,6 +1,6 @@
 package com.kang.mybase.pro;
 
-import com.kang.mybase.model.TestBean2;
+import com.kang.mybase.model.RefreshAllBean;
 import java.util.Map;
 
 import retrofit2.http.FieldMap;
@@ -18,6 +18,6 @@ public interface Api {
 
     @POST("entrance/category/list")
     @FormUrlEncoded
-    Observable<TestBean2> test(@FieldMap Map<String, Object> map);
+    Observable<RefreshAllBean> test(@FieldMap Map<String, Object> map);
 
 }

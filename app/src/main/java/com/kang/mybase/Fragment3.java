@@ -2,19 +2,14 @@ package com.kang.mybase;
 
 import android.widget.ListView;
 
-import com.kang.mybase.adapter.MyAdapter;
+import com.kang.mybase.adapter.RefreshAdapter;
 import com.kang.mybase.base.BaseFragment;
-import com.kang.mybase.custom.MyRefresh;
-import com.kang.mybase.fun.RefreshData;
+import com.kang.mybase.custom.view.MyRefresh;
 import com.kang.mybase.fun.RefreshUtil;
-import com.kang.mybase.model.TestBean;
-import com.kang.mybase.model.TestBean2;
-import com.kang.mybase.model.TestBean3;
+import com.kang.mybase.model.RefreshAllBean;
 import com.kang.mybase.pro.IRefresh;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import butterknife.InjectView;
@@ -56,12 +51,12 @@ public class Fragment3 extends BaseFragment implements IRefresh {
 
     @Override
     public void refreshSuccess(Object baseModelList) {
-        refreshUtil.refreshSuccess(new TestBean3(activity),((TestBean2) baseModelList).getData());
+        refreshUtil.refreshSuccess(new RefreshAdapter(activity),((RefreshAllBean) baseModelList).getData());
     }
 
     @Override
     public void loadSuccess(Object baseModelList) {
-        refreshUtil.loadSuccess(((TestBean2) baseModelList).getData());
+        refreshUtil.loadSuccess(((RefreshAllBean) baseModelList).getData());
     }
 
 

@@ -1,24 +1,12 @@
 package com.kang.mybase.fun;
 
-import android.content.Context;
-import android.util.Log;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 import com.kang.mybase.base.BaseData;
-import com.kang.mybase.base.BaseFragment;
 import com.kang.mybase.base.BaseFragmentActivity;
-import com.kang.mybase.pro.IJsonData;
 import com.kang.mybase.pro.IHttp;
 import com.kang.mybase.pro.ISubDelete;
 import com.kang.mybase.util.httpClient.RxHelper;
 import com.kang.mybase.util.httpClient.RxSubscribe;
 
-
-import java.util.Iterator;
-import java.util.Map;
 
 import rx.Observable;
 import rx.Subscription;

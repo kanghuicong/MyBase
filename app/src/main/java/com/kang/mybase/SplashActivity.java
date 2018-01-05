@@ -13,7 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 
-import com.kang.mybase.custom.MyDialog;
+import com.kang.mybase.custom.view.MyDialog;
 import com.kang.mybase.pro.IDialog;
 import com.kang.utilssdk.PermissionUtils;
 import com.kang.utilssdk.PermissionUtils.OnPermissionListener;

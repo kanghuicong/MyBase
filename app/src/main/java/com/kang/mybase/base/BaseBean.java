@@ -1,11 +1,11 @@
-package com.kang.mybase.model;
+package com.kang.mybase.base;
 
 /**
  * Created by KangHuiCong on 2017/12/13.
  * E-Mail is 515849594@qq.com
  */
 
-public class BaseBean<T> {
+public abstract class BaseBean<T> {
     public String error_code;
     public String error_msg;
 

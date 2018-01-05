@@ -1,13 +1,9 @@
-package com.kang.mybase.custom;
+package com.kang.mybase.custom.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.os.Build;
 import android.os.Handler;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,13 +100,8 @@ public class MyRefresh extends LinearLayout {
         addView(headerView, params);
 
         headerAnimator = ValueAnimator.ofInt(0, -mHeaderHeight);
-        setAnimator(headerAnimator);
-
-    }
-
-    private void setAnimator(ValueAnimator animator) {
-        animator.setDuration(200);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        headerAnimator.setDuration(200);
+        headerAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 setHeaderTopMargin((int)animation.getAnimatedValue());
@@ -126,6 +117,7 @@ public class MyRefresh extends LinearLayout {
             }
         });
     }
+
 
     @Override
     protected void onFinishInflate() {

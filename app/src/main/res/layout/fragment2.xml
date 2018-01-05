@@ -5,24 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.kang.mybase.custom.MyTitle
+    <com.kang.mybase.custom.view.MyTitle
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:isBack="false"
         app:title="@string/rb2"/>
 
-    <com.kang.mybase.custom.MySuperItem
+    <com.kang.mybase.custom.view.MySuperItem
         android:id="@+id/item_header1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:left_limg_width="15dp"
         app:left_limg_height="15dp"
         app:isArrow="true">
-    </com.kang.mybase.custom.MySuperItem>
+    </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
 
-    <com.kang.mybase.custom.MySuperItem
+    <com.kang.mybase.custom.view.MySuperItem
         android:id="@+id/item_header2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,11 +32,11 @@
         app:noTop="true"
         app:noBottom="true"
         app:noRightText="true">
-    </com.kang.mybase.custom.MySuperItem>
+    </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
 
-    <com.kang.mybase.custom.MySuperItem
+    <com.kang.mybase.custom.view.MySuperItem
         android:id="@+id/item_water"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,11 +49,11 @@
         app:right_text="123"
         app:noRightImgL="true"
         app:isCheckBox="true">
-    </com.kang.mybase.custom.MySuperItem>
+    </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
 
-    <com.kang.mybase.custom.MySuperItem
+    <com.kang.mybase.custom.view.MySuperItem
         android:id="@+id/item_game"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,11 +63,11 @@
         app:left_text="游戏点卡"
         app:noTop="true"
         app:noBottom="true">
-    </com.kang.mybase.custom.MySuperItem>
+    </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
 
-    <com.kang.mybase.custom.MySuperItem
+    <com.kang.mybase.custom.view.MySuperItem
         android:id="@+id/item_traffic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,11 +79,11 @@
         app:noTop="true"
         app:noBottom="true"
         app:noRightImgL="true">
-    </com.kang.mybase.custom.MySuperItem>
+    </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
 
-    <com.kang.mybase.custom.MySuperItem
+    <com.kang.mybase.custom.view.MySuperItem
         android:id="@+id/item_more"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -95,11 +95,11 @@
         app:noTop="true"
         app:noBottom="true"
         app:noRightImgL="true">
-    </com.kang.mybase.custom.MySuperItem>
+    </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
 
-    <com.kang.mybase.custom.MySuperItem
+    <com.kang.mybase.custom.view.MySuperItem
         android:id="@+id/item_other"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -107,11 +107,11 @@
         app:noLeftText="true"
         app:noRightText="true"
         app:noRightImgL="true">
-    </com.kang.mybase.custom.MySuperItem>
+    </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
 
-    <com.kang.mybase.custom.MySuperItem
+    <com.kang.mybase.custom.view.MySuperItem
         android:id="@+id/item_other1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -120,11 +120,11 @@
         app:isTopBetween="true"
         app:noLeftImageL="true"
         app:noRightImgL="true">
-    </com.kang.mybase.custom.MySuperItem>
+    </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
 
-    <com.kang.mybase.custom.MySuperItem
+    <com.kang.mybase.custom.view.MySuperItem
         android:id="@+id/item_switch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
         app:top_left_text="标题"
         app:top_gravity="center"
         app:isSwitch="true">
-    </com.kang.mybase.custom.MySuperItem>
+    </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
 

@@ -1,4 +1,4 @@
-package com.kang.mybase.model;
+package com.kang.mybase.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -6,10 +6,8 @@ import android.widget.TextView;
 
 import com.kang.mybase.R;
 import com.kang.mybase.base.BaseItem;
+import com.kang.mybase.model.RefreshItemBean;
 
-import java.util.List;
-
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
@@ -17,10 +15,10 @@ import butterknife.InjectView;
  * E-Mail is 515849594@qq.com
  */
 
-public class TestBean3 extends BaseItem {
+public class RefreshAdapter extends BaseItem {
     Holder holder;
 
-    public TestBean3(Context context) {
+    public RefreshAdapter(Context context) {
         super(context);
     }
 
@@ -31,7 +29,7 @@ public class TestBean3 extends BaseItem {
 
     @Override
     public void binding(Object data, BaseHolder baseHolder, int itemType) {
-        TestBean testBean = (TestBean) data;
+        RefreshItemBean testBean = (RefreshItemBean) data;
         holder = (Holder) baseHolder;
         holder.textView.setText(testBean.getName());
     }

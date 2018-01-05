@@ -1,5 +1,7 @@
 package com.kang.mybase.model;
 
+import com.kang.mybase.base.BaseBean;
+
 import java.util.List;
 
 /**
@@ -7,21 +9,21 @@ import java.util.List;
  * E-Mail is 515849594@qq.com
  */
 
-public class TestBean2 extends BaseBean {
+public class RefreshAllBean extends BaseBean {
 
-    List<TestBean> data;
+    List<RefreshItemBean> data;
 
-    public List<TestBean> getData() {
+    public List<RefreshItemBean> getData() {
         return data;
     }
 
-    public void setData(List<TestBean> data) {
+    public void setData(List<RefreshItemBean> data) {
         this.data = data;
     }
 
     @Override
     public String toString() {
-        return "TestBean2{" +
+        return "RefreshAllBean{" +
                 "data=" + data +
                 '}';
     }

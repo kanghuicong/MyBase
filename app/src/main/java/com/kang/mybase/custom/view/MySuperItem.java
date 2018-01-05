@@ -1,4 +1,4 @@
-package com.kang.mybase.custom;
+package com.kang.mybase.custom.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.kang.mybase.R;
+import com.kang.mybase.custom.other.CircleTransform;
 
 import static com.kang.utilssdk.SizeUtils.dp2px;
 

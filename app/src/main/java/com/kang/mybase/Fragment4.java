@@ -1,19 +1,6 @@
 package com.kang.mybase;
 
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.kang.mybase.base.BaseFragment;
-import com.kang.mybase.custom.MyDialog;
-import com.kang.mybase.custom.MyLoading;
-import com.kang.mybase.pro.IDialog;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
 
 import static com.kang.utilssdk.AppUtils.getAppDetailsSettings;
 

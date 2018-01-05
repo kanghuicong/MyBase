@@ -1,13 +1,12 @@
-package com.kang.mybase.custom;
+package com.kang.mybase.custom.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ListView;
 
 /**
- * Created by kanghuicong on 2016/9/22.
- * QQ邮箱:515849594@qq.com
- * 说明：无滑动listView
+ * Created by KangHuiCong on 2017/12/11.
+ * E-Mail is 515849594@qq.com
  */
 public class MyListView extends ListView {
     public MyListView(Context context, AttributeSet attrs, int defStyle) {

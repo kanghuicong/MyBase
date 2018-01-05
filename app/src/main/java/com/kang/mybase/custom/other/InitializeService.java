@@ -1,4 +1,4 @@
-package com.kang.mybase.fun;
+package com.kang.mybase.custom.other;
 
 import android.app.IntentService;
 import android.content.Context;

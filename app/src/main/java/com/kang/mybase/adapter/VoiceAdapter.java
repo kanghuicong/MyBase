@@ -1,62 +1,50 @@
 package com.kang.mybase.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.kang.mybase.R;
-import com.kang.mybase.base.BaseAdapter;
+import com.kang.mybase.base.BaseItem;
 import com.kang.mybase.model.FileBean;
 
-import java.io.File;
-import java.util.List;
-
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
- * Created by KangHuiCong on 2017/12/19.
+ * Created by KangHuiCong on 2018/1/5.
  * E-Mail is 515849594@qq.com
  */
 
-public class VoiceAdapter extends BaseAdapter {
-    List<FileBean> list;
+public class VoiceAdapter extends BaseItem{
     FileBean file;
-    ViewHolder holder;
-
-    public VoiceAdapter(Context context, List<FileBean> list) {
-        super(context, list);
-        this.list = list;
-    }
-
-    public String getPath(int position) {
-        return list.get(position).getPath();
+    Holder holder;
+    public VoiceAdapter(Context context) {
+        super(context);
     }
 
     @Override
-    public View setView(int position, View convertView, ViewGroup viewGroup) {
-        file = list.get(position);
-        if (convertView == null) {
-            convertView = View.inflate(context, R.layout.item_voice, null);
-            holder = new ViewHolder(convertView);
-            convertView.setTag(holder);
-        }else {
-            holder = (ViewHolder) convertView.getTag();
-        }
-
-        holder.name.setText(file.getName());
-
-        return convertView;
+    public int getItemLayout(int itemType) {
+        return R.layout.item_voice;
     }
 
-    static class ViewHolder {
+    @Override
+    public void binding(Object data, BaseHolder baseHolder, int itemType) {
+        file = (FileBean) data;
+        holder = (Holder) baseHolder;
+
+        holder.name.setText(file.getName());
+    }
+
+    @Override
+    public BaseHolder getHolder(View convertView, int itemType) {
+        return new Holder(convertView);
+    }
+
+    class Holder extends BaseHolder {
+        public Holder(View convertView) {
+            super(convertView);
+        }
         @InjectView(R.id.name)
         TextView name;
-
-        ViewHolder(View view) {
-            ButterKnife.inject(this, view);
-        }
     }
 }

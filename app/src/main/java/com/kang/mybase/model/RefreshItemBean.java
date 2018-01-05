@@ -8,7 +8,7 @@ import android.os.Parcelable;
  * E-Mail is 515849594@qq.com
  */
 
-public class TestBean {
+public class RefreshItemBean {
     int category_id;
     String name;
     String description;
@@ -39,7 +39,7 @@ public class TestBean {
 
     @Override
     public String toString() {
-        return "TestBean{" +
+        return "RefreshItemBean{" +
                 "category_id=" + category_id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
