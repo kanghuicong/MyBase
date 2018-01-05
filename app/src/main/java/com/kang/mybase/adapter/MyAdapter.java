@@ -60,14 +60,20 @@ public class MyAdapter<T> extends BaseAdapter {
         return convertView;
     }
 
-    public void reLoadData(List list, boolean isClean) {
+    //加载数据
+    public void reLoadData(List list) {
         if (list == null) return;
-        if (isClean) mTotalList.clear();
-
         mTotalList.addAll(list);
         notifyDataSetChanged();
     }
-
+    //刷新数据
+    public void reRefreshData(List list) {
+        if (list == null) return;
+        mTotalList.clear();
+        mTotalList.addAll(list);
+        notifyDataSetChanged();
+    }
+    //添加一条数据
     public void reLoadData(T obj, int position) {
         mTotalList.add(position, obj);
         notifyDataSetChanged();

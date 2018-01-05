@@ -13,11 +13,11 @@ public interface IRefresh<T> {
 
     void refreshSuccess(T baseModelList);
 
-    void refreshFailure(String error_code, String error_msg);
+//    void refreshFailure(String error_code, String error_msg);
 
     void loadSuccess(T baseModelList);
 
-    void loadFailure(String error_code, String error_msg);
+//    void loadFailure(String error_code, String error_msg);
 
     Observable loadObservable();
 

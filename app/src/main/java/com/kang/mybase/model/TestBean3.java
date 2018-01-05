@@ -41,7 +41,6 @@ public class TestBean3 extends BaseItem {
         return new Holder(convertView);
     }
 
-
     class Holder extends BaseHolder {
         public Holder(View convertView) {
             super(convertView);

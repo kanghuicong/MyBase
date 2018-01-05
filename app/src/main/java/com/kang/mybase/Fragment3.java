@@ -29,15 +29,12 @@ import static com.kang.mybase.util.httpClient.HttpRequest.getApi;
 
 public class Fragment3 extends BaseFragment implements IRefresh {
 
-
     @InjectView(R.id.listView)
     ListView listView;
     @InjectView(R.id.refresh)
-    MyRefresh refresh;
-    RefreshData refreshData;
+    MyRefresh myRefresh;
 
-    MyAdapter myAdapter = null;
-    int n = 1;
+    RefreshUtil refreshUtil;
 
     @Override
     public int setLayout() {
@@ -46,43 +43,10 @@ public class Fragment3 extends BaseFragment implements IRefresh {
 
     @Override
     public void init() {
-        //do something...
-        refreshData = new RefreshData(refresh, this);
+        //刷新数据
         Map<String, Object> map = new HashMap<>();
-
-        new RefreshUtil(refreshData, getApi().test(map), refresh,this);
-
-        refreshData.getRefreshData(getApi().test(map),this);
-
+        refreshUtil = new RefreshUtil(getApi().test(map), myRefresh,listView, this,this);
     }
-
-    @Override
-    public void success(Object baseModelList, String type) {}
-
-    @Override
-    public void failure(String error_code, String error_msg) {}
-
-    @Override
-    public void refreshSuccess(Object baseModelList) {
-        if (myAdapter==null) {
-            myAdapter = new MyAdapter(new TestBean3(activity));
-            myAdapter.reLoadData(((TestBean2) baseModelList).getData(),true);
-            listView.setAdapter(myAdapter);
-        } else {
-            myAdapter.reLoadData(((TestBean2) baseModelList).getData(),true);
-        }
-    }
-
-    @Override
-    public void refreshFailure(String error_code, String error_msg) {}
-
-    @Override
-    public void loadSuccess(Object baseModelList) {
-        myAdapter.reLoadData(((TestBean2) baseModelList).getData(),false);
-    }
-
-    @Override
-    public void loadFailure(String error_code, String error_msg) {}
 
     @Override
     public Observable loadObservable() {
@@ -90,4 +54,22 @@ public class Fragment3 extends BaseFragment implements IRefresh {
         return getApi().test(map);
     }
 
+    @Override
+    public void refreshSuccess(Object baseModelList) {
+        refreshUtil.refreshSuccess(new TestBean3(activity),((TestBean2) baseModelList).getData());
+    }
+
+    @Override
+    public void loadSuccess(Object baseModelList) {
+        refreshUtil.loadSuccess(((TestBean2) baseModelList).getData());
+    }
+
+
+
+
+    @Override
+    public void success(Object baseModelList, String type) {}
+
+    @Override
+    public void failure(String error_code, String error_msg) {}
 }
