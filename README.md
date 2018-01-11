@@ -42,7 +42,7 @@
 		12.23---（MySuperItem）修改尺寸，完成适配，添加switch  
   		![MySuperItem](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/mySuperItem.png)    
 		提供链式动态修改方法，如下部分方法：
-		```java
+```java
         itemHeader1.setLeftImageL("http://p0.so.qhmsg.com/t014156c14c469bae95.jpg",true)
                 .setTopLeftText("孙悟空")
                 .setBottomLeftText("地球")
@@ -50,7 +50,7 @@
                 .setBottomLeftTextSize(12)
                 .setBottomRightText("超级赛亚人")
                 .setBottomRightTextSize(12);
-		```
+```
 	MyRefresh:  
 		12.25---自定义刷新加载布局实现，已完成基本实现思路  
 		12.26---修改细节，添加各种情况的提示语，目前只针对AbsListView  
