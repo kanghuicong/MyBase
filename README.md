@@ -3,9 +3,8 @@
 # 1、基础类的封装
   12.14---一系列baseAcivity，baseFragment，baseAdapter等等....主要是一个代码习惯问题，减少子类公共代码，让子类看起来不那么臃肿，也方便统一修改。
 # 2、自定义控件
-    
+### MyDialog
 ```java
-MyDialog：  
 new MyDialog("设置", "是否前往设置权限", "取消", "确定", new IDialog() {
     @Override
     public void leftClick(DialogInterface dialog) {}
@@ -15,15 +14,12 @@ new MyDialog("设置", "是否前往设置权限", "取消", "确定", new IDial
     }
 }).show(activity.getFragmentManager(), "settingDialog");
 ```
-
+### MyBottomDialog
 ```java
-MyBottomDialog：  
-调用：
+//调用  
 String[] list = {"图库", "拍照"};
 new MyBottomDialog(this, list, true,this);
-```	
-```java
-点击事件回调：  
+//点击事件回调  
 @Override
 public void iDialog(int position) {
     //position即list的位置
@@ -37,7 +33,7 @@ public void iDialog(int position) {
     }
 }
 ```
-MySuperItem：  
+### MySuperItem：  
   12.20---编写MySuperItem  
   12.21---（MySuperItem）完成基础布局，添加动态修改  
   12.22---（MySuperItem）完善基础布局，添加CheckBox，头像加载，点击事件回调  
@@ -53,8 +49,7 @@ MySuperItem：
             .setBottomRightText("超级赛亚人")
             .setBottomRightTextSize(12);
 ```
-
-MyRefresh:  
+### MyRefresh:  
   12.25---自定义刷新加载布局实现，已完成基本实现思路  
   12.26---修改细节，添加各种情况的提示语，目前只针对AbsListView  
   12.26---解决各种特殊情况下的显示异常;添加ScrollView，此外在不需要加载的页面可以设置为上拉回弹  
@@ -63,11 +58,9 @@ MyRefresh:
   01.04---封装Myadapter  
   01.05---继续封装简化数据请求及UI更新代码  
   01.08---优化回弹效果，主要解决快速重复下拉/上拉时回弹效果、动画显示异常  
-  01.11---优化回弹效果，主要解决位于头部时，下拉X距离紧接着上拉X+Y距离，会将底部控件拉出；底部亦然；目测已无BUG.....  
-	
-MyLoading：  
+  01.11---优化回弹效果，主要解决位于头部时，下拉X距离紧接着上拉X+Y距离，会将底部控件拉出；底部亦然；目测已无BUG.....  	
+### MyLoading：  
   12.27---自定义控件MyLoading，用于数据加载时等待反馈，并结合MyDialog，封装loading加载框  
-....持续更新
 # 3、网络请求封装
   12.14---基于okHttp、rxAndroid与retrofit2写的网络请求，已封装，只需调用FunData方法传入请求参数，就在回调接口获得json数据，数据固定返回格式为{"code":"0","msg":"msg","data":{}}  
   12.28---优化请求步骤，数据固定返回格式改为{"code":"0","msg":"msg"}，回调接口数据直接强转为model，不需要再将json字符串进行转换转换  
