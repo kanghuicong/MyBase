@@ -4,7 +4,7 @@
   12.14---一系列baseAcivity，baseFragment，baseAdapter等等....主要是一个代码习惯问题，减少子类公共代码，让子类看起来不那么臃肿，也方便统一修改。
 # 2、自定义控件
     MyDialog：  
-		```
+		```java
 		new MyDialog("设置", "是否前往设置权限", "取消", "确定", new IDialog() {
 			@Override
             public void leftClick(DialogInterface dialog) {}
@@ -16,12 +16,12 @@
         ```
 	MyBottomDialog：  
 		调用：
-		```
+		```java
 		String[] list = {"图库", "拍照"};
 		new MyBottomDialog(this, list, true,this);
 		```
 		点击事件回调：  
-		```
+		```java
 		@Override
 		public void iDialog(int position) {
 			//position即list的位置
@@ -42,7 +42,7 @@
 		12.23---（MySuperItem）修改尺寸，完成适配，添加switch  
   		![MySuperItem](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/mySuperItem.png)    
 		提供链式动态修改方法，如下部分方法：
-		```
+		```java
         itemHeader1.setLeftImageL("http://p0.so.qhmsg.com/t014156c14c469bae95.jpg",true)
                 .setTopLeftText("孙悟空")
                 .setBottomLeftText("地球")
