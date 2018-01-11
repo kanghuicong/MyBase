@@ -395,17 +395,14 @@ public class MyRefresh extends LinearLayout {
 
     private void doHandler(Runnable runnable) {
         /*ING时，重复下拉/上拉，移除当前的runnable*/
-        if (isRepeat) {
-            removeRunnable(runnable);
-        }
+        if (isRepeat) removeRunnable(runnable);
+
         isRepeat = true;
         postDelayed(runnable, HEADER_FOOTER_ANIMATOR_TIME);
     }
 
     private void removeRunnable(Runnable runnable) {
-        if (runnable != null) {
-            removeCallbacks(runnable);
-        }
+        if (runnable != null) removeCallbacks(runnable);
     }
 
     /*停止所有活动，View归位*/
