@@ -40,6 +40,9 @@ public class MyRefresh extends LinearLayout {
     private final static int IS_HEADER = 3;
     private final static int IS_NOTHING = 4;
     private final static int HEADER_TOP_ANIMATOR_TIME = 300;
+    private final static int HEADER_FOOTER_ANIMATOR_TIME = 500;
+    private final static int ALL_ANIMATOR_TIME = 1000;
+
     private final static float RESILIENCE_FACTOR = 0.3f;
 
     private final static String REFRESH_1 = "下拉刷新";
@@ -68,7 +71,6 @@ public class MyRefresh extends LinearLayout {
     MyLoading ivHeaderLoading;
     MyLoading ivFooterLoading;
 
-    Handler handler = new Handler();
     IListerRefresh iListerRefresh;
 
     ValueAnimator headerAnimator;
@@ -105,7 +107,7 @@ public class MyRefresh extends LinearLayout {
 
         /*headerView回弹动画*/
         headerAnimator = ValueAnimator.ofInt(0, -mHeaderHeight);
-        headerAnimator.setDuration(200);
+        headerAnimator.setDuration(HEADER_TOP_ANIMATOR_TIME);
         headerAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -117,12 +119,10 @@ public class MyRefresh extends LinearLayout {
                     if (!isNoLoad) tvFooter.setText(LOAD_1);
                     mHeaderState = STOP;
                     mFooterState = STOP;
-                    isRepeat = false;
                 }
             }
         });
     }
-
 
     @Override
     protected void onFinishInflate() {
@@ -147,6 +147,7 @@ public class MyRefresh extends LinearLayout {
     }
 
     private int mStartY;
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent e) {
         int y = (int) e.getRawY();
@@ -155,6 +156,12 @@ public class MyRefresh extends LinearLayout {
                 isHighest = false;
                 startY = y;
                 mStartY = y;
+                startTime = System.currentTimeMillis();
+
+                /*快速下拉/上拉*/
+                if ((startTime - finishTime) >= ALL_ANIMATOR_TIME) isRepeat = false;
+                else isRepeat = true;
+
                 break;
             case MotionEvent.ACTION_MOVE:
                 /*header-->大于0,footer-->小于0*/
@@ -174,16 +181,17 @@ public class MyRefresh extends LinearLayout {
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-
                 break;
         }
         return false;
     }
 
     int topMargin = 0;
-    private long startTime = 0;
+    private long finishTime = 0;
     private boolean isHighest = false;
     private int highest;
+    long startTime;
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int y = (int) event.getRawY();
@@ -237,32 +245,33 @@ public class MyRefresh extends LinearLayout {
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
+                finishTime = System.currentTimeMillis();
+
                 if (mPullState == IS_HEADER) {
                     if (mHeaderState == ING) {
                         tvHeader.setText(REFRESH_3);
                         if (!isLoading) startLoading(ivHeaderLoading);
+                        mHeaderState = IS_NOTHING;
+                    }
 
-                        long currentTime = System.currentTimeMillis();
-                        if ((currentTime - startTime) >= HEADER_TOP_ANIMATOR_TIME) {
-                            startTopAnimator();
-                            startTime = currentTime;
-                        } else {
-                            /*没有执行stopAll方法时快速重复下拉*/
-                            headerTopAnimator.cancel();
-                            headerTopAnimator = null;
-                            startTopAnimator();
-                        }
-                    } else stopAll();
+                    if (isRepeat) {/*没有执行stopAll方法时快速重复下拉*/
+                        headerTopAnimator.end();
+                        headerTopAnimator.cancel();
+                        headerTopAnimator = null;
+                    }
+                    startTopAnimator();
 
                 } else if (mPullState == IS_FOOTER) {
                     if (mFooterState == ING) {
                         tvFooter.setText(LOAD_3);
                         if (!isLoading) startLoading(ivFooterLoading);
+
+                        if(isRepeat)removeRunnable(runnableLoad);
+
                         changeHeaderTopMargin(-(mHeaderHeight + mFooterHeight), false);
                         doHandler(runnableLoad);
                     } else stopAll();
-                } else if (isNoLoad) {
-                    /*scrollView上拉回弹*/
+                } else if (isNoLoad) {/*scrollView上拉回弹*/
                     changeHeaderTopMargin(-mHeaderHeight + mFooterHeight, false);
                 }
                 break;
@@ -372,19 +381,15 @@ public class MyRefresh extends LinearLayout {
 
     private Runnable runnableRefresh = new Runnable() {
         public void run() {
-            stopLoading(ivHeaderLoading);
             if (iListerRefresh != null) iListerRefresh.Refresh();
             else setRefreshState(1);
-
         }
     };
 
     private Runnable runnableLoad = new Runnable() {
         public void run() {
-            stopLoading(ivFooterLoading);
             if (iListerRefresh != null) iListerRefresh.Load();
             else setLoadState(1);
-
         }
     };
 
@@ -394,12 +399,12 @@ public class MyRefresh extends LinearLayout {
             removeRunnable(runnable);
         }
         isRepeat = true;
-        handler.postDelayed(runnable, 500);
+        postDelayed(runnable, HEADER_FOOTER_ANIMATOR_TIME);
     }
 
     private void removeRunnable(Runnable runnable) {
-        if (handler != null && runnable != null) {
-            handler.removeCallbacks(runnable);
+        if (runnable != null) {
+            removeCallbacks(runnable);
         }
     }
 
@@ -443,7 +448,8 @@ public class MyRefresh extends LinearLayout {
             public void run() {
                 headerAnimator.start();
             }
-        }, 500);
+        }, HEADER_FOOTER_ANIMATOR_TIME);
+
     }
 
     /*加载结束时状态*/
@@ -460,7 +466,7 @@ public class MyRefresh extends LinearLayout {
             public void run() {
                 stopAll();
             }
-        }, 500);
+        }, HEADER_FOOTER_ANIMATOR_TIME);
     }
 
     /*设置scrollView是否需要上拉提示语*/

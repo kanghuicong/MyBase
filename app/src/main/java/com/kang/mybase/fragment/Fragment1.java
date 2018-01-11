@@ -2,9 +2,6 @@ package com.kang.mybase.fragment;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.util.ArrayMap;
 import android.view.View;
 
 import com.kang.mybase.R;
@@ -19,6 +16,7 @@ import com.kang.mybase.fun.FunData;
 import com.kang.mybase.model.RefreshAllBean;
 import com.kang.mybase.pro.IDialog;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.OnClick;
@@ -45,12 +43,11 @@ public class Fragment1 extends BaseFragment  {
         funData = new FunData((MainActivity)activity,this, this);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @OnClick({R.id.http_click,R.id.photo_click,R.id.header_click,R.id.voice_click,R.id.video_click,R.id.dialog_click,R.id.loading_click})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.http_click://网络请求
-                Map<String, Object> map = new ArrayMap<>();
+                Map<String, Object> map = new HashMap<>();
                 funData.getData(getApi().test(map),null);
                 break;
             case R.id.photo_click://图片选择

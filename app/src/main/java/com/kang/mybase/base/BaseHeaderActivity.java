@@ -50,7 +50,7 @@ public abstract class BaseHeaderActivity extends BaseActivity{
         }else if (requestCode == PicUtils.TAKE_PICTURE_HEADER){
             PicUtils.startPhotoZoom(this, imageFileUri);
         } else if (requestCode == PicUtils.PREVIEW_HEADER) {
-            //裁剪图片并返回地址。按照实际开发情况，在头像上传完了后应该调用
+            //裁剪图片并返回地址
             if (data != null) {
                 getUrl(PicUtils.getPicPath(data));
                 pathList.add(PicUtils.getPicPath(data));
