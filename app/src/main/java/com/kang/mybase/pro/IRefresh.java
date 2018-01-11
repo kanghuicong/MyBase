@@ -11,6 +11,10 @@ import rx.Observable;
 
 public interface IRefresh<T> {
 
+    Observable refreshObservable();
+
+    Observable loadObservable();
+
     void refreshSuccess(T baseModelList);
 
 //    void refreshFailure(String error_code, String error_msg);
@@ -19,7 +23,9 @@ public interface IRefresh<T> {
 
 //    void loadFailure(String error_code, String error_msg);
 
-    Observable loadObservable();
+
+
+
 
 }
 

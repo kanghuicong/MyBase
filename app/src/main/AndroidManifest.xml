@@ -43,7 +43,7 @@
 
         <activity android:name="com.kang.mybase.activity.MainActivity" />
         <!--图片选择-->
-        <activity android:name=".activity.MyPhotoActivity" />
+        <activity android:name=".activity.PhotoGalleryActivity" />
         <activity android:name=".activity.PhotoChooseActivity" />
         <!--头像选择-->
         <activity android:name=".activity.HeaderChooseActivity" />

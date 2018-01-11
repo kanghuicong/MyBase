@@ -32,7 +32,7 @@ import static com.kang.utilssdk.BarUtils.getStatusBarHeight;
  * E-Mail is 515849594@qq.com
  */
 
-public class MyPhotoActivity extends GalleryActivity {
+public class PhotoGalleryActivity extends GalleryActivity {
 
     List<PhotoEntry> mSelectedPhotos;
     @InjectView(R.id.selected_count)

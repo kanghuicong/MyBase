@@ -8,9 +8,12 @@ import com.kang.mybase.base.BaseFragment;
 import com.kang.mybase.custom.view.MyRefresh;
 import com.kang.mybase.fun.RefreshUtil;
 import com.kang.mybase.model.RefreshAllBean;
+import com.kang.mybase.model.RefreshItemBean;
 import com.kang.mybase.pro.IRefresh;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.InjectView;
@@ -40,8 +43,13 @@ public class Fragment3 extends BaseFragment implements IRefresh {
     @Override
     public void init() {
         //刷新数据
+        refreshUtil = new RefreshUtil(myRefresh,listView, this,this);
+    }
+
+    @Override
+    public Observable refreshObservable() {
         Map<String, Object> map = new HashMap<>();
-        refreshUtil = new RefreshUtil(getApi().test(map), myRefresh,listView, this,this);
+        return getApi().test(map);
     }
 
     @Override
@@ -52,16 +60,28 @@ public class Fragment3 extends BaseFragment implements IRefresh {
 
     @Override
     public void refreshSuccess(Object baseModelList) {
-        refreshUtil.refreshSuccess(new RefreshAdapter(activity),((RefreshAllBean) baseModelList).getData());
+        List<RefreshItemBean> list = new ArrayList<>();
+        for (int i=0;i<15;i++) {
+            RefreshItemBean refreshItemBean = new RefreshItemBean();
+            refreshItemBean.setName("音乐类"+i);
+            list.add(refreshItemBean);
+        }
+//        refreshUtil.refreshSuccess(new RefreshAdapter(activity),((RefreshAllBean) baseModelList).getData());
+        refreshUtil.refreshSuccess(new RefreshAdapter(activity),list);
     }
 
     @Override
     public void loadSuccess(Object baseModelList) {
-        refreshUtil.loadSuccess(((RefreshAllBean) baseModelList).getData());
+//        refreshUtil.loadSuccess(((RefreshAllBean) baseModelList).getData());
+        List<RefreshItemBean> list = new ArrayList<>();
+        for (int i=0;i<5;i++) {
+            RefreshItemBean refreshItemBean = new RefreshItemBean();
+            refreshItemBean.setName("音乐类"+i);
+            list.add(refreshItemBean);
+        }
+//        refreshUtil.refreshSuccess(new RefreshAdapter(activity),((RefreshAllBean) baseModelList).getData());
+        refreshUtil.loadSuccess(list);
     }
-
-
-
 
     @Override
     public void success(Object baseModelList, String type) {}

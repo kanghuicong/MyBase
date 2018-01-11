@@ -9,11 +9,9 @@
         android:id="@+id/iv_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
+        android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/tv_header"
-        android:layout_toStartOf="@+id/tv_header"
         android:background="@mipmap/choose_checked"
         android:visibility="gone"/>
 
@@ -34,7 +32,6 @@
         android:id="@+id/tv_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

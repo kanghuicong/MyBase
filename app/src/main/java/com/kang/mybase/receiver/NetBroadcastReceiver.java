@@ -24,6 +24,7 @@ public class NetBroadcastReceiver extends BroadcastReceiver{
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction() == ConnectivityManager.CONNECTIVITY_ACTION) {
             NetworkUtils.NetworkType netWorkState = NetworkUtils.getNetworkType();
+
             if (iNetChange!=null)iNetChange.onNetChange(netWorkState);
         }
     }

@@ -19,15 +19,13 @@ import rx.Observable;
 
 public class RefreshUtil implements MyRefresh.IListerRefresh{
     private MyRefresh myRefresh;
-    private Observable observable;
     private RefreshData refreshData;
     private IRefresh iRefresh;
     private BaseMyAdapter myAdapter = null;
     private ListView listView;
     private ISubDelete iSubDelete;
 
-    public RefreshUtil(Observable observable,MyRefresh myRefresh,ListView listView,IRefresh iRefresh,ISubDelete iSubDelete) {
-        this.observable = observable;
+    public RefreshUtil(MyRefresh myRefresh,ListView listView,IRefresh iRefresh,ISubDelete iSubDelete) {
         this.myRefresh = myRefresh;
         this.listView = listView;
         this.iRefresh = iRefresh;
@@ -38,14 +36,14 @@ public class RefreshUtil implements MyRefresh.IListerRefresh{
     public void init() {
         refreshData = new RefreshData(myRefresh, iSubDelete);
         //第一次进入自动刷新数据
-        refreshData.getRefreshData(observable,iRefresh);
+        refreshData.getRefreshData(iRefresh.refreshObservable(),iRefresh);
         //上拉下拉监听
         myRefresh.setOnListerRefresh(this);
     }
 
     @Override//刷新数据
     public void Refresh() {
-        refreshData.getRefreshData(observable,iRefresh);
+        refreshData.getRefreshData(iRefresh.refreshObservable(),iRefresh);
     }
 
     @Override//加载数据

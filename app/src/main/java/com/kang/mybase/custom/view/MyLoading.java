@@ -75,6 +75,7 @@ public class MyLoading extends View {
         }
     }
 
+    boolean isRunning = false;
     private void setValueAnimator() {
         valueAnimator = ValueAnimator.ofInt(12, 1);
         valueAnimator.setDuration(1000);
@@ -86,16 +87,24 @@ public class MyLoading extends View {
             public void onAnimationUpdate(ValueAnimator animation) {
                 control = (int) animation.getAnimatedValue();
                 invalidate();
+                if (control == 1) isRunning = false;
+                else isRunning = true;
             }
         });
     }
 
     public void stopAnimator() {
         valueAnimator.end();
+        isRunning = false;
     }
 
     public void startAnimator() {
         valueAnimator.start();
+        isRunning = true;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
     }
 
 }

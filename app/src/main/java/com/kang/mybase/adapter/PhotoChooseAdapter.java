@@ -20,7 +20,7 @@ import java.util.List;
  * e-mail:515849594@qq.com
  */
 
-public class ChooseAdapter extends RecyclerView.Adapter<ChooseAdapter.ViewHolder> {
+public class PhotoChooseAdapter extends RecyclerView.Adapter<PhotoChooseAdapter.ViewHolder> {
 
     private List<PhotoEntry> list = new ArrayList<PhotoEntry>();
 
@@ -28,16 +28,16 @@ public class ChooseAdapter extends RecyclerView.Adapter<ChooseAdapter.ViewHolder
 
     private LayoutInflater mInflater;
 
-    private OnItmeClickListener mlistener;
+    private OnItemClickListener mlistener;
 
-    public interface OnItmeClickListener {
+    public interface OnItemClickListener {
         void onItemClicked(int position);
 
     }
 
-    public ChooseAdapter(Context mContext) {
+    public PhotoChooseAdapter(Context mContext) {
         this.mContext = mContext;
-        mlistener = (OnItmeClickListener) mContext;
+        mlistener = (OnItemClickListener) mContext;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         list.add(createAddEntry());
     }
