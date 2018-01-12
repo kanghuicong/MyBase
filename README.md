@@ -51,22 +51,21 @@ public void iDialog(int position) {
             .setBottomRightText("超级赛亚人")
             .setBottomRightTextSize(12);
 ```
-	MyRefresh:  
-	12.25---自定义刷新加载布局实现，已完成基本实现思路  
-	12.26---修改细节，添加各种情况的提示语，目前只针对AbsListView  
-	12.26---解决各种特殊情况下的显示异常  
-	12.27---添加回弹效果以及数据加载转圈效果  
-	01.03---将网络请求封装进来  
-	01.04---封装Myadapter  
-	01.05---继续封装简化数据请求及UI更新代码  
-	01.08---优化回弹效果，主要解决快速重复下拉/上拉时回弹效果、动画显示异常  
-	01.11---优化回弹效果，主要解决位于头部时，下拉X距离紧接着上拉X+Y距离，会将底部控件拉出；底部亦然；目测已无BUG.....  
-	01.12---添加ScrollView；当没有上拉加载需求时，设置app:isNoLoad即可改为上拉空白回弹  
-	![MyRefresh](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myRefresh.gif)   
-	与现有的大部分刷新加载框架相比，我处理的手势动作更多，例如正在刷新时是不可以做下拉操作（起码我用过的两个框架都不可以）、不支持空白回弹等等  
-	MyLoading：  
-	12.27---自定义控件MyLoading，用于数据加载时等待反馈，并结合MyDialog，封装loading加载框  
-  ....持续更新
+### MyRefresh:  
+  12.25---自定义刷新加载布局实现，已完成基本实现思路  
+  12.26---修改细节，添加各种情况的提示语，目前只针对AbsListView  
+  12.26---解决各种特殊情况下的显示异常  
+  12.27---添加回弹效果以及数据加载转圈效果  
+  01.03---将网络请求封装进来  
+  01.04---封装Myadapter  
+  01.05---继续封装简化数据请求及UI更新代码  
+  01.08---优化回弹效果，主要解决快速重复下拉/上拉时回弹效果、动画显示异常  
+  01.11---优化回弹效果，主要解决位于头部时，下拉X距离紧接着上拉X+Y距离，会将底部控件拉出；底部亦然；目测已无BUG.....  
+  01.12---添加ScrollView；当没有上拉加载需求时，设置app:isNoLoad即可改为上拉空白回弹  
+  ![MyRefresh](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myRefresh.gif)   
+  与现有的大部分刷新加载框架相比，我处理的手势动作更多，例如正在刷新时是不可以做下拉操作（起码我用过的两个框架都不可以）、不支持空白回弹等等  
+### MyLoading：  
+  12.27---自定义控件MyLoading，用于数据加载时等待反馈，并结合MyDialog，封装loading加载框  
 # 3、网络请求封装
   12.14---基于okHttp、rxAndroid与retrofit2写的网络请求，已封装，只需调用FunData方法传入请求参数，就在回调接口获得json数据，数据固定返回格式为{"code":"0","msg":"msg","data":{}}  
   12.28---优化请求步骤，数据固定返回格式改为{"code":"0","msg":"msg"}，回调接口数据直接强转为model，不需要再将json字符串进行转换转换  
