@@ -4,7 +4,8 @@
   12.14---一系列baseAcivity，baseFragment，baseAdapter等等....主要是一个代码习惯问题，减少子类公共代码，让子类看起来不那么臃肿，也方便统一修改。
 # 2、自定义控件
 ### MyDialog
-![MyDialog](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myDialog.png)  
+  dialog样式是系统样式，不同手机样式可能不一样
+![MyDialog](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myDialog.png)  
 ```java
 new MyDialog("设置", "是否前往设置权限", "取消", "确定", new IDialog() {
     @Override
@@ -16,6 +17,7 @@ new MyDialog("设置", "是否前往设置权限", "取消", "确定", new IDial
 }).show(activity.getFragmentManager(), "settingDialog");
 ```
 ### MyBottomDialog
+  可以动态修改item的个数，点击事件对应相应的position即可
 ![MyBottomDialog](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myBottomDialog.png) 
 ```java
 //调用  
@@ -60,7 +62,7 @@ public void iDialog(int position) {
   01.04---封装Myadapter  
   01.05---继续封装简化数据请求及UI更新代码  
   01.08---优化回弹效果，主要解决快速重复下拉/上拉时回弹效果、动画显示异常  
-  01.11---优化回弹效果，主要解决位于头部时，下拉X距离紧接着上拉X+Y距离，会将底部控件拉出；底部亦然；目测已无BUG.....  
+  01.11---优化回弹效果，主要解决位于头部时，下拉X距离紧接着上拉X+Y距离，会将底部控件拉出；底部亦然  
   01.12---添加ScrollView；当没有上拉加载需求时，设置app:isNoLoad即可改为上拉空白回弹  
   ![MyRefresh](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myRefresh.gif)   
   与现有的大部分刷新加载框架相比，我处理的手势动作更多，例如正在刷新时是不可以做下拉操作（起码我用过的两个框架都不可以）、不支持空白回弹等等  
