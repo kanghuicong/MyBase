@@ -335,8 +335,6 @@ public class MyRefresh extends LinearLayout {
         return animator;
     }
 
-
-
     /*measure子View*/
     private void measureView(View child) {
         ViewGroup.LayoutParams p = child.getLayoutParams();
@@ -475,6 +473,7 @@ public class MyRefresh extends LinearLayout {
     /*开始loading动画*/
     private void startLoading(MyLoading myLoading) {
         isLoading = true;
+        if (ivHeaderState.getVisibility()==VISIBLE)ivHeaderState.setVisibility(GONE);
         myLoading.startAnimator();
         myLoading.setVisibility(VISIBLE);
     }
