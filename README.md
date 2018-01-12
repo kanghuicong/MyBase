@@ -4,7 +4,7 @@
   12.14---一系列baseAcivity，baseFragment，baseAdapter等等....主要是一个代码习惯问题，减少子类公共代码，让子类看起来不那么臃肿，也方便统一修改。
 # 2、自定义控件
 ### MyDialog
-  dialog样式是系统样式，不同手机样式可能不一样
+  dialog样式是系统样式，不同手机样式可能不一样  
 ![MyDialog](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myDialog.png)  
 ```java
 new MyDialog("设置", "是否前往设置权限", "取消", "确定", new IDialog() {
@@ -17,7 +17,7 @@ new MyDialog("设置", "是否前往设置权限", "取消", "确定", new IDial
 }).show(activity.getFragmentManager(), "settingDialog");
 ```
 ### MyBottomDialog
-  可以动态修改item的个数，点击事件对应相应的position即可
+  可以动态修改item的个数，点击事件对应相应的position即可  
 ![MyBottomDialog](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myBottomDialog.png) 
 ```java
 //调用  
