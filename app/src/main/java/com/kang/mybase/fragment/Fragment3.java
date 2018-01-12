@@ -5,6 +5,7 @@ import android.widget.ListView;
 import com.kang.mybase.R;
 import com.kang.mybase.adapter.RefreshAdapter;
 import com.kang.mybase.base.BaseFragment;
+import com.kang.mybase.custom.view.MyListView;
 import com.kang.mybase.custom.view.MyRefresh;
 import com.kang.mybase.fun.RefreshUtil;
 import com.kang.mybase.model.RefreshAllBean;
@@ -79,7 +80,6 @@ public class Fragment3 extends BaseFragment implements IRefresh {
             refreshItemBean.setName("音乐类"+i);
             list.add(refreshItemBean);
         }
-//        refreshUtil.refreshSuccess(new RefreshAdapter(activity),((RefreshAllBean) baseModelList).getData());
         refreshUtil.loadSuccess(list);
     }
 
