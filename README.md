@@ -65,6 +65,41 @@ public void iDialog(int position) {
   01.11---优化回弹效果，主要解决位于头部时，下拉X距离紧接着上拉X+Y距离，会将底部控件拉出；底部亦然  
   01.12---添加ScrollView；当没有上拉加载需求时，设置app:isNoLoad即可改为上拉空白回弹  
   ![MyRefresh](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myRefresh.gif)   
+```java
+    RefreshUtil refreshUtil;
+    RefreshAdapter refreshAdapter;
+    @Override
+    public void init() {
+        refreshUtil = new RefreshUtil(myRefresh,listView, this,this);
+        refreshAdapter = new RefreshAdapter(activity);
+    }
+    //网络请求-->retrofit2+okhttp+rxandroid,具体封装请看详细代码
+    @Override //下拉刷新接口
+    public Observable refreshObservable() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("key", "value");
+        return getApi().test(map);
+    }
+    @Override //上拉加载接口
+    public Observable loadObservable() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("key", "value");
+        return getApi().test(map);
+    }
+    @Override //刷新成功回调
+    public void refreshSuccess(Object baseModelList) {
+        //RefreshAllBean是数据格式，之所以返回类型是Object，是考虑到后台数据格式不统一
+	//如果后台返回的格式可以统一则可以继续修改RefreshData中的方法，就不需要强转类型了
+        refreshUtil.refreshSuccess(refreshAdapter,((RefreshAllBean) baseModelList).getData());//更新UI
+    }
+
+    @Override //加载成功回调
+    public void loadSuccess(Object baseModelList) {
+        refreshUtil.loadSuccess(((RefreshAllBean) baseModelList).getData());//更新UI
+    }
+    //数据请求失败的操作因为基本一样，所以都写在了RefreshData，如果需要失败操作可以自己添加接口回调
+    //以上代码即可实现所有数据刷新加载及UI更新
+```
   与现有的大部分刷新加载框架相比，我处理的手势动作更多，例如正在刷新时是不可以做下拉操作（起码我用过的两个框架都不可以）、不支持空白回弹等等  
 ### MyLoading：  
   12.27---自定义控件MyLoading，用于数据加载时等待反馈，并结合MyDialog，封装loading加载框  
