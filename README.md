@@ -4,7 +4,8 @@
   12.14---一系列baseAcivity，baseFragment，baseAdapter等等....主要是一个代码习惯问题，减少子类公共代码，让子类看起来不那么臃肿，也方便统一修改。
 # 2、自定义控件
 ### MyDialog
-![MyDialog](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myDialog.png)  
+  dialog样式是系统样式，不同手机样式可能不一样  
+![MyDialog](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myDialog.png)  
 ```java
 new MyDialog("设置", "是否前往设置权限", "取消", "确定", new IDialog() {
     @Override
@@ -16,6 +17,7 @@ new MyDialog("设置", "是否前往设置权限", "取消", "确定", new IDial
 }).show(activity.getFragmentManager(), "settingDialog");
 ```
 ### MyBottomDialog
+  可以动态修改item的个数，点击事件对应相应的position即可  
 ![MyBottomDialog](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myBottomDialog.png) 
 ```java
 //调用  
@@ -51,22 +53,56 @@ public void iDialog(int position) {
             .setBottomRightText("超级赛亚人")
             .setBottomRightTextSize(12);
 ```
-	MyRefresh:  
-	12.25---自定义刷新加载布局实现，已完成基本实现思路  
-	12.26---修改细节，添加各种情况的提示语，目前只针对AbsListView  
-	12.26---解决各种特殊情况下的显示异常  
-	12.27---添加回弹效果以及数据加载转圈效果  
-	01.03---将网络请求封装进来  
-	01.04---封装Myadapter  
-	01.05---继续封装简化数据请求及UI更新代码  
-	01.08---优化回弹效果，主要解决快速重复下拉/上拉时回弹效果、动画显示异常  
-	01.11---优化回弹效果，主要解决位于头部时，下拉X距离紧接着上拉X+Y距离，会将底部控件拉出；底部亦然；目测已无BUG.....  
-	01.12---添加ScrollView；当没有上拉加载需求时，设置app:isNoLoad即可改为上拉空白回弹  
-	![MyRefresh](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myRefresh.gif)   
-	与现有的大部分刷新加载框架相比，我处理的手势动作更多，例如正在刷新时是不可以做下拉操作（起码我用过的两个框架都不可以）、不支持空白回弹等等  
-	MyLoading：  
-	12.27---自定义控件MyLoading，用于数据加载时等待反馈，并结合MyDialog，封装loading加载框  
-  ....持续更新
+### MyRefresh:  
+  12.25---自定义刷新加载布局实现，已完成基本实现思路  
+  12.26---修改细节，添加各种情况的提示语，目前只针对AbsListView  
+  12.26---解决各种特殊情况下的显示异常  
+  12.27---添加回弹效果以及数据加载转圈效果  
+  01.03---将网络请求封装进来  
+  01.04---封装Myadapter  
+  01.05---继续封装简化数据请求及UI更新代码  
+  01.08---优化回弹效果，主要解决快速重复下拉/上拉时回弹效果、动画显示异常  
+  01.11---优化回弹效果，主要解决位于头部时，下拉X距离紧接着上拉X+Y距离，会将底部控件拉出；底部亦然  
+  01.12---添加ScrollView；当没有上拉加载需求时，设置app:isNoLoad即可改为上拉空白回弹  
+  ![MyRefresh](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myRefresh.gif)   
+```java
+    RefreshUtil refreshUtil;
+    RefreshAdapter refreshAdapter;
+    @Override
+    public void init() {
+        refreshUtil = new RefreshUtil(myRefresh,listView, this,this);
+        refreshAdapter = new RefreshAdapter(activity);
+    }
+    //网络请求-->retrofit2+okhttp+rxandroid,具体封装请看详细代码
+    @Override //下拉刷新接口
+    public Observable refreshObservable() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("key", "value");
+        return getApi().test(map);
+    }
+    @Override //上拉加载接口
+    public Observable loadObservable() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("key", "value");
+        return getApi().test(map);
+    }
+    @Override //刷新成功回调
+    public void refreshSuccess(Object baseModelList) {
+        //RefreshAllBean是数据格式，之所以返回类型是Object，是考虑到后台数据格式不统一
+	//如果后台返回的格式可以统一则可以继续修改RefreshData中的方法，就不需要强转类型了
+        refreshUtil.refreshSuccess(refreshAdapter,((RefreshAllBean) baseModelList).getData());//更新UI
+    }
+
+    @Override //加载成功回调
+    public void loadSuccess(Object baseModelList) {
+        refreshUtil.loadSuccess(((RefreshAllBean) baseModelList).getData());//更新UI
+    }
+    //数据请求失败的操作因为基本一样，所以都写在了RefreshData，如果需要失败操作可以自己添加接口回调
+    //以上代码即可实现所有数据刷新加载及UI更新
+```
+  与现有的大部分刷新加载框架相比，我处理的手势动作更多，例如正在刷新时是不可以做下拉操作（起码我用过的两个框架都不可以）、不支持空白回弹等等  
+### MyLoading：  
+  12.27---自定义控件MyLoading，用于数据加载时等待反馈，并结合MyDialog，封装loading加载框  
 # 3、网络请求封装
   12.14---基于okHttp、rxAndroid与retrofit2写的网络请求，已封装，只需调用FunData方法传入请求参数，就在回调接口获得json数据，数据固定返回格式为{"code":"0","msg":"msg","data":{}}  
   12.28---优化请求步骤，数据固定返回格式改为{"code":"0","msg":"msg"}，回调接口数据直接强转为model，不需要再将json字符串进行转换转换  
