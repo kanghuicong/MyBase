@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Chronometer;
 import android.widget.ListView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.kang.mybase.R;
 import com.kang.mybase.base.BaseMyAdapter;
 import com.kang.mybase.adapter.VoiceAdapter;
@@ -24,6 +25,7 @@ import java.util.List;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+import static com.kang.mybase.fun.LoginInterceptor.CHECK_LOGIN;
 import static com.kang.mybase.fun.VoiceFiles.getAllFiles;
 import static com.kang.utilssdk.ToastUtils.showShort;
 
@@ -32,6 +34,7 @@ import static com.kang.utilssdk.ToastUtils.showShort;
  * E-Mail is 515849594@qq.com
  */
 @InjectActivityView(R.layout.voice_activity)
+@Route(path = "/activity/HeaderChooseActivity")
 public class VoiceActivity extends BaseActivity {
     @InjectView(R.id.chronometer)
     Chronometer chronometer;
@@ -70,7 +73,7 @@ public class VoiceActivity extends BaseActivity {
                         voiceAdapter = new BaseMyAdapter(new VoiceAdapter(this));
                         voiceList.setAdapter(voiceAdapter);
                     }
-                    voiceAdapter.reRefreshData(list);
+                    voiceAdapter.refreshData(list);
                 }else showShort("无音频文件");
                 break;
         }
@@ -85,7 +88,7 @@ public class VoiceActivity extends BaseActivity {
             if (voiceAdapter == null) {
                 voiceAdapter = new BaseMyAdapter(new VoiceAdapter(this));
                 voiceList.setAdapter(voiceAdapter);
-                voiceAdapter.reRefreshData(list);
+                voiceAdapter.refreshData(list);
 
                 voiceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -98,12 +101,12 @@ public class VoiceActivity extends BaseActivity {
                     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                         VoiceFiles.deleteFile(((FileBean)voiceAdapter.getItem(i)).getPath());
                         list.remove(i);
-                        voiceAdapter.reRefreshData(list);
+                        voiceAdapter.refreshData(list);
                         return true;
                     }
                 });
             } else {
-                voiceAdapter.reRefreshData(list);
+                voiceAdapter.refreshData(list);
             }
         }else {
             showShort("无录音文件");

@@ -57,12 +57,12 @@ public class RefreshUtil implements MyRefresh.IListerRefresh{
             myAdapter = new BaseMyAdapter(mItem);
             listView.setAdapter(myAdapter);
         }
-        myAdapter.reRefreshData(list);
+        myAdapter.refreshData(list);
     }
 
     //加载数据成功，更新adapter
     public void loadSuccess(List list) {
-        myAdapter.reLoadData(list);
+        myAdapter.loadData(list);
     }
 
 }

@@ -20,6 +20,7 @@ import com.kang.utilssdk.PermissionUtils;
 import com.kang.utilssdk.PermissionUtils.OnPermissionListener;
 import com.kang.utilssdk.SharedPreferencesUtils;
 
+import static com.kang.mybase.fun.ARouterUtil.startMainActivity;
 import static com.kang.utilssdk.AppUtils.getAppDetailsSettings;
 import static com.kang.utilssdk.PermissionUtils.getDeniedPermissions;
 import static com.kang.utilssdk.PermissionUtils.hasAlwaysDeniedPermission;
@@ -93,11 +94,11 @@ public class SplashActivity extends Activity implements OnPermissionListener {
             public boolean handleMessage(Message message) {
                 if (!SharedPreferencesUtils.getPreferences(SplashActivity.this, IS_FIRST, false)) {
                     //第一次进入APP，可以在此设置进入引导页
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    startMainActivity();
                     finish();
                 } else {
                     //正常进入APP
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    startMainActivity();
                     finish();
                 }
                 putPreferences(SplashActivity.this, IS_FIRST, true);

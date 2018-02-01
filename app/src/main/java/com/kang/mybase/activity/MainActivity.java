@@ -9,6 +9,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
+
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.kang.mybase.fragment.Fragment1;
 import com.kang.mybase.fragment.Fragment2;
 import com.kang.mybase.fragment.Fragment3;
@@ -26,7 +28,7 @@ import static com.kang.utilssdk.AssistActivityUtils.assistActivity;
  * Created by KangHuiCong on 2017/12/11.
  * E-Mail is 515849594@qq.com
  */
-
+@Route(path = "/activity/MainActivity")
 public class MainActivity extends BaseFragmentActivity {
     private FragmentManager fm;
     private long touchTime = 0;

@@ -37,6 +37,9 @@
             </intent-filter>
         </receiver>
 
+        <!--登录-->
+        <activity android:name=".activity.LoginActivity" />
+
         <!--录音服务-->
         <service android:name=".service.VoiceService" />
         <service android:name=".custom.other.InitializeService"/>

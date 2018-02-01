@@ -60,21 +60,18 @@ public class BaseMyAdapter<T> extends BaseAdapter {
         return convertView;
     }
 
-    //加载数据
-    public void reLoadData(List list) {
+    public void loadData(List list) {
         if (list == null) return;
         mTotalList.addAll(list);
         notifyDataSetChanged();
     }
-    //刷新数据
-    public void reRefreshData(List list) {
+    public void refreshData(List list) {
         if (list == null) return;
         mTotalList.clear();
         mTotalList.addAll(list);
         notifyDataSetChanged();
     }
-    //添加一条数据
-    public void reLoadData(T obj, int position) {
+    public void addData(T obj, int position) {
         mTotalList.add(position, obj);
         notifyDataSetChanged();
     }

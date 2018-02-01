@@ -1,5 +1,6 @@
 package com.kang.mybase.activity;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.kang.mybase.R;
 import com.kang.mybase.base.BaseActivity;
 import com.kang.mybase.util.inject.InjectActivityView;
@@ -9,6 +10,7 @@ import com.kang.mybase.util.inject.InjectActivityView;
  * E-Mail is 515849594@qq.com
  */
 @InjectActivityView(R.layout.video_activity)
+@Route(path = "/activity/VideoActivity")
 public class VideoActivity extends BaseActivity{
     @Override
     public void success(Object baseModelList, String type) {

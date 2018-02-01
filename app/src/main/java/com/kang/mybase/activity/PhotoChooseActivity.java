@@ -1,8 +1,11 @@
 package com.kang.mybase.activity;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.kang.mybase.R;
 import com.kang.mybase.base.BasePhotoActivity;
 import com.kang.mybase.util.inject.InjectActivityView;
+
+import static com.kang.mybase.fun.LoginInterceptor.CHECK_LOGIN;
 
 /**
  * Created by KangHuiCong on 2017/12/12.
@@ -10,6 +13,7 @@ import com.kang.mybase.util.inject.InjectActivityView;
  */
 
 @InjectActivityView(R.layout.photo_activity)
+@Route(path = "/activity/PhotoChooseActivity",extras = CHECK_LOGIN)
 public class PhotoChooseActivity extends BasePhotoActivity {
 
     @Override

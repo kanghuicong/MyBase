@@ -56,7 +56,6 @@ public abstract class BaseItem<T> extends BaseBean {
 
     public static abstract class BaseHolder {
         public BaseHolder(View convertView) {
-            //ButterKnife插件
             ButterKnife.inject(this, convertView);
         }
     }

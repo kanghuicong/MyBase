@@ -2,6 +2,7 @@ package com.kang.mybase.activity;
 
 import android.widget.ImageView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
 
 import com.kang.mybase.R;
@@ -14,6 +15,7 @@ import com.kang.mybase.util.inject.InjectActivityView;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+import static com.kang.mybase.fun.LoginInterceptor.CHECK_LOGIN;
 import static com.kang.utilssdk.ToastUtils.showShort;
 
 /**
@@ -21,6 +23,7 @@ import static com.kang.utilssdk.ToastUtils.showShort;
  * E-Mail is 515849594@qq.com
  */
 @InjectActivityView(R.layout.header_activity)
+@Route(path = "/activity/HeaderChooseActivity",extras = CHECK_LOGIN)
 public class HeaderChooseActivity extends BaseHeaderActivity implements IDialogBottom {
 
     String[] list = {"图库", "拍照"};

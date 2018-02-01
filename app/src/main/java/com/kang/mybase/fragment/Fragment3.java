@@ -4,6 +4,7 @@ import android.widget.ListView;
 
 import com.kang.mybase.R;
 import com.kang.mybase.adapter.RefreshAdapter;
+import com.kang.mybase.adapter.RefreshAdapter2;
 import com.kang.mybase.base.BaseFragment;
 import com.kang.mybase.custom.view.MyListView;
 import com.kang.mybase.custom.view.MyRefresh;
@@ -69,6 +70,10 @@ public class Fragment3 extends BaseFragment implements IRefresh {
         }
 //        refreshUtil.refreshSuccess(new RefreshAdapter(activity),((RefreshAllBean) baseModelList).getData());
         refreshUtil.refreshSuccess(new RefreshAdapter(activity),list);
+
+//        RefreshAdapter2 refreshAdapter2 = new RefreshAdapter2(activity);
+//        refreshAdapter2.refreshData(list);
+//        listView.setAdapter(refreshAdapter2);
     }
 
     @Override

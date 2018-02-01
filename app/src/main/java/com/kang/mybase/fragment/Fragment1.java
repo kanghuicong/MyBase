@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.kang.mybase.R;
 import com.kang.mybase.activity.HeaderChooseActivity;
 import com.kang.mybase.activity.MainActivity;
@@ -12,6 +14,7 @@ import com.kang.mybase.activity.VideoActivity;
 import com.kang.mybase.activity.VoiceActivity;
 import com.kang.mybase.base.BaseFragment;
 import com.kang.mybase.custom.view.MyDialog;
+import com.kang.mybase.fun.ARouterUtil;
 import com.kang.mybase.fun.FunData;
 import com.kang.mybase.model.RefreshAllBean;
 import com.kang.mybase.pro.IDialog;
@@ -21,6 +24,10 @@ import java.util.Map;
 
 import butterknife.OnClick;
 
+import static com.kang.mybase.fun.ARouterUtil.startHeaderChooseActivity;
+import static com.kang.mybase.fun.ARouterUtil.startPhotoChooseActivity;
+import static com.kang.mybase.fun.ARouterUtil.startVideoActivity;
+import static com.kang.mybase.fun.ARouterUtil.startVoiceActivity;
 import static com.kang.mybase.util.httpClient.HttpRequest.getApi;
 import static com.kang.utilssdk.AppUtils.getAppDetailsSettings;
 import static com.kang.utilssdk.ToastUtils.showShort;
@@ -51,16 +58,16 @@ public class Fragment1 extends BaseFragment  {
                 funData.getData(getApi().test(map),null);
                 break;
             case R.id.photo_click://图片选择
-                startActivity(new Intent(getActivity(),PhotoChooseActivity.class));
+                startPhotoChooseActivity(activity);
                 break;
             case R.id.header_click://头像
-                startActivity(new Intent(getActivity(),HeaderChooseActivity.class));
+                startHeaderChooseActivity(activity);
                 break;
             case R.id.voice_click://音频
-                startActivity(new Intent(getActivity(),VoiceActivity.class));
+                startVoiceActivity();
                 break;
             case R.id.video_click://视频
-                startActivity(new Intent(getActivity(),VideoActivity.class));
+                startVideoActivity();
                 break;
             case R.id.dialog_click:
                 new MyDialog("设置", "是否前往设置权限", "取消", "确定", new IDialog() {

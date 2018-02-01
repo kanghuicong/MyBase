@@ -17,6 +17,7 @@ import butterknife.InjectView;
 
 public class RefreshAdapter extends BaseItem {
     Holder holder;
+    RefreshItemBean testBean;
 
     public RefreshAdapter(Context context) {
         super(context);
@@ -29,7 +30,7 @@ public class RefreshAdapter extends BaseItem {
 
     @Override
     public void binding(Object data, BaseHolder baseHolder, int itemType) {
-        RefreshItemBean testBean = (RefreshItemBean) data;
+        testBean = (RefreshItemBean) data;
         holder = (Holder) baseHolder;
         holder.textView.setText(testBean.getName());
     }
