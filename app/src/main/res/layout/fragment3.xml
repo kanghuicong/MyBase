@@ -24,36 +24,4 @@
 
     </com.kang.mybase.custom.view.MyRefresh>
 
-    <!--<com.kang.mybase.custom.view.MyRefresh-->
-        <!--android:id="@+id/refresh"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-
-        <!--<ScrollView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent">-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:orientation="vertical">-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="400dp"-->
-                    <!--android:text="123"/>-->
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="400dp"-->
-                    <!--android:text="123"/>-->
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="400dp"-->
-                    <!--android:text="123"/>-->
-            <!--</LinearLayout>-->
-
-        <!--</ScrollView>-->
-
-    <!--</com.kang.mybase.custom.view.MyRefresh>-->
-
 </LinearLayout>

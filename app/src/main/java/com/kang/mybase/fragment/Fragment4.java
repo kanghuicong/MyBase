@@ -1,7 +1,12 @@
 package com.kang.mybase.fragment;
 
+import android.util.Log;
+
 import com.kang.mybase.R;
 import com.kang.mybase.base.BaseFragment;
+
+import rx.Observable;
+import rx.functions.Action1;
 
 import static com.kang.utilssdk.AppUtils.getAppDetailsSettings;
 

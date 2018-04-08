@@ -4,8 +4,8 @@
     android:layout_height="wrap_content">
     <com.litao.android.lib.view.SquaredImageView
         android:id="@+id/image"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="140px"
+        android:layout_height="140px"
         android:scaleType="centerCrop"
         android:background="@mipmap/add_photos"/>
 </RelativeLayout>

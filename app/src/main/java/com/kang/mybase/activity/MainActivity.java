@@ -49,7 +49,7 @@ public class MainActivity extends BaseFragmentActivity {
         //setComponentEnabledSetting方法相当于修改Manifest里注册的NetBroadcastReceiver的enable属性（默认true）
         //所以APP进入要还原重置该属性
         getPackageManager().setComponentEnabledSetting(
-                new ComponentName("com.kang.mybase", NetBroadcastReceiver.class.getName()),
+                new ComponentName(getPackageName(), NetBroadcastReceiver.class.getName()),
                 PackageManager.COMPONENT_ENABLED_STATE_DEFAULT,
                 PackageManager.DONT_KILL_APP);
 
@@ -111,7 +111,7 @@ public class MainActivity extends BaseFragmentActivity {
                 finish();
                 //关闭实时监控网络情况广播
                 getPackageManager().setComponentEnabledSetting(
-                        new ComponentName("com.kang.mybase",
+                        new ComponentName(getPackageName(),
                                 NetBroadcastReceiver.class.getName()),
                         PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                         PackageManager.DONT_KILL_APP);

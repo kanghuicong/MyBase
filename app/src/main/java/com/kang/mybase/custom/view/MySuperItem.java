@@ -19,15 +19,19 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.kang.mybase.R;
 import com.kang.mybase.custom.other.CircleTransform;
+import com.zhy.autolayout.AutoLinearLayout;
 
 import static com.kang.utilssdk.SizeUtils.dp2px;
+import static com.kang.utilssdk.SizeUtils.px2sp;
+import static com.kang.utilssdk.SizeUtils.sp2px;
+
 
 /**
  * Created by KangHuiCong on 2017/12/19.
  * E-Mail is 515849594@qq.com
  */
 
-public class MySuperItem extends LinearLayout {
+public class MySuperItem extends AutoLinearLayout {
     int defaultColor = Color.BLACK;
     int defaultSize = 14;
     int defaultDrawablePadding = 5;
@@ -289,10 +293,11 @@ public class MySuperItem extends LinearLayout {
     }
 
     private void init() {
-        this.setPadding((getPaddingLeft()==0?15:getPaddingLeft()),
-                (getPaddingTop()==0?15:getPaddingTop()),
-                (getPaddingRight()==0?15:getPaddingRight()),
-                (getPaddingBottom()==0?15:getPaddingBottom()));
+        int defaultPadding = fitSize(7);
+        this.setPadding((getPaddingLeft()==0?defaultPadding:getPaddingLeft()),
+                (getPaddingTop()==0?defaultPadding:getPaddingTop()),
+                (getPaddingRight()==0?defaultPadding:getPaddingRight()),
+                (getPaddingBottom()==0?defaultPadding:getPaddingBottom()));
         this.setOrientation(HORIZONTAL);
         this.setGravity(Gravity.CENTER);
 
@@ -388,7 +393,7 @@ public class MySuperItem extends LinearLayout {
     private void initCheckBox() {
         if (isCheckBox) {
             checkBox = new CheckBox(context);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(dp2px(mCheckBoxWidth), dp2px(mCheckBoxHeight));
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(fitSize(mCheckBoxWidth), fitSize(mCheckBoxHeight));
             lp.setMargins(mCheckBoxLeftMargin,mCheckBoxTopMargin,mCheckBoxRightMargin,mCheckBoxBottomMargin);
             checkBox.setLayoutParams(lp);
             checkBox.setButtonDrawable(R.color.Transparent);
@@ -412,7 +417,7 @@ public class MySuperItem extends LinearLayout {
 
     private void initCenterLayout(LinearLayout layout, String gravity,int leftMargin,int topMargin,int rightMargin,int bottomMargin) {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1);
-        lp.setMargins(dp2px(leftMargin),dp2px(topMargin),dp2px(rightMargin),dp2px(bottomMargin));
+        lp.setMargins(fitSize(leftMargin),fitSize(topMargin),fitSize(rightMargin),fitSize(bottomMargin));
         layout.setLayoutParams(lp);
         layout.setOrientation(HORIZONTAL);
         layout.setGravity(returnGravity(gravity));
@@ -428,42 +433,50 @@ public class MySuperItem extends LinearLayout {
             else lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1);
         }
 
-        lp.setMargins(dp2px(leftMargin), dp2px(topMargin), dp2px(rightMargin), dp2px(bottomMargin));
+        lp.setMargins(fitSize(leftMargin), fitSize(topMargin), fitSize(rightMargin), fitSize(bottomMargin));
 
         textView.setLayoutParams(lp);
         textView.setGravity(Gravity.CENTER | Gravity.LEFT);
         textView.setText(content);
-        textView.setTextSize(size);
+        textView.setTextSize(fitTextSize(size));
         textView.setTextColor(color);
     }
 
 
     private void initText(TextView textView, String content, int textSize, int textColor, Drawable drawable, int drawableWidth, int drawableHight, int drawablePadding, int leftMargin,int topMargin,int rightMargin,int bottomMargin) {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        lp.setMargins(dp2px(leftMargin), dp2px(topMargin), dp2px(rightMargin),dp2px(bottomMargin));
+        lp.setMargins(fitSize(leftMargin), fitSize(topMargin), fitSize(rightMargin),fitSize(bottomMargin));
         textView.setLayoutParams(lp);
         textView.setGravity(Gravity.CENTER);
         textView.setText(content);
-        textView.setTextSize(textSize);
+        textView.setTextSize(fitTextSize(textSize));
         textView.setTextColor(textColor);
 
         if (drawable != null) {
             if (drawableWidth != -1 && drawableHight != -1) {
-                drawable.setBounds(0, 0, dp2px(drawableWidth), dp2px(drawableHight));
+                drawable.setBounds(0, 0, fitSize(drawableWidth), fitSize(drawableHight));
                 textView.setCompoundDrawables(null, null, drawable, null);
             } else textView.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
         }
-        textView.setCompoundDrawablePadding(dp2px(drawablePadding));
+        textView.setCompoundDrawablePadding(fitSize(drawablePadding));
         addView(textView);
     }
 
     private void initImage(ImageView imageView, int imageWidth, int imageHeight, Drawable drawable,  int leftMargins,int topMargins,int rightMargins,int bottomMargins) {
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(dp2px(imageWidth), dp2px(imageHeight));
-        lp.setMargins(dp2px(leftMargins), dp2px(topMargins), dp2px(rightMargins), dp2px(bottomMargins));
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(fitSize(imageWidth), fitSize(imageHeight));
+        lp.setMargins(fitSize(leftMargins), fitSize(topMargins), fitSize(rightMargins), fitSize(bottomMargins));
         imageView.setLayoutParams(lp);
         imageView.setBackgroundDrawable(drawable);
         addView(imageView);
         goneText(drawable, imageView);
+    }
+
+    public int fitSize(int size) {
+        return dp2px(size);
+    }
+
+    public int fitTextSize(int size) {
+        return sp2px(size/2);
     }
 
     private void goneText(Object content, View view) {
@@ -515,7 +528,7 @@ public class MySuperItem extends LinearLayout {
 
     /*left文字size*/
     public MySuperItem setLeftTextSize(int size) {
-        leftText.setTextSize(size);
+        leftText.setTextSize(fitTextSize(size));
         return this;
     }
 
@@ -539,7 +552,7 @@ public class MySuperItem extends LinearLayout {
 
     /*top--left文字size*/
     public MySuperItem setTopLeftTextSize(int size) {
-        topLeftText.setTextSize(size);
+        topLeftText.setTextSize(fitTextSize(size));
         return this;
     }
 
@@ -558,7 +571,7 @@ public class MySuperItem extends LinearLayout {
 
     /*top--right文字size*/
     public MySuperItem setTopRightTextSize(int size) {
-        topRightText.setTextSize(size);
+        topRightText.setTextSize(fitTextSize(size));
         return this;
     }
 
@@ -583,7 +596,7 @@ public class MySuperItem extends LinearLayout {
 
     /*top--left文字size*/
     public MySuperItem setBottomLeftTextSize(int size) {
-        bottomLeftText.setTextSize(size);
+        bottomLeftText.setTextSize(fitTextSize(size));
         return this;
     }
 
@@ -603,7 +616,7 @@ public class MySuperItem extends LinearLayout {
 
     /*bottom--right文字size*/
     public MySuperItem setBottomRightTextSize(int size) {
-        bottomRightText.setTextSize(size);
+        bottomRightText.setTextSize(fitTextSize(size));
         return this;
     }
 
@@ -630,7 +643,7 @@ public class MySuperItem extends LinearLayout {
 
     /*right文字size*/
     public MySuperItem setRightTextSize(int size) {
-        rightText.setTextSize(size);
+        rightText.setTextSize(fitTextSize(size));
         return this;
     }
 

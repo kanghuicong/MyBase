@@ -11,4 +11,9 @@
         app:isBack="false"
         app:title="@string/rb4" />
 
+    <com.kang.mybase.custom.view.MyCalendarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.kang.mybase.custom.view.MyCalendarView>
+
 </LinearLayout>

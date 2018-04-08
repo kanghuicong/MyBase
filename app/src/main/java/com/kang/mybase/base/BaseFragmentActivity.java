@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -14,6 +15,10 @@ import android.view.inputmethod.InputMethodManager;
 import com.kang.mybase.custom.view.MyDialog;
 import com.kang.mybase.pro.INetChange;
 import com.kang.utilssdk.NetworkUtils;
+import com.zhy.autolayout.AutoFrameLayout;
+import com.zhy.autolayout.AutoLayoutActivity;
+import com.zhy.autolayout.AutoLinearLayout;
+import com.zhy.autolayout.AutoRelativeLayout;
 
 import static com.kang.utilssdk.KeyboardUtils.isShouldHideKeyboard;
 import static com.kang.utilssdk.ToastUtils.showShort;
@@ -29,6 +34,10 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
     public static INetChange iNetChange;
     private MyDialog myDialog;
 
+    private static final String LAYOUT_LINEARLAYOUT = "LinearLayout";
+    private static final String LAYOUT_FRAMELAYOUT = "FrameLayout";
+    private static final String LAYOUT_RELATIVELAYOUT = "RelativeLayout";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +47,20 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
         iNetChange = this;
+    }
+
+    @Override
+    public View onCreateView(String name, Context context, AttributeSet attrs) {
+        View view = null;
+        if (name.equals(LAYOUT_FRAMELAYOUT)) view = new AutoFrameLayout(context, attrs);
+
+        if (name.equals(LAYOUT_LINEARLAYOUT)) view = new AutoLinearLayout(context, attrs);
+
+        if (name.equals(LAYOUT_RELATIVELAYOUT)) view = new AutoRelativeLayout(context, attrs);
+
+        if (view != null) return view;
+
+        return super.onCreateView(name, context, attrs);
     }
 
     @Override //网络变化回调

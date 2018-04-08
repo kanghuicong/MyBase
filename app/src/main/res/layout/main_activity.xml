@@ -22,8 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="bottom"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/y10">
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/rb1"

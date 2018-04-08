@@ -42,6 +42,7 @@ public void iDialog(int position) {
   12.21---（MySuperItem）完成基础布局，添加动态修改  
   12.22---（MySuperItem）完善基础布局，添加CheckBox，头像加载，点击事件回调  
   12.23---（MySuperItem）修改尺寸，完成适配，添加switch  
+  02.23---（MySuperItem）完善适配
 ![MySuperItem](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/mySuperItem.png)    	
 ```java
 提供链式动态修改方法，如下部分方法：
@@ -103,6 +104,8 @@ public void iDialog(int position) {
   与现有的大部分刷新加载框架相比，我处理的手势动作更多，例如正在刷新时是不可以做下拉操作（起码我用过的两个框架都不可以）、不支持空白回弹等等  
 ### MyLoading：  
   12.27---自定义控件MyLoading，用于数据加载时等待反馈，并结合MyDialog，封装loading加载框  
+### MyCalendarView
+  04.08---自定义日历控件MyCalendarView
 # 3、网络请求封装
   12.14---基于okHttp、rxAndroid与retrofit2写的网络请求，已封装，只需调用FunData方法传入请求参数，就在回调接口获得json数据，数据固定返回格式为{"code":"0","msg":"msg","data":{}}  
   12.28---优化请求步骤，数据固定返回格式改为{"code":"0","msg":"msg"}，回调接口数据直接强转为model，不需要再将json字符串进行转换转换  
@@ -125,7 +128,8 @@ public void iDialog(int position) {
 # 11、音频相关
   12.19---音频的录制，停止，查看，播放（目前暂时没有考虑上传后格式与IOS相适配的问题）
 # 12、其他
-  01.05---添加代码混淆；反编译（反编译工具及步骤在decompiling文件夹内）
+  01.05---添加代码混淆；反编译（反编译工具及步骤在decompiling文件夹内）  
+  02.23---屏幕适配
 
 # 持续更新中.....
 
