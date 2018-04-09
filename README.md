@@ -5,7 +5,6 @@
 # 2、自定义控件
 ### MyDialog
   dialog样式是系统样式，不同手机样式可能不一样  
-![MyDialog](https://github.com/kanghuicong/MyBase/blob/master/app/src/main/assets/myDialog.png)  
 ```java
 new MyDialog("设置", "是否前往设置权限", "取消", "确定", new IDialog() {
     @Override
@@ -105,7 +104,7 @@ public void iDialog(int position) {
 ### MyLoading：  
   12.27---自定义控件MyLoading，用于数据加载时等待反馈，并结合MyDialog，封装loading加载框  
 ### MyCalendarView
-  04.08---自定义日历控件MyCalendarView
+  04.08---自定义日历控件MyCalendarView  
 # 3、网络请求封装
   12.14---基于okHttp、rxAndroid与retrofit2写的网络请求，已封装，只需调用FunData方法传入请求参数，就在回调接口获得json数据，数据固定返回格式为{"code":"0","msg":"msg","data":{}}  
   12.28---优化请求步骤，数据固定返回格式改为{"code":"0","msg":"msg"}，回调接口数据直接强转为model，不需要再将json字符串进行转换转换  
@@ -129,6 +128,7 @@ public void iDialog(int position) {
   12.19---音频的录制，停止，查看，播放（目前暂时没有考虑上传后格式与IOS相适配的问题）
 # 12、其他
   01.05---添加代码混淆；反编译（反编译工具及步骤在decompiling文件夹内）  
+  04.09---应用更新，下载apk  
 <<<<<<< HEAD
   02.23---屏幕适配
 =======

@@ -47,7 +47,7 @@ public class Fragment2 extends BaseFragment {
         itemHeader1.setLeftImageL("http://p0.so.qhmsg.com/t014156c14c469bae95.jpg",true)
                 .setTopLeftText("孙悟空")
                 .setBottomLeftText("地球")
-                .setBottomLeftTextColor(R.color.colorAccent)
+                .setBottomLeftTextColor(R.color.colorAccent,false)
                 .setBottomLeftTextSize(12)
                 .setBottomRightText("超级赛亚人")
                 .setBottomRightTextSize(12);
@@ -69,19 +69,19 @@ public class Fragment2 extends BaseFragment {
     }
 
     private void setClick() {
-        itemHeader1.setOnClickItem(new MySuperItem.IItemClick() {
+        itemHeader1.setOnClickItem(new MySuperItem.IClick() {
             @Override
             public void onClick(View view) {
                 showShort("clickItem");
             }
-        }).setOnClickLeftImgL(new MySuperItem.IItemClick() {
+        }).setOnClickLeftImgL(new MySuperItem.IClick() {
             @Override
             public void onClick(View view) {
                 showShort("clickHeader");
             }
         });
 
-        itemWater.setOnClickBottomLeftText(new MySuperItem.IItemClick() {
+        itemWater.setOnClickBottomLeftText(new MySuperItem.IClick() {
             @Override
             public void onClick(View view) {
                 showShort("clickText");

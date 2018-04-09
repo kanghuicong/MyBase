@@ -15,4 +15,11 @@
     <string name="voiceActivity">音频相关</string>
     <string name="videoActivity">视频相关</string>
 
+    <string name="update_download_failed">下载失败！</string>
+    <string name="update_download_start">开始下载！</string>
+    <string name="update_download_progressing">下载...</string>
+    <string name="update_download_finish">下载结束！</string>
+
+
+
 </resources>

@@ -20,6 +20,8 @@ import com.kang.mybase.fun.FunCalender;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static com.kang.utilssdk.SizeUtils.dp2px;
+
 /**
  * Created by kanghuicong on 2018/4/8.
  * E-Mail:515849594@qq.com
@@ -196,7 +198,7 @@ public class CalendarAdapter extends BaseAdapter {
             layout.setGravity(Gravity.CENTER);
 
             TextView tvCalendar = new TextView(context);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(40, 40);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(dp2px(40), dp2px(40));
             lp.setMargins(0, 20, 0, 20);
             tvCalendar.setLayoutParams(lp);
             tvCalendar.setGravity(Gravity.CENTER);

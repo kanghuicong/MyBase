@@ -15,8 +15,9 @@
         android:id="@+id/item_header1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:left_limg_width="15dp"
-        app:left_limg_height="15dp"
+        app:left_limg_width="30"
+        app:left_limg_height="30"
+        app:isPadding="true"
         app:isArrow="true">
     </com.kang.mybase.custom.view.MySuperItem>
 
@@ -26,9 +27,10 @@
         android:id="@+id/item_header2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:right_limg_width="15dp"
-        app:right_limg_height="15dp"
+        app:right_limg_width="30"
+        app:right_limg_height="30"
         app:noLeftImageL="true"
+        app:isPadding="true"
         app:noTop="true"
         app:noBottom="true"
         app:noRightText="true">
@@ -41,14 +43,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:left_limg="@mipmap/test_water"
-        app:left_limg_width="10dp"
-        app:left_limg_height="10dp"
+        app:left_limg_width="20"
+        app:left_limg_height="20"
         app:top_left_text="水费"
         app:bottom_left_text="明细查询>>"
         app:bottom_left_textColor="@color/main_color"
         app:right_text="123"
         app:noRightImgL="true"
-        app:isCheckBox="true">
+        app:isCheckBox="true"
+        app:isPadding="true">
     </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
@@ -58,11 +61,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:left_limg="@mipmap/test_game"
-        app:left_limg_width="10dp"
-        app:left_limg_height="10dp"
+        app:left_limg_width="20"
+        app:left_limg_height="20"
         app:left_text="游戏点卡"
         app:noTop="true"
-        app:noBottom="true">
+        app:noBottom="true"
+        app:isPadding="true">
     </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
@@ -72,13 +76,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:left_limg="@mipmap/test_traffic"
-        app:left_limg_width="10dp"
-        app:left_limg_height="10dp"
+        app:left_limg_width="20"
+        app:left_limg_height="20"
         app:left_text="交通罚款"
         app:isArrow="true"
         app:noTop="true"
         app:noBottom="true"
-        app:noRightImgL="true">
+        app:noRightImgL="true"
+        app:isPadding="true">
     </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
@@ -88,13 +93,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:left_limg="@mipmap/test_more"
-        app:left_limg_width="10dp"
-        app:left_limg_height="10dp"
+        app:left_limg_width="20"
+        app:left_limg_height="20"
         app:left_text="更多"
         app:isArrow="true"
         app:noTop="true"
         app:noBottom="true"
-        app:noRightImgL="true">
+        app:noRightImgL="true"
+        app:isPadding="true">
     </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
@@ -106,7 +112,8 @@
         app:noLeftImageL="true"
         app:noLeftText="true"
         app:noRightText="true"
-        app:noRightImgL="true">
+        app:noRightImgL="true"
+        app:isPadding="true">
     </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
@@ -115,11 +122,12 @@
         android:id="@+id/item_other1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:left_text_rightMargin="2dp"
-        app:bottom_topMargin="2dp"
+        app:left_text_rightMargin="2"
+        app:bottom_topMargin="2"
         app:isTopBetween="true"
         app:noLeftImageL="true"
-        app:noRightImgL="true">
+        app:noRightImgL="true"
+        app:isPadding="true">
     </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />
@@ -131,7 +139,8 @@
         app:left_text="标题"
         app:top_left_text="标题"
         app:top_gravity="center"
-        app:isSwitch="true">
+        app:isSwitch="true"
+        app:isPadding="true">
     </com.kang.mybase.custom.view.MySuperItem>
 
     <include layout="@layout/main_splitter1" />

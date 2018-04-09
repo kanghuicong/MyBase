@@ -1,20 +1,12 @@
 package com.kang.mybase.fragment;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.View;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.kang.mybase.R;
-import com.kang.mybase.activity.HeaderChooseActivity;
 import com.kang.mybase.activity.MainActivity;
-import com.kang.mybase.activity.PhotoChooseActivity;
-import com.kang.mybase.activity.VideoActivity;
-import com.kang.mybase.activity.VoiceActivity;
 import com.kang.mybase.base.BaseFragment;
 import com.kang.mybase.custom.view.MyDialog;
-import com.kang.mybase.fun.ARouterUtil;
 import com.kang.mybase.fun.FunData;
 import com.kang.mybase.model.RefreshAllBean;
 import com.kang.mybase.pro.IDialog;
@@ -50,7 +42,7 @@ public class Fragment1 extends BaseFragment  {
         funData = new FunData((MainActivity)activity,this, this);
     }
 
-    @OnClick({R.id.http_click,R.id.photo_click,R.id.header_click,R.id.voice_click,R.id.video_click,R.id.dialog_click,R.id.loading_click})
+    @OnClick({R.id.http_click,R.id.photo_click,R.id.header_click,R.id.voice_click,R.id.video_click,R.id.update_click,R.id.loading_click})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.http_click://网络请求
@@ -69,15 +61,17 @@ public class Fragment1 extends BaseFragment  {
             case R.id.video_click://视频
                 startVideoActivity();
                 break;
-            case R.id.dialog_click:
-                new MyDialog("设置", "是否前往设置权限", "取消", "确定", new IDialog() {
+            case R.id.update_click://检查更新
+                new MyDialog("升级提示", "发现新版本，请及时更新", "下次再说", "立即升级", new IDialog() {
                     @Override
                     public void leftClick(DialogInterface dialog) {}
                     @Override
                     public void rightClick(DialogInterface dialog) {
-                        getAppDetailsSettings();
+//                        Intent intent = new Intent(getContext(), UpdateService.class);
+//                        intent.putExtra("apkUrl", "http://121.42.53.175:8080/hello_project/resources/upload/TianQiBao201605231.apk");
+//                        activity.startService(intent);
                     }
-                }).show(activity.getFragmentManager(), "settingDialog");
+                }).show(activity.getFragmentManager(), "updateDialog");
                 break;
             case R.id.loading_click:
                 ((MainActivity)activity).showLoading();

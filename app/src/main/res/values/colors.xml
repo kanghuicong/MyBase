@@ -29,4 +29,7 @@
     <color name="content_text">#5f5f5f</color>
     <!--<drawable name="content_text">#5f5f5f</drawable>-->
 
+    <drawable name="item_clicked">#dfdfdf</drawable>
+    <drawable name="item_disclick">#ffffff</drawable>
+
 </resources>
