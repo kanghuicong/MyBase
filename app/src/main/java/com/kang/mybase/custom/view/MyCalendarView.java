@@ -27,6 +27,8 @@ import com.kang.mybase.fun.FunCalender;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static com.kang.utilssdk.SizeUtils.dp2px;
+
 /**
  * Created by kanghuicong on 2018/4/8.
  * E-Mail:515849594@qq.com
@@ -62,7 +64,7 @@ public class MyCalendarView extends LinearLayout implements GestureDetector.OnGe
 
         LinearLayout layout1 = new LinearLayout(context);
         layout1.setLayoutParams(new LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        layout1.setPadding(10, 10, 10, 10);
+        layout1.setPadding(dp2px(5), dp2px(5), dp2px(5), dp2px(5));
         layout1.setBackgroundColor(getResources().getColor(R.color.main_color));
         layout1.setOrientation(HORIZONTAL);
 
@@ -80,7 +82,7 @@ public class MyCalendarView extends LinearLayout implements GestureDetector.OnGe
 
         LinearLayout layout2 = new LinearLayout(context);
         layout2.setLayoutParams(new LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        layout2.setPadding(0, 0, 0, 10);
+        layout2.setPadding(0, 0, 0, dp2px(5));
         layout2.setBackgroundColor(getResources().getColor(R.color.main_color));
         layout2.setOrientation(HORIZONTAL);
 

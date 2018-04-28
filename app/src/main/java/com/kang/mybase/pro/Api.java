@@ -1,6 +1,6 @@
 package com.kang.mybase.pro;
 
-import com.kang.mybase.model.RefreshAllBean;
+import com.kang.mybase.bean.RefreshAllBean;
 import java.util.Map;
 
 import retrofit2.http.FieldMap;
@@ -20,4 +20,5 @@ public interface Api {
     @FormUrlEncoded
     Observable<RefreshAllBean> test(@FieldMap Map<String, Object> map);
 
+//    Observable<RefreshAllBean> tests(@Query("type") String type, @Query("postid") String postid);
 }

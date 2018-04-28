@@ -1,4 +1,4 @@
-package com.kang.mybase.model;
+package com.kang.mybase.bean;
 
 /**
  * Created by KangHuiCong on 2017/12/13.

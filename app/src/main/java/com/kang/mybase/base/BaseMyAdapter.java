@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.kang.mybase.model.BaseItem;
+import com.kang.mybase.bean.BaseItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +52,7 @@ public class BaseMyAdapter<T> extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = mItem.creatView(parent, getItemViewType(position));
+            convertView = mItem.createView(parent, getItemViewType(position));
             mItem.initHolder(convertView, getItemViewType(position));
         }
 

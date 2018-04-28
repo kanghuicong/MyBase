@@ -1,11 +1,11 @@
-package com.kang.mybase.model;
+package com.kang.mybase.bean;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kang.mybase.model.BaseBean;
+import java.lang.ref.ReferenceQueue;
 
 import butterknife.ButterKnife;
 
@@ -22,7 +22,7 @@ public abstract class BaseItem<T> extends BaseBean {
     }
 
     //返回Item的布局Id;
-    public abstract int getItemLayout(int itemType);
+    public abstract Object getItemLayout(int itemType);
 
     //该方法给控件设置数据，首先获得holder对象，holder =convertview.gettag();
     public abstract void binding(T data, BaseHolder baseHolder, int itemType);
@@ -46,8 +46,10 @@ public abstract class BaseItem<T> extends BaseBean {
     }
 
     //创建itemView的方法
-    public View creatView(ViewGroup parent, int itemType) {
-        return LayoutInflater.from(parent.getContext()).inflate(getItemLayout(itemType), parent, false);
+    public View createView(ViewGroup parent, int itemType) {
+        if (getItemLayout(itemType) instanceof View)
+            return (View)getItemLayout(itemType);
+        return LayoutInflater.from(parent.getContext()).inflate((int)getItemLayout(itemType), parent, false);
     }
 
     public Context getContext() {

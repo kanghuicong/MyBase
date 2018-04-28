@@ -5,8 +5,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.kang.mybase.R;
-import com.kang.mybase.model.BaseItem;
-import com.kang.mybase.model.RefreshItemBean;
+import com.kang.mybase.bean.BaseItem;
+import com.kang.mybase.bean.RefreshItemBean;
 
 import butterknife.InjectView;
 
@@ -24,7 +24,7 @@ public class RefreshAdapter extends BaseItem {
     }
 
     @Override
-    public int getItemLayout(int itemType) {
+    public Object getItemLayout(int itemType) {
         return R.layout.item_voice;
     }
 

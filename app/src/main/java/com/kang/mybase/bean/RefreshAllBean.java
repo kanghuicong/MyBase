@@ -1,4 +1,4 @@
-package com.kang.mybase.model;
+package com.kang.mybase.bean;
 
 import java.util.List;
 

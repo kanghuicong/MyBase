@@ -16,7 +16,7 @@ import static com.kang.mybase.util.inject.InjectUtils.injectActivityView;
  * E-Mail is 515849594@qq.com
  */
 
-public abstract class BaseActivity extends BaseFragmentActivity implements ISubDelete , IHttp{
+public abstract class BaseActivity<T> extends BaseFragmentActivity implements ISubDelete , IHttp<T>{
 
     public abstract void init();
 

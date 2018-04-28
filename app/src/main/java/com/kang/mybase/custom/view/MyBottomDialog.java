@@ -20,6 +20,8 @@ import com.kang.mybase.pro.IDialogBottom;
 
 import java.util.List;
 
+import static com.kang.utilssdk.SizeUtils.dp2px;
+
 /**
  * Created by KangHuiCong on 2017/12/18.
  * E-Mail is 515849594@qq.com
@@ -49,7 +51,7 @@ public class MyBottomDialog extends LinearLayout {
         this.setBackgroundResource(R.color.Transparent);
         this.setGravity(Gravity.BOTTOM);
         this.setOrientation(VERTICAL);
-        this.setPadding(10, 10, 10, 10);
+        this.setPadding(dp2px(5), dp2px(5), dp2px(5), dp2px(5));
         dialog = new Dialog(context,R.style.dialogBackground);
 
         TextView line = new TextView(context);
@@ -93,7 +95,7 @@ public class MyBottomDialog extends LinearLayout {
         if (isCancel) {
             TextView tvCancel = new TextView(context);
             LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.setMargins(0, 20, 0, 0);
+            params.setMargins(0, dp2px(10), 0, 0);
             setTextStyle(tvCancel, R.drawable.dialog_normal, -1, params);
 
             tvCancel.setOnClickListener(new OnClickListener() {
@@ -126,7 +128,7 @@ public class MyBottomDialog extends LinearLayout {
         view.setBackgroundResource(background);
         if (position == -1)view.setText("取消");
         else view.setText(list[position]);
-        view.setPadding(0,30,0,30);
+        view.setPadding(0,dp2px(15),0,dp2px(15));
         view.setOnClickListener(new Click(position));
         view.setGravity(Gravity.CENTER);
     }

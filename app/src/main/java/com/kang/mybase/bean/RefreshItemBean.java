@@ -1,7 +1,4 @@
-package com.kang.mybase.model;
-
-import android.os.Parcel;
-import android.os.Parcelable;
+package com.kang.mybase.bean;
 
 /**
  * Created by KangHuiCong on 2017/12/13.

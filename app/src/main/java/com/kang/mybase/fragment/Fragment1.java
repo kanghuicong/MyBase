@@ -1,14 +1,18 @@
 package com.kang.mybase.fragment;
 
 import android.content.DialogInterface;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.kang.mybase.R;
 import com.kang.mybase.activity.MainActivity;
 import com.kang.mybase.base.BaseFragment;
 import com.kang.mybase.custom.view.MyDialog;
 import com.kang.mybase.fun.FunData;
-import com.kang.mybase.model.RefreshAllBean;
+import com.kang.mybase.bean.RefreshAllBean;
 import com.kang.mybase.pro.IDialog;
 
 import java.util.HashMap;
@@ -33,7 +37,7 @@ public class Fragment1 extends BaseFragment  {
     private FunData funData;
 
     @Override
-    public int setLayout() {
+    public int setLayout(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return R.layout.fragment1;
     }
 

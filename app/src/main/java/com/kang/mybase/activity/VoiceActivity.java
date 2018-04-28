@@ -1,6 +1,5 @@
 package com.kang.mybase.activity;
 
-import android.content.Intent;
 import android.os.Environment;
 import android.os.SystemClock;
 import android.view.View;
@@ -15,8 +14,7 @@ import com.kang.mybase.adapter.VoiceAdapter;
 import com.kang.mybase.base.BaseActivity;
 import com.kang.mybase.fun.VoiceFiles;
 import com.kang.mybase.fun.VoicePlay;
-import com.kang.mybase.model.FileBean;
-import com.kang.mybase.service.VoiceService;
+import com.kang.mybase.bean.FileBean;
 import com.kang.mybase.util.inject.InjectActivityView;
 
 import java.util.ArrayList;
@@ -25,7 +23,6 @@ import java.util.List;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-import static com.kang.mybase.fun.LoginInterceptor.CHECK_LOGIN;
 import static com.kang.mybase.fun.VoiceFiles.getAllFiles;
 import static com.kang.utilssdk.ToastUtils.showShort;
 
@@ -34,7 +31,7 @@ import static com.kang.utilssdk.ToastUtils.showShort;
  * E-Mail is 515849594@qq.com
  */
 @InjectActivityView(R.layout.voice_activity)
-@Route(path = "/activity/HeaderChooseActivity")
+@Route(path = "/activity/VoiceActivity")
 public class VoiceActivity extends BaseActivity {
     @InjectView(R.id.chronometer)
     Chronometer chronometer;

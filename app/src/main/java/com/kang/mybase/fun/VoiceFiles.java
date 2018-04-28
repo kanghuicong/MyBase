@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.provider.MediaStore;
 
-import com.kang.mybase.model.FileBean;
+import com.kang.mybase.bean.FileBean;
 
 import java.io.File;
 import java.util.ArrayList;

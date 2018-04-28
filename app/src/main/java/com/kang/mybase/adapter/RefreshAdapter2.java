@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.kang.mybase.R;
 import com.kang.mybase.base.BaseMyAdapter2;
-import com.kang.mybase.model.RefreshItemBean;
+import com.kang.mybase.bean.RefreshItemBean;
 
 import java.util.List;
 

@@ -20,12 +20,12 @@ import rx.Subscription;
  * E-Mail is 515849594@qq.com
  */
 
-public abstract class BaseFragment extends Fragment implements ISubDelete , IHttp{
+public abstract class BaseFragment<T> extends Fragment implements ISubDelete , IHttp<T>{
 
     protected Activity activity;
     private View view;
     public Subscription baseSub;
-    protected abstract int setLayout();
+    protected abstract int setLayout(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState);
     protected abstract void init();
 
     @Nullable
@@ -33,7 +33,7 @@ public abstract class BaseFragment extends Fragment implements ISubDelete , IHtt
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         activity = getActivity();
         if (view == null) {
-            view = View.inflate(activity, setLayout(), null);
+            view = View.inflate(activity, setLayout(inflater,container,savedInstanceState), null);
             ButterKnife.inject(this, view);
             init();
         } else {

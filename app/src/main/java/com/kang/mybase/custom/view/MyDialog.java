@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.kang.mybase.pro.IDialog;
 
+import static com.kang.utilssdk.SizeUtils.dp2px;
+
 
 /**
  * Created by KangHuiCong on 2017/12/11.
@@ -74,17 +76,17 @@ public class MyDialog extends DialogFragment {
             LinearLayout view = new LinearLayout(getActivity());
             view.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             view.setOrientation(LinearLayout.HORIZONTAL);
-            view.setPadding(10, 30, 10, 30);
+            view.setPadding(10, dp2px(15), 10, dp2px(15));
             view.setGravity(Gravity.CENTER);
 
             myLoading = new MyLoading(getActivity());
-            myLoading.setLayoutParams(new LinearLayout.LayoutParams(60, 60));
+            myLoading.setLayoutParams(new LinearLayout.LayoutParams(dp2px(30), dp2px(30)));
             myLoading.startAnimator();
             view.addView(myLoading);
 
             TextView textView = new TextView(getActivity());
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(30,0,0,0);
+            lp.setMargins(dp2px(15),0,0,0);
             textView.setLayoutParams(lp);
             textView.setText("正在加载数据...");
 
@@ -105,7 +107,7 @@ public class MyDialog extends DialogFragment {
             LinearLayout view = new LinearLayout(getActivity());
             view.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             view.setOrientation(LinearLayout.VERTICAL);
-            view.setPadding(10, 20, 10, 10);
+            view.setPadding(dp2px(5), dp2px(10), dp2px(5), dp2px(5));
             view.setGravity(Gravity.CENTER);
 
             TextView tvTitle = new TextView(getActivity());
@@ -115,7 +117,7 @@ public class MyDialog extends DialogFragment {
 
             TextView tvContent = new TextView(getActivity());
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(20,20,20,10);
+            lp.setMargins(dp2px(10),dp2px(10),dp2px(10),dp2px(5));
             tvContent.setLayoutParams(lp);
             tvContent.setTextSize(16);
             view.addView(tvContent);

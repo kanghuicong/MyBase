@@ -173,7 +173,6 @@ public class CalendarAdapter extends BaseAdapter {
                     }
                 }
             }
-
         }
     }
 
@@ -194,12 +193,12 @@ public class CalendarAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LinearLayout layout = new LinearLayout(context);
-            layout.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, 60));
+            layout.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, dp2px(30)));
             layout.setGravity(Gravity.CENTER);
 
             TextView tvCalendar = new TextView(context);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(dp2px(40), dp2px(40));
-            lp.setMargins(0, 20, 0, 20);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(dp2px(20), dp2px(20));
+            lp.setMargins(0, dp2px(10), 0, dp2px(10));
             tvCalendar.setLayoutParams(lp);
             tvCalendar.setGravity(Gravity.CENTER);
             tvCalendar.setTextSize(12);

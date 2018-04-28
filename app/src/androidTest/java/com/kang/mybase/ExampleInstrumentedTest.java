@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.kang.myradio", appContext.getPackageName());
+        assertEquals("com.kang.mybase", appContext.getPackageName());
     }
 }

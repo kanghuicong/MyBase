@@ -3,14 +3,12 @@ package com.kang.mybase.fun;
 import android.widget.ListView;
 
 import com.kang.mybase.base.BaseMyAdapter;
-import com.kang.mybase.model.BaseItem;
+import com.kang.mybase.bean.BaseItem;
 import com.kang.mybase.custom.view.MyRefresh;
 import com.kang.mybase.pro.IRefresh;
 import com.kang.mybase.pro.ISubDelete;
 
 import java.util.List;
-
-import rx.Observable;
 
 /**
  * Created by KangHuiCong on 2018/1/3.
