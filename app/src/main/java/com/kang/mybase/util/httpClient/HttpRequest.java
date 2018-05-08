@@ -9,7 +9,10 @@ public class HttpRequest {
     static Api api;
 
     public static Api getApi() {
-        if (api == null) api = RetrofitClient.getRetrofit().create(Api.class);
+        if (api == null)
+            synchronized (HttpRequest.class) {
+                api = RetrofitClient.getRetrofit().create(Api.class);
+            }
         return api;
     }
 

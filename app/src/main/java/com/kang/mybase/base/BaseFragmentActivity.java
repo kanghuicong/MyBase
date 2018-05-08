@@ -46,7 +46,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements I
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
-        iNetChange = this;
+        if (iNetChange==null)iNetChange = this;
     }
 
     @Override

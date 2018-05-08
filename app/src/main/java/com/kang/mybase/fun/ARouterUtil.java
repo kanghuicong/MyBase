@@ -67,4 +67,11 @@ public class ARouterUtil {
     public static void startVideoActivity(){
         ARouter.getInstance().build("/activity/VideoActivity").navigation();
     }
+
+    //RecyclerActivity
+    public static void startRecyclerActivity(){
+        ARouter.getInstance().build("/activity/RecyclerActivity").navigation();
+    }
+
+
 }

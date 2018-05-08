@@ -21,31 +21,24 @@ public abstract class BaseItem<T> extends BaseBean {
         this.mContext = context;
     }
 
-    //返回Item的布局Id;
     public abstract Object getItemLayout(int itemType);
 
-    //该方法给控件设置数据，首先获得holder对象，holder =convertview.gettag();
     public abstract void binding(T data, BaseHolder baseHolder, int itemType);
 
-    //该方法初始化item的控件,把holder绑定到convertview
     public void initHolder(View convertView, int itemType) {
         convertView.setTag(getHolder(convertView, itemType));
     }
 
-    //创建holder的方法
     public abstract BaseHolder getHolder(View convertView, int itemType);
 
-    //type的种类,重写此方法 把super删掉
     public int getViewTypeCount() {
         return 1;
     }
 
-    //多种itemType根据此方法返回类型区分,重写此方法 把super删掉\
     public int getItemViewType(T data, int position) {
         return 0;
     }
 
-    //创建itemView的方法
     public View createView(ViewGroup parent, int itemType) {
         if (getItemLayout(itemType) instanceof View)
             return (View)getItemLayout(itemType);

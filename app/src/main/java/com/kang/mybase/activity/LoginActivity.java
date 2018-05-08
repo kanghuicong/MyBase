@@ -1,5 +1,7 @@
 package com.kang.mybase.activity;
 
+import android.app.Activity;
+import android.app.KeyguardManager;
 import android.os.Bundle;
 
 import com.kang.mybase.MyApplication;

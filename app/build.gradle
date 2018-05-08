@@ -5,7 +5,7 @@ android {
 //    buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "com.kang.mybase"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -53,6 +53,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
+
     compile 'com.android.support.constraint:constraint-layout:1.1.0'
     testCompile 'junit:junit:4.12'
     //网络请求
@@ -84,6 +86,9 @@ dependencies {
     compile "android.arch.lifecycle:runtime:1.1.1"
     compile "android.arch.lifecycle:extensions:1.1.1"
     annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
+
+//    //动画
+//    compile 'com.airbnb.android:lottie:2.5.4'
 
 
 //    //bmob-sdk：Bmob的android sdk包，包含了Bmob的数据存储、文件等服务，以下是最新的bmob-sdk:

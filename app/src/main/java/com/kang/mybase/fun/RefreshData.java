@@ -30,8 +30,6 @@ public class RefreshData extends BaseData {
 
     public <T> void getRefreshData(Observable observable, final IRefresh iRefresh) {
         baseSub =observable.compose(RxHelper.handleResult())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new RxSubscribe<BaseBean<T>>() {
                     @Override
                     protected void _onNext(BaseBean<T> t) {
@@ -50,8 +48,6 @@ public class RefreshData extends BaseData {
 
     public  <T>void getLoadData(Observable observable, final IRefresh iRefresh) {
         baseSub =observable.compose(RxHelper.handleResult())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new RxSubscribe<BaseBean<T>>() {
                     @Override
                     protected void _onNext(BaseBean<T> t) {

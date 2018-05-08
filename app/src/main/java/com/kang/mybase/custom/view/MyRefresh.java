@@ -4,8 +4,10 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Handler;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -155,6 +157,11 @@ public class MyRefresh extends LinearLayout {
         if (getChildAt(1) instanceof ScrollView) {
             scrollView = (ScrollView) getChildAt(1);
         }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override

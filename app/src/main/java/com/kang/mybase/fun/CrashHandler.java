@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.kang.utilssdk.LogUtils;
 
+import java.io.IOException;
+
 /**
  * Created by kanghuicong on 2018/4/27.
  * E-Mail:515849594@qq.com
@@ -13,6 +15,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
     private static CrashHandler instance = null;
 
+    private CrashHandler() {}
 
     public static synchronized CrashHandler getInstance() {
         if(instance == null) {

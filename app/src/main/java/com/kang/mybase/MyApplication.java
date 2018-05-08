@@ -25,7 +25,7 @@ public class MyApplication extends BaseApplication {
         ARouter.init(this);
         InitializeService.start(this);//第三方初始化操作
 
-        CrashHandler.getInstance().init(this);
+//        CrashHandler.getInstance().init(this);
 
     }
 

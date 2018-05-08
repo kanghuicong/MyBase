@@ -41,6 +41,14 @@
         android:layout_height="wrap_content"
         android:text="视频相关"/>
 
+
+    <Button
+        android:id="@+id/recycler_click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="recycler"/>
+
+
     <Button
         android:id="@+id/update_click"
         android:layout_width="match_parent"

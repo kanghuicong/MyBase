@@ -1,5 +1,7 @@
 package com.kang.mybase.fragment;
 
+import android.app.Activity;
+import android.app.KeyguardManager;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;

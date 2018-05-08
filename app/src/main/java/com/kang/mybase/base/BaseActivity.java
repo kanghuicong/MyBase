@@ -28,6 +28,7 @@ public abstract class BaseActivity<T> extends BaseFragmentActivity implements IS
         injectActivityView(this);//自定义注解
         ButterKnife.inject(this);
         init();
+
     }
 
     @Override

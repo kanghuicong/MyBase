@@ -34,8 +34,6 @@ public class FunData extends BaseData {
         if (activity!=null)activity.showLoading();
 
         baseSub =observable.compose(RxHelper.handleResult())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new RxSubscribe<T>() {
                     @Override
                     protected void _onNext(T t) {

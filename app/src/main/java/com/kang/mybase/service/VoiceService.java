@@ -1,8 +1,10 @@
 package com.kang.mybase.service;
 
+import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaRecorder;
+import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -24,6 +26,12 @@ public class VoiceService extends Service {
     private String mFileName = null;
     private String mFilePath = null;
     private MediaRecorder mRecorder = null;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        
+    }
 
     @Nullable
     @Override

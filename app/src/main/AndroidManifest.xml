@@ -5,6 +5,7 @@
     <!--相机-->
     <uses-permission android:name="android.permission.CAMERA" />
     <!--文件读写-->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--网络权限-->
@@ -67,6 +68,8 @@
         <activity android:name=".activity.VoiceActivity" />
         <!--视频-->
         <activity android:name=".activity.VideoActivity" />
+        <!--RecyclerView-->
+        <activity android:name=".activity.RecyclerActivity" />
 
 
     </application>

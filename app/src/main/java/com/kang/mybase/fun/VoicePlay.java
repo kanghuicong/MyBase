@@ -44,6 +44,7 @@ public class VoicePlay {
                 stopPlaying();
             }
         });
+        mMediaPlayer.getCurrentPosition();
     }
 
     public static void stopPlaying() {

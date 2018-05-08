@@ -17,7 +17,7 @@ public class InitializeService extends IntentService {
     private static Context context;
 
     public InitializeService() {
-        super("kang");
+        super(ACTION_INIT_WHEN_APP_CREATE);
     }
 
     @Override

@@ -1,12 +1,17 @@
 package com.kang.mybase;
 
 
+import android.content.Intent;
+import android.graphics.BitmapRegionDecoder;
 import android.test.InstrumentationTestCase;
 
 import com.kang.mybase.bean.FileBean;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import dalvik.system.DexClassLoader;
+import dalvik.system.PathClassLoader;
 
 /**
  * Created by kanghuicong on 2018/4/27.
@@ -32,6 +37,11 @@ public class TestClass {
             list2.add(fileBean);
         }
         System.out.print("list2:"+list2.toString());
+
+//        PathClassLoader;
+//        DexClassLoader;
+//        DexPathList;
+//        Element;
     }
 
 }

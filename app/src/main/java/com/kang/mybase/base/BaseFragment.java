@@ -1,6 +1,7 @@
 package com.kang.mybase.base;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -31,7 +32,6 @@ public abstract class BaseFragment<T> extends Fragment implements ISubDelete , I
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        activity = getActivity();
         if (view == null) {
             view = View.inflate(activity, setLayout(inflater,container,savedInstanceState), null);
             ButterKnife.inject(this, view);
@@ -43,6 +43,12 @@ public abstract class BaseFragment<T> extends Fragment implements ISubDelete , I
             }
         }
         return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.activity = (Activity)context;
     }
 
     @Override
